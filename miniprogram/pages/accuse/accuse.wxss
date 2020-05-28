@@ -1,0 +1,33 @@
+/* pages/accuse/accuse.wxss */
+page{
+  background-color:#839BAF ;
+}
+.bun1{
+   width: 340rpx;
+    
+    height: 48px;
+    border: 1px solid #f2f2f2;
+    background: #f6f6f6;
+    color: #202124;
+    font-size: 20rpx;
+    line-height: 48px;
+    border-radius: 25px;
+
+    position: absolute;
+    top:60%;
+  
+}
+.bun2{
+  width: 340rpx;
+    padding: 0 25px;
+    height: 48px;
+    border: 1px solid #f2f2f2;
+    background-color: lightskyblue;
+    color: #454649;
+    font-size: 30px;
+    line-height: 48px;
+    border-radius: 25px;
+    position: absolute;
+    top:80%;
+  
+}

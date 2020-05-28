@@ -1,0 +1,2 @@
+<!--pages/scorehistory/scorehistory.wxml-->
+<view class="title"> 历史扣分记录</view>

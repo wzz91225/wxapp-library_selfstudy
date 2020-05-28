@@ -1,0 +1,9 @@
+<!--pages/accuse/accuse.wxml-->
+<circle></circle>
+<text >桌号：</text>
+<input type="text" class="bun1" bindinput="handdescription" /><!--通过函数handtable提交桌子号码-->
+<view>文字描述：</view>
+<input type="text" class="bun2" bindinput="handdescription" /><!--通过函数handdescription提交举报文字描述-->
+<view>图片提交：</view>
+<button class="bun2" bindtap="">提交</button><!--提交整个结构体的信息-->
+

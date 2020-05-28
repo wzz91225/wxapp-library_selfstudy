@@ -1,5 +1,15 @@
 {
   "pages": [
+    
+    "pages/seat/seat",
+    "pages/order/order",
+    "pages/accuse/accuse" ,
+    "pages/orderview/orderview",
+    "pages/person/person",
+    "pages/accusehistory/accusehistory",
+    "pages/scorehistory/scorehistory",
+
+    
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -13,14 +23,45 @@
     "pages/openapi/cloudid/cloudid",
     "pages/im/im",
     "pages/im/room/room"
+  
+
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTitleText": "图书馆座位管理系统",
     "navigationBarTextStyle": "black"
   },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/seat/seat",
+      "text": "就坐",
+      "iconPath": "icon/gift-01.png",
+      "selectedIconPath": "icon/gift-02.png"
+    },
+    {
+      "pagePath": "pages/orderview/orderview",
+      "text": "预约",
+      "iconPath": "icon/gift-01.png",
+      "selectedIconPath": "icon/gift-02.png"
+    },
+    {
+      "pagePath": "pages/accuse/accuse",
+      "text": "举报",
+      "iconPath": "icon/gift-01.png",
+      "selectedIconPath": "icon/gift-02.png"
+    },
+    {
+      "pagePath": "pages/person/person",
+      "text": "个人空间",
+      "iconPath": "icon/gift-01.png",
+      "selectedIconPath": "icon/gift-02.png"
+    }
+  ]
+  },
+
+
   "sitemapLocation": "sitemap.json",
   "style": "v2"
 }

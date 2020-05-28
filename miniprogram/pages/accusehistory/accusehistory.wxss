@@ -1,0 +1,5 @@
+/* pages/accusehistory/accusehistory.wxss */
+title{
+  text-align: center;
+  font-size:2ch;
+}

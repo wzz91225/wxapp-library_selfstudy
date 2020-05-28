@@ -1,0 +1,53 @@
+/* components/circle/circle.wxss */
+page{
+  background-color: #839BAF;
+}
+.right{
+    text-align: center;
+  font-size: 5ch;
+  width: 340rpx;
+    padding: 0 25px;
+    height: 200px;
+    width: 150px;
+    border: 1px solid #f2f2f2;
+    background-color: green;
+    color: #202124;
+    font-size: 14px;
+    line-height: 48px;
+    border-radius: 50%;
+    position: absolute;
+    left:20%;
+    top:10%;
+}
+.mid{
+  text-align: center;
+  width: 340rpx;
+    padding: 0 25px;
+    height: 200px;
+    width: 150px;
+    border: 1px solid #f2f2f2;
+    background-color: yellow;
+    color: #202124;
+    font-size: 14px;
+    line-height: 48px;
+    border-radius: 100px;
+    position: absolute;
+    left:20%;
+    top:10%;
+}
+.left{
+  text-align: center;
+  width: 340rpx;
+    padding: 0 25px;
+    height: 200px;
+    width: 150px;
+    border: 1px solid #f2f2f2;
+    background-color: red;
+    color: #202124;
+    font-size: 14px;
+    line-height: 48px;
+    border-radius: 100px;
+    position: absolute;
+    left:20%;
+    top:10%;
+}
