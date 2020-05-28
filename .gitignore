@@ -1,5 +1,5 @@
 !.gitignore
-project.config.json
+# project.config.json
 
 # Windows
 [Dd]esktop.ini
