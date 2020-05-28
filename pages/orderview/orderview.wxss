@@ -1,0 +1,101 @@
+/* pages/orderview/orderview.wxss */
+.contentBottom {
+  padding: 20rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #f8e1da;
+}
+.BottomFirst {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid #663a83;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.BottomFirst text {
+  width: 100%;
+  text-align: center;
+  font-size: 30rpx;
+  color: #663a83;
+  line-height: 60rpx;
+  border-right: 1px solid #663a83;
+  box-sizing: border-box;
+}
+.BottomFirst text:nth-child(1){
+  border: none;
+}
+.tab-right {
+  width: 90%;
+  margin: 20rpx auto;
+  height: 405rpx;
+}
+.right-item {
+  padding: 0 20rpx;
+  background: #fbeeed;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+.content-item {
+  height: 100rpx;
+  border-bottom: 1px solid #ede1d4;
+  width: 95%;
+}
+.avater {
+  height: 50rpx;
+  width: 50rpx;
+  border-radius: 100rpx;
+  margin-top: 25rpx;
+  float: left;
+}
+.name {
+  font-size: 26rpx;
+  float: left;
+  line-height: 100rpx;
+  color: #b0aaa9;
+  margin-left: 20rpx;
+  width: 40%;
+  height:100%;
+  overflow: hidden;
+}
+.wawa {
+  font-size: 26rpx;
+  float: right;
+  line-height: 100rpx;
+  color: #999;
+}
+.bon1{
+  width: 30%;
+  margin-top: 20rpx;
+  background-color: burlywood;
+  color: white;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.btn2 {
+  width: 200rpx;
+height: 200rpx;
+margin-top: 20rpx;
+background-color: white;
+color: #999999;
+border-radius: 0rpx;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+font-size: 30rpx;
+}
+.bon3{
+  margin-top: 30px;
+  width: 80%;
+  background-color: rgb(252, 126, 67);
+  color: white;
+  border-radius: 98rpx;
+  background: bg_red;
+
+}

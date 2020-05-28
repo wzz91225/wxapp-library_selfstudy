@@ -1,0 +1,16 @@
+<!--pages/seat/seat.wxml-->
+
+<circle degree="{{status[i].color}}" obvious="{{status[i].name}}"></circle><!--显示状态-->
+<!--<circle degree="{{status[1].color}}" obvious="{{status[1].name}}"></circle>显示状态
+<circle degree="{{status[2].color}}" obvious="{{status[2].name}}"></circle><!--显示状态-->
+
+<!--<view 
+wx:for="{{status}}" 
+wx:key="id"
+>{{index}}:{{item.name}}</view>
+<view>{{status[0].name}}</view>-->
+
+
+<button size="mini" class="bon1" type="warn" bindtap="Link">连接</button>
+<button size="mini"  class="bon1" type="warn" bindtap="Leave">暂离</button>
+<button size="mini" class="bon1" type="warn" bindtap="End" >结束</button>

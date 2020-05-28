@@ -1,0 +1,35 @@
+/* components/circle/circle.wxss */
+.right{
+  
+  width: 340rpx;
+    padding: 0 25px;
+    height: 48px;
+    border: 1px solid #f2f2f2;
+    background-color: green;
+    color: #202124;
+    font-size: 14px;
+    line-height: 48px;
+    border-radius: 25px;
+}
+.mid{
+  width: 340rpx;
+    padding: 0 25px;
+    height: 48px;
+    border: 1px solid #f2f2f2;
+    background-color: yellow;
+    color: #202124;
+    font-size: 14px;
+    line-height: 48px;
+    border-radius: 25px;
+}
+.left{
+  width: 340rpx;
+    padding: 0 25px;
+    height: 48px;
+    border: 1px solid #f2f2f2;
+    background-color: red;
+    color: #202124;
+    font-size: 14px;
+    line-height: 48px;
+    border-radius: 25px;
+}

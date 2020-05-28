@@ -1,0 +1,9 @@
+/* pages/seat/seat.wxss */
+.bon1 {
+  margin-top: 30px;
+  width: 30%;
+  background-color: rgb(252, 126, 67);
+  color: white;
+  border-radius: 98rpx;
+  background: bg_red;
+}
