@@ -1,0 +1,8 @@
+
+<view class="uploadButton">
+  <button open-type="uploadImage" bindtap="uploadImage"> 上传图片 </button>
+</view>
+
+<view class="uploadImage">
+  <image style="width: 200px; height: 200px; background-color: #eeeeee;" mode="aspectFit" src="{{imageSrc}}"></image>
+</view>
