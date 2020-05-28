@@ -1,3 +1,5 @@
+const app = getApp()
+
 Page({
 
   /**
@@ -5,6 +7,8 @@ Page({
    */
   data: {
     i:0,
+    openid:"",
+    Credit:null,
     status:[//color表示警告颜色。a表示严重警告未连接（红色），b表示中等警告暂时离开（黄色），c表示无警告（绿色）
       {
         color:"a",
@@ -21,43 +25,90 @@ Page({
     ]
 
   },
-Leave:function(){
-  var i=this.data.i;
-  if(i!=0)
-  {
+  Leave:function(){
+    var i=this.data.i;
+    if(i!=0)
+    {
+      return ;
+  }
+  var that=this;
+      that.setData({
+        i:2
+      })
+  },
+  Link:function(){
+    var i=this.data.i;
+    if(i==0)
+    {
+      return ;
+  }
+  var that=this;
+      that.setData({
+        i:0
+      })
+  },
+  End:function(){
+    var i=this.data.i;
+    if(i==1){
     return ;
-}
-var that=this;
-    that.setData({
-      i:2
-    })
-},
-Link:function(){
-  var i=this.data.i;
-  if(i==0)
-  {
-    return ;
-}
-var that=this;
-    that.setData({
-      i:0
-    })
-},
-End:function(){
-  var i=this.data.i;
-  if(i==1){
-   return ;
-}
-var that=this;
-that.setData({
-  i:1
-})
-},
+  }
+  var that=this;
+  that.setData({
+    i:1
+  })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (app.globalData.openid) {
+      this.setData({
+        openid: app.globalData.openid
+      })
+    }
+  //},
+  //Add:function(){
+    const db = wx.cloud.database()
+    db.collection('User').where({
+      _openid: this.data.openid
+    }).get({
+      success: res => {
+        if(res.data.length==1){
+          console.log("res information:"+res.data[0].Credit)
+          console.log("length information:"+res.data.length)
+          app.globalData.Credit=res.data[0].Credit
+          wx.showToast({
+            title: '登录成功',
+          })
+        }else{
+          db.collection('User').add({
+            data: {
+              Credit:100
+            },
+            success: res => {
+              // 在返回结果中会包含新创建的记录的 _id
+              this.setData({
+                Credit: 100
+              })
+              app.globalData.Credit=this.data.Credit
+              wx.showToast({
+                title: '注册成功',
+              })
+              console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
+            },
+            fail: err => {
+              wx.showToast({
+              })
+              console.error('[数据库] [新增记录] 失败：', err)
+            }
+          })
+        }
+        
+      },
+      fail: err => {
+        console.log("success")
+      }
+    })
   },
 
   /**
@@ -92,7 +143,7 @@ that.setData({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    Add()
   },
 
   /**
