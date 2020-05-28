@@ -1,4 +1,5 @@
 zyh test pull
+ly test pull
 
 # 云开发 quickstart
 
