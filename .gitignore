@@ -1,3 +1,6 @@
+!.gitignore
+project.config.json
+
 # Windows
 [Dd]esktop.ini
 Thumbs.db
