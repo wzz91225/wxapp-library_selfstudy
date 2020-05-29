@@ -9,7 +9,7 @@ exports.main = async (event, context) => {
       _openid: wxContext.OPENID,
       //seat_num:event.seat_num
     })
-    .orderBy("time_1","asc")
+    .orderBy("time_1","desc")
     .limit(5)
     .get()
   }

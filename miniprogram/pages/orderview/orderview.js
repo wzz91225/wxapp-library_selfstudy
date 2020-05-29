@@ -74,7 +74,7 @@ Page({
     wx.cloud.callFunction({
       name: 'query_appointment', //云函数的名称
       data: {
-        id:"oFNyI5Cm9t_dDaBSdWBsR9G9GeXA"
+        //id:"oFNyI5Cm9t_dDaBSdWBsR9G9GeXA"
       },
       success: res => {
         console.log(res.data)  //res的数据结构如下图
