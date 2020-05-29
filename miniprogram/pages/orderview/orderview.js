@@ -33,35 +33,35 @@ Page({
         0,//time,
         0,//time_flag,
         0,//seat_num
-        True//result
+        0//result
       ]
       ,
       [
         0,//time,
         0,//time_flag,
         0,//seat_num
-        True//result
+        0//result
       ]
       ,
       [
         0,//time,
         0,//time_flag,
         0,//seat_num
-        True//result
+        0//result
       ]
       ,
       [
         0,//time,
         0,//time_flag,
         0,//seat_num
-        True//result
+        0//result
       ]
       ,
       [
         0,//time,
         0,//time_flag,
         0,//seat_num
-        True//result
+        0//result
       ]
 
     ]
@@ -83,13 +83,58 @@ Page({
       },
       success: res => {
         console.log(res)  //res的数据结构如下图
-        var i;
-        for(i=0;i<5;i++){
-          this.aa[i][0]=res.result.data[i].time
-          this.aa[i][1]=res.result.data[i].time_flag
-          this.aa[i][2]=res.result.data[i].seat_num
-          this.aa[i][3]=res.result.data[i].result
+        //var i;
+        // for(i=0;i<5;i++){
+        //   this.aa[i][0]=res.result.data[i].time
+        //   this.aa[i][1]=res.result.data[i].time_flag
+        //   this.aa[i][2]=res.result.data[i].seat_num
+        //   this.aa[i][3]=res.result.data[i].result
+        // }
+        if(res.result==null){
+          wx.showToast({
+            title: '暂无预约信息',
+          })
+          return ;
         }
+        if(res.result.data.length>=5){
+          this.setData({
+            'aa[0][0]':res.result.data[0].time,
+            'aa[0][1]':res.result.data[0].time_flag,
+            'aa[0][2]':res.result.data[0].seat_num,
+            'aa[0][3]':res.result.data[0].result,
+  
+            'aa[1][0]':res.result.data[1].time,
+            'aa[1][1]':res.result.data[1].time_flag,
+            'aa[1][2]':res.result.data[1].seat_num,
+            'aa[1][3]':res.result.data[1].result,
+  
+            'aa[2][0]':res.result.data[2].time,
+            'aa[2][1]':res.result.data[2].time_flag,
+            'aa[2][2]':res.result.data[2].seat_num,
+            'aa[2][3]':res.result.data[2].result,
+  
+            'aa[3][0]':res.result.data[3].time,
+            'aa[3][1]':res.result.data[3].time_flag,
+            'aa[3][2]':res.result.data[3].seat_num,
+            'aa[3][3]':res.result.data[3].result,
+  
+            'aa[4][0]':res.result.data[4].time,
+            'aa[4][1]':res.result.data[4].time_flag,
+            'aa[4][2]':res.result.data[4].seat_num,
+            'aa[4][3]':res.result.data[4].result
+          })
+        }else if(res.result.data.length>=1){
+          this.setData({
+            'aa[0][0]':res.result.data[0].time,
+            'aa[0][1]':res.result.data[0].time_flag,
+            'aa[0][2]':res.result.data[0].seat_num,
+            'aa[0][3]':res.result.data[0].result
+          })
+        }
+        else{
+          return ;
+        }
+        
         console.log("appointment details:"+aa)
       },
       fail: err => {
