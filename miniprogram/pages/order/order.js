@@ -29,7 +29,12 @@ Page({
      ],
      SelectTime:[]//这个为选中的值传出去
   },
-
+  handleSelectTime(e){
+    const SelectTime=e.detail.value;
+    this.setData({
+      SelectTime
+    })
+  },
 ///--------------
 //上传预约信息的函数
 submit:function(){
