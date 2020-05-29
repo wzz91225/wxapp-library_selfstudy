@@ -1,5 +1,5 @@
 const app = getApp()
-
+let up=require('../updateinfor/updateInfor.js')
 Page({
 
   /**
@@ -9,6 +9,7 @@ Page({
     i:0,
     openid:"",
     Credit:null,
+    seat_num:null,
     status:[//color表示警告颜色。a表示严重警告未连接（红色），b表示中等警告暂时离开（黄色），c表示无警告（绿色）
       {
         color:"a",
@@ -25,16 +26,17 @@ Page({
     ]
 
   },
-  Leave:function(){
+  Leave:function(){//1:未就坐   2:暂时离开    3:已就座
     var i=this.data.i;
-    if(i!=0)
-    {
+    if(i!=0){
       return ;
-  }
-  var that=this;
-      that.setData({
-        i:2
-      })
+    }
+    var that=this;
+    that.setData({
+     i:2
+    })
+    //up.upd(2)
+    up.upseat(2,this.seat_num)//1:就坐 2:暂时离开 3:结束
   },
   Link:function(){
     var i=this.data.i;
@@ -46,6 +48,7 @@ Page({
       that.setData({
         i:0
       })
+      up.upseat(1,this.seat_num)//1:就坐 2:暂时离开 3:结束
   },
   End:function(){
     var i=this.data.i;
@@ -56,6 +59,7 @@ Page({
   that.setData({
     i:1
   })
+  up.upseat(3,this.seat_num)//1:就坐 2:暂时离开 3:结束
   },
   /**
    * 生命周期函数--监听页面加载
@@ -70,10 +74,11 @@ Page({
   //Add:function(){
     const db = wx.cloud.database()
     db.collection('User').where({
-      _openid: this.data.openid
+      _openid: app.globalData.openid
     }).get({
       success: res => {
-        if(res.data.length==1){
+        console.log(res)
+        if(res.data.length>=1){
           console.log("res information:"+res.data[0].Credit)
           console.log("length information:"+res.data.length)
           app.globalData.Credit=res.data[0].Credit
