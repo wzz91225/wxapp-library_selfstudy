@@ -5,29 +5,66 @@ Page({
    * 页面的初始数据
    */
   data: {
-    aa:[
-      {
-        nickName:"wang",
-        reward:"failed"
-      },
-      {
-        nickName: "wang",
-        reward: "failed"
-      },
-      {
-        nickName: "wang",
-        reward: "failed"
-      },
-      {
-        nickName: "wang",
-        reward: "success"
-      },
-      {
-        nickName: "wang",
-        reward: "success"
-      },
+    // aa:[
+    //   {
+    //     nickName:"wang",
+    //     reward:"failed"
+    //   },
+    //   {
+    //     nickName: "wang",
+    //     reward: "failed"
+    //   },
+    //   {
+    //     nickName: "wang",
+    //     reward: "failed"
+    //   },
+    //   {
+    //     nickName: "wang",
+    //     reward: "success"
+    //   },
+    //   {
+    //     nickName: "wang",
+    //     reward: "success"
+    //   },
      
-    ],
+    // ],
+    aa:[
+      [
+        0,//time,
+        0,//time_flag,
+        0,//seat_num
+        True//result
+      ]
+      ,
+      [
+        0,//time,
+        0,//time_flag,
+        0,//seat_num
+        True//result
+      ]
+      ,
+      [
+        0,//time,
+        0,//time_flag,
+        0,//seat_num
+        True//result
+      ]
+      ,
+      [
+        0,//time,
+        0,//time_flag,
+        0,//seat_num
+        True//result
+      ]
+      ,
+      [
+        0,//time,
+        0,//time_flag,
+        0,//seat_num
+        True//result
+      ]
+
+    ]
 
   },
 
@@ -39,7 +76,26 @@ Page({
   //---------------------------
   //完成拉取预约信息，从数据库中
   onLoad: function (options) {
-
+    wx.cloud.callFunction({
+      name: 'query_appointment', //云函数的名称
+      data: {
+        "seat_num":1
+      },
+      success: res => {
+        console.log(res)  //res的数据结构如下图
+        var i;
+        for(i=0;i<5;i++){
+          this.aa[i][0]=res.result.data[i].time
+          this.aa[i][1]=res.result.data[i].time_flag
+          this.aa[i][2]=res.result.data[i].seat_num
+          this.aa[i][3]=res.result.data[i].result
+        }
+        console.log("appointment details:"+aa)
+      },
+      fail: err => {
+        console.error('[云函数] [loginInfo] 调用失败', err)
+      }
+  })
   },
 
   /**
