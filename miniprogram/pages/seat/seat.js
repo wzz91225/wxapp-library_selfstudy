@@ -12,7 +12,7 @@ Page({
     i:0,
     openid:"",
     Credit:null,
-    seat_num:null,
+    //seat_num:null,
     status:[//color表示警告颜色。a表示严重警告未连接（红色），b表示中等警告暂时离开（黄色），c表示无警告（绿色）
       {
         color:"a",
@@ -51,6 +51,27 @@ Page({
       that.setData({
         i:0
       })
+      //up.querySeat()
+      wx.cloud.callFunction({
+        name: 'querySeat',//modify user
+        data: {
+        },
+        success: res => {
+          console.log(res)
+          var i
+          var seat=[]
+          for(i=0;i<res.result.data.length;i++){
+            seat[i]=res.result.data[i].seatNum
+            console.log(res.result.data[i].seatNum)
+          }
+          wx.showToast({
+            title: '获取空余座位成功！'
+        })
+        },
+        fail: err => {
+          console.error
+        }
+      });
       up.upUserStatus(1)//1:就坐 2:暂时离开 3:结束
   },
   End:function(){
