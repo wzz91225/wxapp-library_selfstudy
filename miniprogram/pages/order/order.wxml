@@ -5,9 +5,12 @@
 
 
 
-<checkbox-group class="che1" bindchange=""><!--绑定事件，将选中数据调用函数getSelectTime()将数据传入SelectTime数组-->
-  <checkbox  value="{{item.id}}" wx:for="{{period}}" wx:key="{{id}}">
+<checkbox-group class="che1" bindchange="handleSelectTime"><!--绑定事件，将选中数据调用函数getSelectTime()将数据传入SelectTime数组-->
+  <checkbox  value="{{item.id}}" wx:for="{{period}}" wx:key="id">
     {{item.value}}
   </checkbox>
 </checkbox-group>
-<button size="mini" bindtap="">确定提交</button><!--绑定提交事件，点击提交数组SelectTime数组-->
+<view>{{SelectTime}}</view>
+<view>{{SelectTime_1}}</view>
+<button size="mini" bindtap="submit">确定提交</button><!--绑定提交事件，点击提交数组SelectTime数组-->
+<button size="mini" bindtap="test_c">测试</button>
