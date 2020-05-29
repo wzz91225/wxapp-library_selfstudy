@@ -8,11 +8,10 @@ exports.main = async (event, context) => {
     return await db.collection('appointment').where({
       _openid: wxContext.OPENID,
       //seat_num:event.seat_num
-    }).orderBy("time","desc").get({
-      success: function (res) {
-        return res
-      }
-    });
+    })
+    .orderBy("time_1","asc")
+    .limit(5)
+    .get()
   }
   catch (e) {
     console.error(e);
