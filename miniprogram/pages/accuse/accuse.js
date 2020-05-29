@@ -4,6 +4,25 @@ const app = getApp()
 
 Page({
   data: {
+    rangekey: 0,
+    accusecause:[
+      {
+        id:1,
+        cause:"王"
+      },
+      {
+        id:2,
+        cause:"者"
+      },
+      {
+        id:3,
+        cause:"荣"
+      },
+      {
+        id:4,
+        cause:"耀"
+      }
+    ],
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,

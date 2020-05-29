@@ -66,8 +66,6 @@ page{
   justify-content: space-around;
 }
 .uploadImage{
-  position: absolute;
-  top:75%;
   display: flex;
   justify-content: space-around;
 

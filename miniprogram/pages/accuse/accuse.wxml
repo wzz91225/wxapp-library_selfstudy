@@ -1,18 +1,115 @@
 <!--pages/accuse/accuse.wxml-->
-<circle></circle>
+<!--<circle></circle>
 <view class="box1">
 <text>桌号：</text>
 <input type="text" class="bun1" bindinput="handdescription" /><!--通过函数handtable提交桌子号码-->
-</view>
+<!--</view>
 
 
 <view class="box2">
 <text>描述：</text> 
 <input type="text" class="bun2" bindinput="handdescription" /><!--通过函数handdescription提交举报文字描述-->
-</view>
+<!--</view>
 
 <view class="uploadImage">
     <button  open-type="uploadImage" bindtap="uploadImage"> 上传图片 </button>
     <image  style="width: 200px; height: 50px; background-color: #eeeeee;" mode="aspectFill" src="{{imageSrc}}"></image>
   </view>
-<button size="mini" class="bun3" bindtap="">提交</button><!--提交整个结构体的信息-->
+<button size="mini" class="bun3" bindtap="">提交</button>提交整个结构体的信息-->
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="weui-form">
+		<view class="weui-form__text-area">
+			<h2 class="weui-form__title">举报信息</h2>
+		</view>
+		<view class="weui-form__control-area">
+			<view class="weui-cells__group weui-cells__group_form">
+				<view class="weui-cells__title">test</view>
+				<view class="weui-cells weui-cells_form">
+					<view class="weui-cell weui-cell_active">
+						<view class="weui-cell__hd"><label class="weui-label">举报桌号</label></view>
+						<view class="weui-cell__bd">
+							<input class="weui-input" placeholder="填写座号号码" placeholder-class="weui-input__placeholder" />
+						</view>
+					</view>
+					<!--<view class="weui-cell weui-cell_active">
+						<view class="weui-cell__hd">				
+                            <label class="weui-label">举报原因</label>
+                        </view>
+						<view class="weui-cell__bd">
+							<input class="weui-input" placeholdvalueer="" placeholder-class="weui-input__placeholder" />
+						</view>
+          </view>-->
+
+          <view class="weui-form__control-area">
+			      <view class="weui-cells__group weui-cells__group_form">
+				      <view class="weui-cells__title">具体情况</view>
+			        	<view class="weui-cells weui-cells_form">
+				        	<view class="weui-cell ">
+						        <view class="weui-cell__bd">
+							        <textarea class="weui-textarea" placeholder="请描述你所发生的问题" rows="3"></textarea>
+							        <view class="weui-textarea-counter"><text>0</text>/200</view>
+						        </view>
+					        </view>
+				        </view>
+			        </view>
+	        	</view>
+          
+				<!--图片输入-->          
+          <!--<view class="page__bd">
+        <view class="weui-cells">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__hd">
+                          <view class="weui-uploader__overview">
+                              <view class="weui-uploader__title">图片上传</view>
+                              <view class="weui-uploader__info">{{files.length}}/2</view>
+                          </view>
+                        </view>
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files" id="uploaderFiles">
+                                <block wx:for="{{files}}" wx:key="*this">
+                                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                                        <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                                    </view>
+                                </block>
+
+                                
+                                
+                                
+              
+                            </view>
+                            <view class="weui-uploader__input-box">
+                                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>-->
+		<!--图片到此结束-->
+		
+		<button  class="weui-cell__hd" open-type="uploadImage" bindtap="uploadImage"> 上传图片 </button>
+		<view class="uploadImage">
+    <image  style="width: 200px; height: 100px; background-color: #eeeeee;" mode="aspectFill" src="{{imageSrc}}"></image>
+  </view>
+				
+				</view>	
+      </view>
+		</view>
+
+
+		<view class="weui-form__opr-area">
+			<a class="weui-btn weui-btn_primary">确定</a>
+		</view>
+		<view class="weui-form__extra-area">
+			<view class="weui-footer">
+				<view class="weui-footer__links">
+					<a href="javascript:" class="weui-footer__link">小提示</a>
+				</view>
+				<view class="weui-footer__text">带走你的书籍</view>
+			</view>
+		</view>
+	</view>
+</view>
