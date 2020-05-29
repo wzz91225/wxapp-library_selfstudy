@@ -103,6 +103,9 @@
 		<view class="weui-form__opr-area">
 			<a class="weui-btn weui-btn_primary">确定</a>
 		</view>
+		
+		
+		
 		<view class="weui-form__extra-area">
 			<view class="weui-footer">
 				<view class="weui-footer__links">
@@ -111,5 +114,7 @@
 				<view class="weui-footer__text">带走你的书籍</view>
 			</view>
 		</view>
+	
+	
 	</view>
 </view>

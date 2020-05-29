@@ -30,7 +30,7 @@ Page({
     // ],
     aa:[
       {
-        time:"",
+        time:"1",
         time_f:null,
         seat_n:null,
         result:null
@@ -74,10 +74,10 @@ Page({
     wx.cloud.callFunction({
       name: 'query_appointment', //云函数的名称
       data: {
-        //id:"oFNyI5Cm9t_dDaBSdWBsR9G9GeXA"
+        id:"oFNyI5Cm9t_dDaBSdWBsR9G9GeXA"
       },
       success: res => {
-        console.log(res.data)  //res的数据结构如下图
+        console.log(res.result.data[0].time)  //res的数据结构如下图res.result.data[0].time
         //var i;
         // for(i=0;i<5;i++){
         //   this.aa[i][0]=res.result.data[i].time
@@ -91,7 +91,7 @@ Page({
           })
           return ;
         }
-        console.log(res.result.data)
+        //console.log(res.result.data)
         //var mtime='aa['+'0'+'].time'
         aa:[
           {
@@ -125,12 +125,16 @@ Page({
             result:null
           },
         ]
-        aa[0].time=res.result.data[0].time
-        this.setData({
+        
+        aa[1].time="2020"    //测试setdata传值
+        var that=this;
+        console.log(aa[0].time)
+        that.setData({
           //[mtime]:res.result.data[0].time
           aa
         })
         console.log(aa[0].time)
+        
         // if(res.result.data.length>=5){
         //   this.setData({
         //     'aa[0][0]':res.result.data[0].time,
