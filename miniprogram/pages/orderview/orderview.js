@@ -77,7 +77,7 @@ Page({
         //id:"oFNyI5Cm9t_dDaBSdWBsR9G9GeXA"
       },
       success: res => {
-        console.log(res.data)  //res的数据结构如下图
+        console.log(res.result.data)  //res的数据结构如下图
         //var i;
         // for(i=0;i<5;i++){
         //   this.aa[i][0]=res.result.data[i].time

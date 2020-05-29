@@ -39,7 +39,7 @@ Page({
      i:2
     })
     //up.upd(2)
-    up.upseat(2,this.seat_num)//1:就坐 2:暂时离开 3:结束
+    up.upUserStatus(2)//1:就坐 2:暂时离开 3:结束
   },
   Link:function(){
     var i=this.data.i;
@@ -51,7 +51,7 @@ Page({
       that.setData({
         i:0
       })
-      up.upseat(1,this.seat_num)//1:就坐 2:暂时离开 3:结束
+      up.upUserStatus(1)//1:就坐 2:暂时离开 3:结束
   },
   End:function(){
     var i=this.data.i;
@@ -62,7 +62,7 @@ Page({
   that.setData({
     i:1
   })
-  up.upseat(3,this.seat_num)//1:就坐 2:暂时离开 3:结束
+  up.upUserStatus(3)//1:就坐 2:暂时离开 3:结束
   },
   //-------------------------
   //-------------------------\
