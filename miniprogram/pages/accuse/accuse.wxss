@@ -3,22 +3,43 @@ page{
   background-color:#839BAF ;
 }
 .bun1{
-   width: 340rpx;
+   width: 360rpx;
     
-    height: 48px;
+    height: 24px;
     border: 1px solid #f2f2f2;
     background: #f6f6f6;
     color: #202124;
     font-size: 20rpx;
     line-height: 48px;
     border-radius: 25px;
-
-    position: absolute;
-    top:60%;
-  
 }
 .bun2{
-  width: 340rpx;
+  width: 360rpx;
+    
+  height: 24px;
+  border: 1px solid #f2f2f2;
+  background: #f6f6f6;
+  color: #202124;
+  font-size: 20rpx;
+  line-height: 48px;
+  border-radius: 25px;
+
+  
+}
+
+.bun3{
+
+  margin-top: 30px;
+  width: 20%;
+  background-color: rgb(252, 126, 67);
+  color: white;
+  border-radius: 98rpx;
+  background: bg_red;
+  position: absolute;
+  left: 40%;
+  top:75%;
+
+  /*width: 340rpx;
     padding: 0 25px;
     height: 48px;
     border: 1px solid #f2f2f2;
@@ -28,6 +49,46 @@ page{
     line-height: 48px;
     border-radius: 25px;
     position: absolute;
-    top:80%;
-  
+    top:85%;*/
+}
+
+.box1{
+  position: absolute;
+  top:55%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.box2{
+  position: absolute;
+  top:65%;
+  display: flex;
+  justify-content: space-around;
+}
+.uploadImage{
+  position: absolute;
+  top:75%;
+  display: flex;
+  justify-content: space-around;
+
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 20rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
 }

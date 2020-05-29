@@ -37,6 +37,29 @@ function upd(x) {
     }
   });
 }
+function upseat(x,y) {//x:status y:seat_num
+  wx.cloud.callFunction({
+    name: 'update_seat',//modify user
+    data: {
+      //doneTime: util.formatTime(new Date())
+      status:x,
+      seat_num:y
+    },
+    success: res => {
+      console.log("update success")
+      wx.showToast({
+        title: 'success!',
+        success: function () {
+          
+      }
+    })
+    },
+    fail: err => {
+      console.error
+    }
+  });
+}
 module.exports = {
-    upd: upd
+    upd: upd,
+    upseat:upseat
   }

@@ -1,5 +1,4 @@
 /* pages/scorehistory/scorehistory.wxss */
 .title{
   text-align: center;
-  font-size:2ch;
 }

@@ -45,7 +45,12 @@ Page({
       SelectTime
     })
   },
-
+  handleSelectTime(e){
+    const SelectTime=e.detail.value;
+    this.setData({
+      SelectTime
+    })
+  },
 ///--------------
 //上传预约信息的函数
 submit:function(){

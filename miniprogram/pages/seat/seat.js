@@ -1,5 +1,8 @@
+
 const app = getApp()
 let up=require('../updateinfor/updateInfor.js')
+
+
 Page({
 
   /**
@@ -9,6 +12,7 @@ Page({
     i:0,
     openid:"",
     Credit:null,
+    seat_num:null,
     status:[//color表示警告颜色。a表示严重警告未连接（红色），b表示中等警告暂时离开（黄色），c表示无警告（绿色）
       {
         color:"a",
@@ -34,7 +38,8 @@ Page({
     that.setData({
      i:2
     })
-    up.upd(2)
+    //up.upd(2)
+    up.upseat(2,this.seat_num)//1:就坐 2:暂时离开 3:结束
   },
   Link:function(){
     var i=this.data.i;
@@ -46,6 +51,7 @@ Page({
       that.setData({
         i:0
       })
+      up.upseat(1,this.seat_num)//1:就坐 2:暂时离开 3:结束
   },
   End:function(){
     var i=this.data.i;
@@ -56,6 +62,7 @@ Page({
   that.setData({
     i:1
   })
+  up.upseat(3,this.seat_num)//1:就坐 2:暂时离开 3:结束
   },
   /**
    * 生命周期函数--监听页面加载
