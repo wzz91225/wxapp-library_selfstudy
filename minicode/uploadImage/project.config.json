@@ -1,10 +1,11 @@
 {
-	"miniprogramRoot": "miniprogram/",
-	"cloudfunctionRoot": "cloudfunctions/",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
-		"enhance": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
@@ -24,9 +25,13 @@
 		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
-	"appid": "wxbcf45be33c257cc7",
-	"projectname": "wxapp-library_selfstudy",
-	"libVersion": "2.8.1",
+	"compileType": "miniprogram",
+	"libVersion": "2.11.1",
+	"appid": "touristappid",
+	"projectname": "uploadImage",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
@@ -38,22 +43,13 @@
 			"current": -1,
 			"list": []
 		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
 		"game": {
+			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide"
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }
