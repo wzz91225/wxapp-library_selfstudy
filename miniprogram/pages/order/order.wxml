@@ -5,7 +5,7 @@
 
 
 
-<checkbox-group class="che1" bindchange="handleSelectTime">--><!--绑定事件，将选中数据调用函数getSelectTime()将数据传入SelectTime数组-->
+<!--<checkbox-group class="che1" bindchange="handleSelectTime">--><!--绑定事件，将选中数据调用函数getSelectTime()将数据传入SelectTime数-->
   <!--<checkbox  class="che2" value="{{item.id}}" wx:for="{{period}}" wx:key="id">
     <view class="che2">{{item.value}}</view>
   </checkbox>
