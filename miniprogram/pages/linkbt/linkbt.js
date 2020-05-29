@@ -1,12 +1,11 @@
-// pages/person/person.js
-const app = getApp()
+// pages/linkbt/linkbt.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    score:"0"//这个表示信用分显示
+    tablenum:[1,2,3,4,5,6,7]//这个存桌号
 
   },
 
@@ -14,9 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      score:app.globalData.Credit
-    })
+
   },
 
   /**
@@ -65,7 +62,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
 
   }
 })

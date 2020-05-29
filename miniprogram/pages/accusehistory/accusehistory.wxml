@@ -1,2 +1,30 @@
 <!--pages/accusehistory/accusehistory.wxml-->
-<view class="title">举报历史记录</view>
+
+<view class="title">举报历史纪录</view>
+    <view class="page__bd">
+
+        
+
+        <view class="weui-cells__title">一日之计在于晨</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_example ">
+                <view class="weui-cell__hd">
+                    <icon type="success" size="30"></icon>
+                </view>
+                <view class="weui-cell__bd">举报记录</view>
+                <view class="weui-cell__ft">成功</view>
+            </view>
+            <view class="weui-cell weui-cell_example ">
+                <view class="weui-cell__hd">
+                    <icon type="warn" size="30"></icon>
+                </view>
+                <view class="weui-cell__bd">举报记录</view>
+                <view class="weui-cell__ft">驳回</view>
+            </view>
+        </view>
+
+       
+
+       
+        
+    </view>

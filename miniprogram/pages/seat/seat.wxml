@@ -11,6 +11,8 @@ wx:key="id"
 <view>{{status[0].name}}</view>-->
 
 
-<button size="mini" class="bon1" type="warn" bindtap="Link">连接</button>
-<button size="mini"  class="bon2" type="warn" bindtap="Leave">暂离</button>
-<button size="mini" class="bon3" type="warn" bindtap="End" >结束</button>
+<view class="bun0">
+<navigator  class="weui-btn weui-btn_primary"  url="../linkbt/linkbt" bindtap="Link">连接</navigator>
+<button   class="weui-btn weui-btn_primary" bindtap="Leave">暂离</button>
+<button   class="weui-btn weui-btn_primary" bindtap="End" >结束</button>
+</view>

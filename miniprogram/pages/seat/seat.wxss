@@ -1,4 +1,14 @@
 /* pages/seat/seat.wxss */
+.bun0{
+  position:fixed; 
+margin:auto; 
+left:0; 
+right:0; 
+top:50%; 
+bottom:0; 
+width:200px; 
+height:150px;
+}
 .bon1 {
   margin-top: 30px;
   width: 20%;

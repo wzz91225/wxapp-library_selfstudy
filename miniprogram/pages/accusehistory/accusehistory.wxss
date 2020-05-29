@@ -1,5 +1,5 @@
 /* pages/accusehistory/accusehistory.wxss */
-title{
+.title{
   text-align: center;
   font-size:2ch;
 }
