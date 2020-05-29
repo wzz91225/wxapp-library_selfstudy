@@ -39,7 +39,7 @@ Page({
      i:2
     })
     //up.upd(2)
-    up.upseat(2,this.seat_num)//1:就坐 2:暂时离开 3:结束
+    up.upUserStatus(2)//1:就坐 2:暂时离开 3:结束
   },
   Link:function(){
     var i=this.data.i;
@@ -51,7 +51,7 @@ Page({
       that.setData({
         i:0
       })
-      up.upseat(1,this.seat_num)//1:就坐 2:暂时离开 3:结束
+      up.upUserStatus(1)//1:就坐 2:暂时离开 3:结束
   },
   End:function(){
     var i=this.data.i;
@@ -62,11 +62,17 @@ Page({
   that.setData({
     i:1
   })
-  up.upseat(3,this.seat_num)//1:就坐 2:暂时离开 3:结束
+  up.upUserStatus(3)//1:就坐 2:暂时离开 3:结束
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  //-------------------------
+  //-------------------------\
+  //-------------------------
+  //
+  //final version about register and initial(Credit and Status)
+  //
+  //-------------------------
+  //-------------------------
+  //-------------------------
   onLoad: function (options) {
     if (app.globalData.openid) {
       this.setData({
@@ -76,29 +82,32 @@ Page({
   //},
   //Add:function(){
     const db = wx.cloud.database()
-    db.collection('User').where({
+    db.collection('user').where({
       _openid: app.globalData.openid
     }).get({
       success: res => {
         console.log(res)
         if(res.data.length>=1){
-          console.log("res information:"+res.data[0].Credit)
+          console.log("res information:"+res.data[0].credit)
           console.log("length information:"+res.data.length)
-          app.globalData.Credit=res.data[0].Credit
+          app.globalData.userStatus=res.data.status//-----------------------
+          app.globalData.Credit=res.data[0].credit
           wx.showToast({
             title: '登录成功',
           })
         }else{
-          db.collection('User').add({
+          db.collection('user').add({
             data: {
-              Credit:100
+              credit:100,
+              status:3
             },
             success: res => {
               // 在返回结果中会包含新创建的记录的 _id
               this.setData({
                 Credit: 100
               })
-              app.globalData.Credit=this.data.Credit
+              app.globalData.Credit=this.data.credit
+              app.globalData.userStatus=this.data.status
               wx.showToast({
                 title: '注册成功',
               })
