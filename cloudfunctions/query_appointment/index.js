@@ -6,8 +6,8 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   try {
     return await db.collection('appointment').where({
-    //_openid: wxContext.OPENID,
-      seat_num:event.seat_num
+      _openid: wxContext.OPENID,
+      //seat_num:event.seat_num
     }).get({
       success: function (res) {
         return res
