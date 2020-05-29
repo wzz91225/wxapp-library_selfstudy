@@ -29,43 +29,38 @@ Page({
      
     // ],
     aa:[
-      [
-        0,//time,
-        0,//time_flag,
-        0,//seat_num
-        0//result
-      ]
-      ,
-      [
-        0,//time,
-        0,//time_flag,
-        0,//seat_num
-        0//result
-      ]
-      ,
-      [
-        0,//time,
-        0,//time_flag,
-        0,//seat_num
-        0//result
-      ]
-      ,
-      [
-        0,//time,
-        0,//time_flag,
-        0,//seat_num
-        0//result
-      ]
-      ,
-      [
-        0,//time,
-        0,//time_flag,
-        0,//seat_num
-        0//result
-      ]
-
+      {
+        time:"",
+        time_f:null,
+        seat_n:null,
+        result:null
+      },
+      {
+        time:"",
+        time_f:null,
+        seat_n:null,
+        result:null
+      },
+      {
+        time:"",
+        time_f:null,
+        seat_n:null,
+        result:null
+      },
+      {
+        time:"",
+        time_f:null,
+        seat_n:null,
+        result:null
+      },
+      {
+        time:"",
+        time_f:null,
+        seat_n:null,
+        result:null
+      },
     ]
-
+    
   },
 
   /**
@@ -79,10 +74,10 @@ Page({
     wx.cloud.callFunction({
       name: 'query_appointment', //云函数的名称
       data: {
-        "seat_num":1
+        id:"oFNyI5Cm9t_dDaBSdWBsR9G9GeXA"
       },
       success: res => {
-        console.log(res)  //res的数据结构如下图
+        console.log(res.data)  //res的数据结构如下图
         //var i;
         // for(i=0;i<5;i++){
         //   this.aa[i][0]=res.result.data[i].time
@@ -96,44 +91,84 @@ Page({
           })
           return ;
         }
-        if(res.result.data.length>=5){
-          this.setData({
-            'aa[0][0]':res.result.data[0].time,
-            'aa[0][1]':res.result.data[0].time_flag,
-            'aa[0][2]':res.result.data[0].seat_num,
-            'aa[0][3]':res.result.data[0].result,
+        console.log(res.result.data)
+        //var mtime='aa['+'0'+'].time'
+        aa:[
+          {
+            time:"",
+            time_f:null,
+            seat_n:null,
+            result:null
+          },
+          {
+            time:"",
+            time_f:null,
+            seat_n:null,
+            result:null
+          },
+          {
+            time:"",
+            time_f:null,
+            seat_n:null,
+            result:null
+          },
+          {
+            time:"",
+            time_f:null,
+            seat_n:null,
+            result:null
+          },
+          {
+            time:"",
+            time_f:null,
+            seat_n:null,
+            result:null
+          },
+        ]
+        aa[0].time=res.result.data[0].time
+        this.setData({
+          //[mtime]:res.result.data[0].time
+          aa
+        })
+        console.log(aa[0].time)
+        // if(res.result.data.length>=5){
+        //   this.setData({
+        //     'aa[0][0]':res.result.data[0].time,
+        //     'aa[0][1]':res.result.data[0].time_flag,
+        //     'aa[0][2]':res.result.data[0].seat_num,
+        //     'aa[0][3]':res.result.data[0].result,
   
-            'aa[1][0]':res.result.data[1].time,
-            'aa[1][1]':res.result.data[1].time_flag,
-            'aa[1][2]':res.result.data[1].seat_num,
-            'aa[1][3]':res.result.data[1].result,
+        //     'aa[1][0]':res.result.data[1].time,
+        //     'aa[1][1]':res.result.data[1].time_flag,
+        //     'aa[1][2]':res.result.data[1].seat_num,
+        //     'aa[1][3]':res.result.data[1].result,
   
-            'aa[2][0]':res.result.data[2].time,
-            'aa[2][1]':res.result.data[2].time_flag,
-            'aa[2][2]':res.result.data[2].seat_num,
-            'aa[2][3]':res.result.data[2].result,
+        //     'aa[2][0]':res.result.data[2].time,
+        //     'aa[2][1]':res.result.data[2].time_flag,
+        //     'aa[2][2]':res.result.data[2].seat_num,
+        //     'aa[2][3]':res.result.data[2].result,
   
-            'aa[3][0]':res.result.data[3].time,
-            'aa[3][1]':res.result.data[3].time_flag,
-            'aa[3][2]':res.result.data[3].seat_num,
-            'aa[3][3]':res.result.data[3].result,
+        //     'aa[3][0]':res.result.data[3].time,
+        //     'aa[3][1]':res.result.data[3].time_flag,
+        //     'aa[3][2]':res.result.data[3].seat_num,
+        //     'aa[3][3]':res.result.data[3].result,
   
-            'aa[4][0]':res.result.data[4].time,
-            'aa[4][1]':res.result.data[4].time_flag,
-            'aa[4][2]':res.result.data[4].seat_num,
-            'aa[4][3]':res.result.data[4].result
-          })
-        }else if(res.result.data.length>=1){
-          this.setData({
-            'aa[0][0]':res.result.data[0].time,
-            'aa[0][1]':res.result.data[0].time_flag,
-            'aa[0][2]':res.result.data[0].seat_num,
-            'aa[0][3]':res.result.data[0].result
-          })
-        }
-        else{
-          return ;
-        }
+        //     'aa[4][0]':res.result.data[4].time,
+        //     'aa[4][1]':res.result.data[4].time_flag,
+        //     'aa[4][2]':res.result.data[4].seat_num,
+        //     'aa[4][3]':res.result.data[4].result
+        //   })
+        // }else if(res.result.data.length>=1){
+        //   this.setData({
+        //     'aa[0][0]':res.result.data[0].time,
+        //     'aa[0][1]':res.result.data[0].time_flag,
+        //     'aa[0][2]':res.result.data[0].seat_num,
+        //     'aa[0][3]':res.result.data[0].result
+        //   })
+        // }
+        // else{
+        //   return ;
+        // }
         
         console.log("appointment details:"+aa)
       },
