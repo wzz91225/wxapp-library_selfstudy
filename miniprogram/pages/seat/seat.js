@@ -41,39 +41,6 @@ Page({
     //up.upd(2)
     up.upUserStatus(2)//1:就坐 2:暂时离开 3:结束
   },
-  Link:function(){
-    var i=this.data.i;
-    if(i==0)
-    {
-      return ;
-  }
-  var that=this;
-      that.setData({
-        i:0
-      })
-      //up.querySeat()
-      wx.cloud.callFunction({
-        name: 'querySeat',//modify user
-        data: {
-        },
-        success: res => {
-          console.log(res)
-          var i
-          var seat=[]
-          for(i=0;i<res.result.data.length;i++){
-            seat[i]=res.result.data[i].seatNum
-            console.log(res.result.data[i].seatNum)
-          }
-          wx.showToast({
-            title: '获取空余座位成功！'
-        })
-        },
-        fail: err => {
-          console.error
-        }
-      });
-      up.upUserStatus(1)//1:就坐 2:暂时离开 3:结束
-  },
   End:function(){
     var i=this.data.i;
     if(i==1){
@@ -111,7 +78,11 @@ Page({
         if(res.data.length>=1){
           console.log("res information:"+res.data[0].credit)
           console.log("length information:"+res.data.length)
-          app.globalData.userStatus=res.data.status//-----------------------
+          //let sss=res.data[0].status
+          //console.log(sss)
+          this.setData({
+            i:res.data[0].status
+          })
           app.globalData.Credit=res.data[0].credit
           wx.showToast({
             title: '登录成功',
@@ -132,6 +103,9 @@ Page({
               wx.showToast({
                 title: '注册成功',
               })
+          this.setData({
+            i:res.data[0].status
+          })
               console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
             },
             fail: err => {
@@ -141,7 +115,8 @@ Page({
             }
           })
         }
-        
+        //console.log(sss)
+        //console.log("用户状态："+sss)
       },
       fail: err => {
         console.log("success")
