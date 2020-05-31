@@ -28,38 +28,7 @@ Page({
     //   },
      
     // ],
-    aa:[
-      {
-        time:"1",
-        time_f:null,
-        seat_n:null,
-        result:null
-      },
-      {
-        time:"",
-        time_f:null,
-        seat_n:null,
-        result:null
-      },
-      {
-        time:"",
-        time_f:null,
-        seat_n:null,
-        result:null
-      },
-      {
-        time:"",
-        time_f:null,
-        seat_n:null,
-        result:null
-      },
-      {
-        time:"",
-        time_f:null,
-        seat_n:null,
-        result:null
-      },
-    ]
+    aa:[]
     
   },
 
@@ -93,45 +62,23 @@ Page({
         }
         //console.log(res.result.data)
         //var mtime='aa['+'0'+'].time'
-        aa:[
-          {
-            time:"",
-            time_f:null,
-            seat_n:null,
-            result:null
-          },
-          {
-            time:"",
-            time_f:null,
-            seat_n:null,
-            result:null
-          },
-          {
-            time:"",
-            time_f:null,
-            seat_n:null,
-            result:null
-          },
-          {
-            time:"",
-            time_f:null,
-            seat_n:null,
-            result:null
-          },
-          {
-            time:"",
-            time_f:null,
-            seat_n:null,
-            result:null
-          },
-        ]
         
-        aa[1].time="2020"    //测试setdata传值
+       /* var tmp=[];
+        var tmp1={
+          time:"71",
+         time_f:null,
+         seat_n:null,
+         result:null
+        };
+        console.log(res.result.data)
+        tmp1.time="33";
+        tmp.push(tmp1);*/
+        console.log(res.result.data)
         var that=this;
-        console.log(aa[0].time)
+        console.log()
         that.setData({
           //[mtime]:res.result.data[0].time
-          aa
+          aa:res.result.data,
         })
         console.log(aa[0].time)
         

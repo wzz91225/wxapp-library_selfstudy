@@ -90,3 +90,7 @@ page{
 .usermotto {
   margin-top: 200px;
 }
+.inputimg{
+  display: flex;
+  justify-content: center;
+}

@@ -1,4 +1,14 @@
 /* pages/orderview/orderview.wxss */
+.content{
+  position:fixed; 
+margin:auto; 
+left:0; 
+right:0; 
+top:50%; 
+bottom:0; 
+width:200px; 
+height:150px;
+}
 .contentBottom {
   padding: 20rpx 0;
   display: flex;
@@ -59,6 +69,12 @@
   width: 40%;
   height:100%;
   overflow: hidden;
+}
+.center {
+  font-size: 26rpx;
+  float: center;
+  line-height: 100rpx;
+  color: #999;
 }
 .wawa {
   font-size: 26rpx;

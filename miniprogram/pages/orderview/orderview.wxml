@@ -1,6 +1,7 @@
 <!--pages/orderview/orderview.wxml-->
 <circle degree="" obvious=""></circle><!--两个接口传入显示数据-->
 
+
 <view class='contentBottom'><!--滚动显示数据-->
     <view class='BottomFirst'>
       <text id='0' data-id='0'>图书馆预约信息</text>
@@ -10,8 +11,10 @@
         <block wx:for-index="idx" wx:for='{{aa}}'>
           <swiper-item>
             <view class='content-item'>
-              <text class='name'>{{item.nickName}}</text>
-              <text class='wawa'>预约{{item.reward}}</text>
+              <text class='name'>{{item.time}}</text>
+              <text class='center'>{{item.seatNum}}</text>
+              <text class='wawa' wx:if="{{item.result==1}}">成功</text>
+              <text class='wawa' wx:else>失败</text>
             </view>
           </swiper-item>
         </block> 
@@ -19,4 +22,7 @@
       </view>
     </swiper>
   </view>
+
+
+
 <navigator url="../order/order" class="bon1">预约时间</navigator>
