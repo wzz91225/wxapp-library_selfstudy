@@ -6,7 +6,7 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   try {
     //这里的update依据是event._id
-    return await db.collection("User").where({
+    return await db.collection("user").where({
       _openid: wxContext.OPENID
     }).update({
       data: {
