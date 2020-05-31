@@ -1,9 +1,9 @@
 //app.js
 App({
   data:{
-    Credit:null,
+    Credit:0,
     userStatus:"",
-    tableSelect:null
+    tableSelect:0
   },
   onLaunch: function () {
     
