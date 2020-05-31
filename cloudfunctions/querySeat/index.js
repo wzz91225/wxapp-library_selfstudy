@@ -5,11 +5,24 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   //const wxContext = cloud.getWXContext()
   try {
-    return await db.collection('seat').where({
+    let seatlist = await db.collection('seat')
+    .where({
       status:1
       //seat_num:event.seat_num
     })
-    .get()
+    .field({
+      seatNum:true,
+      // _id:false,
+      // openid:false,
+      // status:false
+    })
+    .orderBy("seatNum","asc")
+    .get();
+    //var i
+    // for(i=0;i<seatlist.data.length;i++){
+    //   seatlist=seatlist.data[i].seatNum
+    // }
+    return seatlist
   }
   catch (e) {
     console.error(e);

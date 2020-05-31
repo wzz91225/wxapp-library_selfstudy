@@ -68,7 +68,6 @@ function querySeat() {//x:status y:seat_num
       wx.showToast({
         title: '获取空余座位成功！',
         success: function () {
-          
       }
     })
     },
@@ -82,8 +81,7 @@ function upseat(x,y) {//x:status y:seat_num
     name: 'update_seat',//modify user
     data: {
       //doneTime: util.formatTime(new Date())
-      status:x,
-      seat_num:y
+      seatNum:x
     },
     success: res => {
       console.log("update success")

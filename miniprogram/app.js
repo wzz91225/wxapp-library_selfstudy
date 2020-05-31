@@ -15,6 +15,10 @@ App({
       })
     }
 
-    this.globalData = {}
+    this.globalData = {
+      userStatus:"",
+      Credit:null,
+
+    }
   }
 })
