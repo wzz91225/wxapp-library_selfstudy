@@ -74,6 +74,24 @@ function querySeat() {//x:status y:seat_num
     }
   });
 }
+function updateSeatStatus(x,y) {//x:status y:seat_num
+  wx.cloud.callFunction({
+    name: 'updateSeatStatus',//modify user
+    data: {
+      seat:x,
+      status:y
+    },
+    success: res => {
+      console.log(res)
+      wx.showToast({
+        title: '修改成功！',
+    })
+    },
+    fail: err => {
+      console.error
+    }
+  });
+}
 function upseat(x) {//x:status y:seat_num
   wx.cloud.callFunction({
     name: 'updateSeat',//modify user
@@ -103,5 +121,6 @@ module.exports = {
     upd: upd,
     upseat:upseat,
     upUserStatus:upUserStatus,
-    querySeat:querySeat
+    querySeat:querySeat,
+    updateSeatStatus:updateSeatStatus
   }
