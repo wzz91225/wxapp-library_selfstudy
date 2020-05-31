@@ -25,7 +25,7 @@ exports.main = async (event, context) => {
     })
   await db.collection('seat').where({
    result:1,
-   timeFlag:1
+   timeFlag:3
   }).update({
     data:{
      status:3,
