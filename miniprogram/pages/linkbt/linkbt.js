@@ -32,11 +32,13 @@ Page({
         i:0
     })
     if(app.globalData.userStatus==3){//未就坐
-      up.upseat(this.tableSelect)
+      console.log("判断成功！")
+      //up.upseat(this.tableSelect)
       wx.showToast({
         title: '就坐成功'
     })
     }else if(app.globalData.userStatus==2){//暂离
+      console.log("判断失败！")
       wx.showToast({
         title: '就坐失败'
     })

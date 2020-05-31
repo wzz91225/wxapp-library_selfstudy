@@ -81,7 +81,7 @@ Page({
           //let sss=res.data[0].status
           //console.log(sss)
           this.setData({
-            i:res.data[0].status
+            i:(res.data[0].status-1)
           })
           app.globalData.Credit=res.data[0].credit
           wx.showToast({
