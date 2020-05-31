@@ -112,7 +112,7 @@ module.exports.len = function(arr) {
 
 
 <view class="bunplace">
-  <button class="weui-btn weui-btn_primary" disabled="{{!connected}}"> 确认就坐</button>
+  <button class="weui-btn weui-btn_primary" disabled="{{!connected}}" bindtap="Link"> 确认就坐</button>
 </view>
 
 

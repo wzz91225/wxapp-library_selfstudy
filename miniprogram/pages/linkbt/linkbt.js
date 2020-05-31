@@ -40,6 +40,9 @@ function ab2hex(buffer) {
 }
 
 
+const app = getApp()
+let up=require('../updateinfor/updateInfor.js')
+
 Page({
 
   /**
@@ -67,8 +70,55 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  Link:function(){
+    var i=this.data.i;
+    if(i==0){
+      return ;
+    }
+    var that=this;
+      that.setData({
+        i:0
+    })
+    if(app.globalData.userStatus==3){//未就坐
+      up.upseat(this.tableSelect)
+      wx.showToast({
+        title: '就坐成功'
+    })
+    }else if(app.globalData.userStatus==2){//暂离
+      wx.showToast({
+        title: '就坐失败'
+    })
+    }else{
+      wx.showToast({
+        title: '就坐失败'
+    })
+    }
+      //up.querySeat()
+    up.upUserStatus(1)//1:就坐 2:暂时离开 3:结束
+  },
   onLoad: function (options) {
-
+    wx.cloud.callFunction({
+      name: 'querySeat',//modify user
+      data: {
+      },
+      success: res => {
+        console.log(res)
+        var list=[]
+        var i
+        for(i=0;i<res.result.data.length;i++){
+          list.push(res.result.data[i].seatNum)
+        }
+        this.setData({
+          tableNum:list
+        })
+        wx.showToast({
+          title: '获取空余座位成功！'
+      })
+      },
+      fail: err => {
+        console.error
+      }
+    });
   },
 
   /**

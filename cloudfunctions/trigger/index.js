@@ -8,6 +8,20 @@ const _ = db.command
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   const openid = wxContext.OPENID
+  var seatNum=[1]
+  var aa=await db.collection('appointment').where({
+    result:1,
+    timeFlag:'1'
+   }).get({
+    success:function(res) { //成功打印消息
+    
+      console.log('3', res)
+    },
+     fail(res) { //存入数据库失败
+       console.log('订单存入数据库操作失败');
+      //云函数更新
+     }
+    })
   console.log('触发器触发')
   await db.collection('seat').where({
     status:2
@@ -23,21 +37,23 @@ exports.main = async (event, context) => {
       //云函数更新
      }
     })
-  await db.collection('seat').where({
-   result:1,
-   timeFlag:1
-  }).update({
-    data:{
-     status:3,
-   },
-   success(res) { //成功打印消息
-     console.log('3', res)
-   },
+  for(var i=0;i<aa.data.length;i++){
+    await db.collection('seat').where({
+     seatNum:aa.data[i].seatNum,
+    }).update({
+     data:{
+      status:3,
+    },
+    success(res) { //成功打印消息
+      console.log('3', res)
+    },
     fail(res) { //存入数据库失败
       console.log('订单存入数据库操作失败');
      //云函数更新
     }
    })
+  }
+  
   
   return {
     event,

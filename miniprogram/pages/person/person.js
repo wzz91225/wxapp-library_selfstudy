@@ -17,6 +17,7 @@ Page({
     this.setData({
       score:app.globalData.Credit
     })
+    //console.log(this.score)
   },
 
   /**
