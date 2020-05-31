@@ -26,7 +26,7 @@ Page({
         color:"c",
         name:"暂离开"
       }
-    ]
+    ],
 
   },
   Leave:function(){//1:未就坐   2:暂时离开    3:已就座
@@ -111,7 +111,7 @@ Page({
         if(res.data.length>=1){
           console.log("res information:"+res.data[0].credit)
           console.log("length information:"+res.data.length)
-          app.globalData.userStatus=res.data.status//-----------------------
+          app.globalData.userStatus=res.data[0].status//-----------------------
           app.globalData.Credit=res.data[0].credit
           wx.showToast({
             title: '登录成功',
@@ -146,6 +146,11 @@ Page({
       fail: err => {
         console.log("success")
       }
+    })
+    console.log(app.globalData.openid)
+    var tmp=app.globalData.userStatus
+    this.setData({
+        i:tmp
     })
   },
 

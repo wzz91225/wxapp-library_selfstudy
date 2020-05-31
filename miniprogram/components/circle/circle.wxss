@@ -1,53 +1,80 @@
 /* components/circle/circle.wxss */
-page{
-  background-color: #839BAF;
-}
+
 .right{
-    text-align: center;
-  font-size: 5ch;
-  width: 340rpx;
-    padding: 0 25px;
+  position: flex;
+    margin: auto;
+    top:10%;
+    bottom: 60%;
+    left:0;
+    right:0;
     height: 200px;
     width: 150px;
-    border: 1px solid #f2f2f2;
-    background-color: green;
+    content: ;
+    text-align: center;
+    font-size: 10ch;
+    padding: 0 25px;
+    border: 1px solid rgb(9, 9, 9);
+    background-color:#99CC66;
     color: #202124;
     font-size: 14px;
     line-height: 48px;
     border-radius: 50%;
-    position: absolute;
-    left:20%;
-    top:10%;
 }
 .mid{
-  text-align: center;
-  width: 340rpx;
-    padding: 0 25px;
+  position: flex;
+    margin: auto;
+    top:10%;
+    bottom: 60%;
+    left:0;
+    right:0;
     height: 200px;
     width: 150px;
-    border: 1px solid #f2f2f2;
-    background-color: yellow;
+    text-align: center;
+    font-size: 10ch;
+    padding: 0 25px;
+    border: 1px solid rgb(9, 9, 9);
+    background-color:#FFFF66;
     color: #202124;
     font-size: 14px;
     line-height: 48px;
-    border-radius: 100px;
-    position: absolute;
-    left:20%;
-    top:10%;
+    border-radius: 50%;
+
+  
 }
 .left{
-  text-align: center;
-  width: 340rpx;
-    padding: 0 25px;
+  position: flex;
+    margin: auto;
+    top:10%;
+    bottom: 60%;
+    left:0;
+    right:0;
     height: 200px;
     width: 150px;
-    border: 1px solid #f2f2f2;
-    background-color: red;
+    text-align: center;
+    font-size: 10ch;
+    padding: 0 25px;
+    border: 1px solid rgb(9, 9, 9);
+    background-color:#FF6666;
     color: #202124;
     font-size: 14px;
     line-height: 48px;
-    border-radius: 100px;
-    position: absolute;
-    left:20%;
-    top:10%;
+    border-radius: 50%;
+ 
+}
+.textPlace{
+    content:"test";
+     position: flex;
+     margin: auto;
+     top:80%;
+    bottom: 10%;
+    left:0;
+    right:0;
+    Padding:100px 0px 50px 0px;
+    width: 100px;
+    height:150px;
+    text-align: center; /*让div内部文字居中*/
+    background-color: #fff;
+    border-radius: 20px;
+
+
 }

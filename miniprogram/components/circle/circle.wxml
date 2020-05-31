@@ -1,4 +1,10 @@
 <!--components/circle/circle.wxml-->
- <view  wx:if="{{degree=='a'}}" class="right" align="center">{{obvious}}</view>
- <view  wx:elif="{{degree=='b'}}" class="mid">{{obvious}}</view>
- <view  wx:else="{{degree=='a'}}" class="left">{{obvious}}</view>
+ <view  wx:if="{{degree=='a'}}" class="right" >
+ <view class="textPlace"> {{obvious}} </view>
+ </view>
+ <view  wx:elif="{{degree=='b'}}" class="mid">
+ <view class="textPlace"> {{obvious}} </view>
+ </view>
+ <view  wx:else="{{degree=='a'}}" class="left">
+ <view class="textPlace"> {{obvious}} </view>
+ </view>
