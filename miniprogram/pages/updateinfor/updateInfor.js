@@ -82,7 +82,7 @@ function updateSeatStatus(x,y) {//x:status y:seat_num
       status:y
     },
     success: res => {
-      console.log(res)
+      console.log("update infor"+res)
       wx.showToast({
         title: '修改成功！',
     })

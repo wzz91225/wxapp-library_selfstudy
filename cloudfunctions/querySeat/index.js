@@ -6,12 +6,13 @@ exports.main = async (event, context) => {
   //const wxContext = cloud.getWXContext()
   try {
     let seatlist = await db.collection('seat')
-    .where({
-      status:1
-      //seat_num:event.seat_num
-    })
+    // .where({
+    //   //status:1
+    //   //seat_num:event.seat_num
+    // })
     .field({
       seatNum:true,
+      status:true
       // _id:false,
       // openid:false,
       // status:false

@@ -109,12 +109,16 @@ Page({
       data: {
       },
       success: res => {
+        console.log("dhgwdghwgdgdh")
         console.log(res)
         var list=[]
+
         var i
-        for(i=0;i<res.result.data.length;i++){
-          list.push(res.result.data[i].seatNum)
-        }
+         for(i=0;i<res.result.data.length;i++){
+           list.push(res.result.data[i])
+
+         }
+         console.log(list)
         this.setData({
           tableNum:list
         })
