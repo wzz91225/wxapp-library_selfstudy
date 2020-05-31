@@ -89,10 +89,12 @@
         </view>
     </view>-->
 		<!--图片到此结束-->
-		
-		<button  class="weui-cell__hd" open-type="uploadImage" bindtap="uploadImage"> 上传图片 </button>
+		<view class="inputimg">
+		<button  size="mini"  class="weui-btn" type="primary" plain="true" open-type="uploadImage" bindtap="uploadImage"> 上传图片 </button>
+    </view>
+
 		<view class="uploadImage">
-    <image  style="width: 200px; height: 100px; background-color: #eeeeee;" mode="aspectFill" src="{{imageSrc}}"></image>
+    <image  style="width: 200px; height: 150px; background-color: #eeeeee;" mode="aspectFit" src="{{imageSrc}}"></image>
   </view>
 				
 				</view>	

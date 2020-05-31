@@ -9,3 +9,25 @@
   width:200px; 
   height:150px;
 }
+.bunplace{
+  position:fixed; 
+  margin:auto; 
+  left:0; 
+  right:0; 
+  top:70%; 
+  bottom:0; 
+  width:200px; 
+  height:150px;
+}
+
+.btPlace{
+  position:fixed; 
+  margin:auto; 
+  left:0; 
+  right:0; 
+  top:40%; 
+  bottom:20%; 
+  width:200px; 
+  height:150px;
+
+}

@@ -14,11 +14,11 @@
 		"coverView": true,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
-		"useCompilerModule": false
+		"useCompilerModule": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.1",
-	"appid": "wxeee73b6e4de10759",
+	"appid": "wxba680f5478fad1b1",
 	"projectname": "wxapp-bluetooth",
 	"debugOptions": {
 		"hidedInDevtools": []

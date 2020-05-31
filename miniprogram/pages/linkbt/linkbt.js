@@ -5,8 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tablenum:[1,2,3,4,5,6,7]//这个存桌号
+    tableNum:[1,2,3,4,5,6,7],//这个存桌号
+    tableSelect:0//选择的桌子号
 
+  },
+  radioChange(e){
+    console.log(e)
+   var tmp=e.detail.value
+    this.setData({
+      tableSelect:tmp
+    })
   },
 
   /**
