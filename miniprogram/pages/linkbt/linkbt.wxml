@@ -3,24 +3,22 @@
 
 <view class="page-body">
     <view class="page-section">
-      <view class="page-section-title">
-        <text style="align:center">选择桌号</text>
-      </view>
+      <view class="page-section-title">选择桌号：</view>
       <view class="page-section-spacing">
         <scroll-view scroll-y="true" style="height: 400rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
           <!--滚动内容-->
-      <view class="page-section">
-      <view class="weui-cells weui-cells_after-title">
-        <radio-group bindchange="radioChange">
-          <label class="weui-cell weui-check__label" wx:for="{{tableNum}}" >
-            <view class="weui-cell__hd">
-              <radio value="{{item}}" checked="true"/>
+          <view class="seat-select-list">
+          <view class="weui-cells weui-cells_after-title">
+            <radio-group bindchange="radioChange">
+              <label class="weui-cell weui-check__label" wx:for="{{tableNum}}">
+                <view class="weui-cell__hd">
+                  <radio value="{{item}}" checked="true"/>
+                </view>
+                <view class="weui-cell__bd">{{item}}</view>
+                </label>
+              </radio-group>
             </view>
-            <view class="weui-cell__bd">{{item}}</view>
-          </label>
-        </radio-group>
-      </view>
-    </view>
+          </view>
           <!--滚动结束-->
         </scroll-view>
       </view>
@@ -40,7 +38,6 @@ module.exports.len = function(arr) {
 </wxs>
 
 <view class="btPlace"><!--设置蓝牙框位置-->
-  <!-- <template is="head" data="{{title: 'bluetooth'}}"/> -->
 
   <view class="page-body">
     <view class="page-section">
@@ -62,11 +59,52 @@ module.exports.len = function(arr) {
       </view>
 
       <view class="btn-area">
-        <button type="primary" plain="true" bindtap="openBluetoothAdapter">开始扫描</button>
-        <button bindtap="stopBluetoothDevicesDiscovery">停止扫描</button>
+        <view wx:if="{{discoveryStarted}}">
+          <button type="warn" plain="true" bindtap="stopBluetoothDevicesDiscovery">暂停扫描</button>
+        </view>
+        <view wx:elif="{{!discoveryStarted}}">
+          <button type="primary" plain="true" bindtap="openBluetoothAdapter">开始扫描</button>
+        </view>
       </view>
     </view>
   </view>
+
+  <view class="successTip" wx:if="{{connectedSuccess}}">
+    <view class="weui-mask"></view>
+    <view class="weui-dialog">
+      <view class="weui-dialog__hd"><strong class="weui-dialog__title">连接成功yeah~</strong></view>
+      <view class="weui-dialog__bd">
+        <text>欢迎来到"{{name}}"\n好好学习天天向上</text>
+      </view>
+      <view class="weui-dialog__ft">
+        <!-- <a class="weui-dialog__btn weui-dialog__btn_default" bindtap="close">辅助操作</a> -->
+        <a class="weui-dialog__btn weui-dialog__btn_primary" bindtap="successTipClose">我是最棒的！</a>
+      </view>
+    </view>
+  </view>
+
+  <view class="failTip" wx:if="{{connectedFail}}">
+    <view class="weui-mask"></view>
+    <view class="weui-dialog">
+        <view class="weui-dialog__hd"><strong class="weui-dialog__title">连接失败QAQ</strong></view>
+        <view class="weui-dialog__bd">请重新尝试或更换连接设备</view>
+        <view class="weui-dialog__ft">
+            <!-- <a class="weui-dialog__btn weui-dialog__btn_default" bindtap="close">辅助操作</a> -->
+            <a class="weui-dialog__btn weui-dialog__btn_primary" bindtap="failTipClose">知道了</a>
+        </view>
+    </view>
+  </view>
+
+</view>
+
+
+
+<div class="bunplace">
+    <button class="weui-btn weui-btn_primary" disabled="{{!haveConnected}}" bindtap="Link"> 确认就坐</button>
+</div>
+
+
+
 
   <!-- <view class="connected_info" wx:if="{{connected}}">
     <view>
@@ -81,40 +119,6 @@ module.exports.len = function(arr) {
       <view>特性值: {{item.value}}</view>
     </view>
   </view> -->
-  <!-- <template is="foot" /> -->
-
-  <view class="successTip" wx:if="{{connectedSuccess}}">
-    <view class="weui-mask"></view>
-    <view class="weui-dialog">
-        <view class="weui-dialog__hd"><strong class="weui-dialog__title">连接成功</strong></view>
-        <view class="weui-dialog__bd">好好学习天天向上</view>
-        <view class="weui-dialog__ft">
-            <!-- <a class="weui-dialog__btn weui-dialog__btn_default" bindtap="close">辅助操作</a> -->
-            <a class="weui-dialog__btn weui-dialog__btn_primary" bindtap="successTipClose">我是最棒的</a>
-        </view>
-    </view>
-  </view>
-
-  <view class="failTip" wx:if="{{connectedFail}}">
-    <view class="weui-mask"></view>
-    <view class="weui-dialog">
-        <view class="weui-dialog__hd"><strong class="weui-dialog__title">连接失败</strong></view>
-        <view class="weui-dialog__bd">请重新尝试或更换连接设备</view>
-        <view class="weui-dialog__ft">
-            <!-- <a class="weui-dialog__btn weui-dialog__btn_default" bindtap="close">辅助操作</a> -->
-            <a class="weui-dialog__btn weui-dialog__btn_primary" bindtap="failTipClose">知道了</a>
-        </view>
-    </view>
-  </view>
-
-</view>
-
-
-
-<view class="bunplace">
-  <button class="weui-btn weui-btn_primary" disabled="{{!haveConnected}}" bindtap="Link"> 确认就坐</button>
-</view>
-
 
 <!--<view class="weui-footer weui-footer_fixed-bottom">
   <view class="weui-footer__links">
