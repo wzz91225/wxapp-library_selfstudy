@@ -90,8 +90,11 @@ submit:function(){
   //---------------------------------
   //获得已预约信息,返回一个可选时间段的数组
   onLoad: function (options) {
-    this.data.openid=app.globalData.openid
-    console.log(this.data.openid)
+    if (app.globalData.openid) {
+      this.setData({
+        openid: app.globalData.openid
+      })
+    }
     const db = wx.cloud.database()
   // 查询当前用户所有的 counters
   db.collection('appointment').where({
@@ -113,6 +116,7 @@ submit:function(){
       this.setData({
       
       })
+      console.log(this.data.openid)
       console.log('[数据库] [查询记录] 成功: ', res)
       console.log(res.data)
       console.log(this.data)
@@ -128,6 +132,23 @@ submit:function(){
   })
   },
 
+  onLuanch(){
+    this.getOpenid()
+    },
+    // 定义调用云函数获取openid
+    getOpenid(){
+      let page = this;
+      wx.cloud.callFunction({
+        name:'getOpenid',
+        complete:res=>{
+          console.log('openid--',res.result)
+          var openid = res.result.openid
+          page.setData({
+            openid:openid
+          })
+        }
+      })
+    },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
