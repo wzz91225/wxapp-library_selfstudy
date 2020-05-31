@@ -14,7 +14,7 @@
   margin:auto; 
   left:0; 
   right:0; 
-  top:70%; 
+  top:95%; 
   bottom:0; 
   width:200px; 
   height:150px;

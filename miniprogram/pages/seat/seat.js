@@ -20,11 +20,11 @@ Page({
       },
       {
         color:"b",
-        name:"未就坐"
+        name:"暂离开"
       },
       {
         color:"c",
-        name:"暂离开"
+        name:"未就坐"
       }
     ],
 
@@ -78,15 +78,11 @@ Page({
         if(res.data.length>=1){
           console.log("res information:"+res.data[0].credit)
           console.log("length information:"+res.data.length)
-<<<<<<< HEAD
-          app.globalData.userStatus=res.data[0].status//-----------------------
-=======
           //let sss=res.data[0].status
           //console.log(sss)
           this.setData({
             i:res.data[0].status
           })
->>>>>>> ba65019a57b526ab61c83b4bfdaccf5c89e5ef03
           app.globalData.Credit=res.data[0].credit
           wx.showToast({
             title: '登录成功',

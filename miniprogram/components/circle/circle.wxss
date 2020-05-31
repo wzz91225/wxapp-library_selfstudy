@@ -1,26 +1,28 @@
 /* components/circle/circle.wxss */
+page{
+  
+}
 
-.right{
+/*.right{
   position: flex;
     margin: auto;
-    top:10%;
-    bottom: 60%;
+    top:20%;
+    bottom: 70%;
     left:0;
     right:0;
     height: 200px;
     width: 150px;
-    content: ;
     text-align: center;
     font-size: 10ch;
     padding: 0 25px;
     border: 1px solid rgb(9, 9, 9);
-    background-color:#99CC66;
+    background-color:#009933;
     color: #202124;
     font-size: 14px;
     line-height: 48px;
     border-radius: 50%;
 }
-.mid{
+.left{
   position: flex;
     margin: auto;
     top:10%;
@@ -38,42 +40,87 @@
     font-size: 14px;
     line-height: 48px;
     border-radius: 50%;
+ 
+}*/
 
-  
-}
-.left{
-  position: flex;
-    margin: auto;
+
+.right,
+.left,
+.mid,
+.biground1,
+.biground2,
+.biground3
+{
+   position: flex;
+   margin: auto;
     top:10%;
     bottom: 60%;
-    left:0;
+    left:0%;
     right:0;
     height: 200px;
-    width: 150px;
-    text-align: center;
-    font-size: 10ch;
-    padding: 0 25px;
-    border: 1px solid rgb(9, 9, 9);
-    background-color:#FF6666;
-    color: #202124;
-    font-size: 14px;
-    line-height: 48px;
+    width: 200px;
     border-radius: 50%;
- 
+
 }
+.biground1{
+  border:20px solid #99CC33;
+    padding: 10px;
+  background-color: #fff;
+  
+}
+.biground2{
+  border:20px solid #CCCCCC;
+    padding: 10px;
+  background-color: #fff;
+  
+}
+.biground3{
+  border:20px solid #000000;
+    padding: 10px;
+  background-color: #fff;
+  
+}
+.mid,
+.left,
+.right
+{
+  background-color:  #fff;
+  text-align: center;
+}
+
+.mid::after{
+
+  width:300px;
+  height:300px;
+  background:rgba(10, 9, 9, 0.8);
+  z-index: 98;
+  
+}
+.mid::before{
+  content:"";
+  color: darkgreen;
+  z-index: 99;
+  position: flex;
+    top:40%;
+    bottom: 50%;
+    left:0%;
+    right:0;
+}
+
 .textPlace{
-    content:"test";
+    content:"";
      position: flex;
      margin: auto;
-     top:80%;
-    bottom: 10%;
-    left:0;
-    right:0;
-    Padding:100px 0px 50px 0px;
+     top:20%;
+     bottom:50%;
+     left:0;
+     right:0;
     width: 100px;
-    height:150px;
+    height:20px;
     text-align: center; /*让div内部文字居中*/
-    background-color: #fff;
+    font-size: 2ch;
+    font-style:oblique;
+    color: darkgreen;
     border-radius: 20px;
 
 
