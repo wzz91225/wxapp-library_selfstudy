@@ -4,7 +4,7 @@
 <!--<circle degree="{{status[1].color}}" obvious="{{status[1].name}}"></circle>显示状态
 <circle degree="{{status[2].color}}" obvious="{{status[2].name}}"></circle><!--显示状态-->
 
-<!--<view 
+<!--<view i
 wx:for="{{status}}" 
 wx:key="id"
 >{{index}}:{{item.name}}</view>

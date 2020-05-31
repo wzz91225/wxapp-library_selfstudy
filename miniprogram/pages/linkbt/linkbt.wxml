@@ -116,9 +116,9 @@ module.exports.len = function(arr) {
 </view>
 
 
-<view class="weui-footer weui-footer_fixed-bottom">
+<!--<view class="weui-footer weui-footer_fixed-bottom">
   <view class="weui-footer__links">
     <a href="javascript:home();" class="weui-footer__link">小提示</a>
   </view>
   <view class="weui-footer__text">记得把书带走哦</view>
-</view>
+</view>-->

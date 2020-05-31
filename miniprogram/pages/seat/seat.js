@@ -20,13 +20,13 @@ Page({
       },
       {
         color:"b",
-        name:"未就坐"
+        name:"暂离开"
       },
       {
         color:"c",
-        name:"暂离开"
+        name:"未就坐"
       }
-    ]
+    ],
 
   },
   Leave:function(){//1:未就坐   2:暂时离开    3:已就座
@@ -121,6 +121,11 @@ Page({
       fail: err => {
         console.log("success")
       }
+    })
+    console.log(app.globalData.openid)
+    var tmp=app.globalData.userStatus
+    this.setData({
+        i:tmp
     })
   },
 
