@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    accusecause:[],
     rangekey: 0,
     accusecause:[
       {
@@ -21,7 +22,7 @@ Page({
       {
         id:4,
         cause:"耀"
-      }
+      },
     ],
     motto: 'Hello World',
     userInfo: {},
