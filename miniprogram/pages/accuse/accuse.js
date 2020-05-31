@@ -3,6 +3,7 @@
 const app = getApp()
 
 Page({
+  openid:'',
   data: {
     accuseSelectNum:[1,2,3,4,5,6,7,8,9],
     rangekey: 0,
@@ -26,12 +27,15 @@ Page({
       
 
     ],
+    seatNum:null,
+    reason:'',
+    pictureUrl:'',
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     hasUploadImage: false,
-    imageSrc: "../../image/no_image.jpg"
+    //imageSrc: "../../image/no_image.jpg"
   },
   //事件处理函数
   bindViewTap: function() {
@@ -75,27 +79,82 @@ Page({
       hasUserInfo: true
     })
   },
+
   uploadImage: function(e) {
-    console.log(e)
-    var _this = this
     wx.chooseImage({
       count: 1,
-      sizeType: ['original', 'compressed'],
+      sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
-      success: function(res){
-        // tempFilePath可以作为img标签的src属性显示图片
-        console.log(res)
-        _this.setData({
-          imageSrc: res.tempFilePaths,
-          hasUploadImage: true
+      success: function (res) {
+
+        wx.showLoading({
+          title: '上传中',
         })
+
+        const filePath = res.tempFilePaths[0]
+        
+        // 上传图片
+        const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
+        wx.cloud.uploadFile({
+          cloudPath,
+          filePath,
+          success: res => {
+            console.log('[上传文件] 成功：', res)
+
+            app.globalData.fileID = res.fileID
+            app.globalData.cloudPath = cloudPath
+            app.globalData.imagePath = filePath
+            console.log(filepath)
+            this.setData({
+              pictureUrl:filepath
+            })
+          },
+          fail: e => {
+            console.error('[上传文件] 失败：', e)
+            wx.showToast({
+              icon: 'none',
+              title: '上传失败',
+            })
+          },
+          complete: () => {
+            wx.hideLoading()
+          }
+        })
+
       },
-      fail: function() {
-      // fail
+      fail: e => {
+        console.error(e)
+      }
+    })
+  },
+  submit:function(){
+    if (app.globalData.openid) {
+      this.setData({
+        openid: app.globalData.openid
+      })
+    }
+    console.log(app.globalData.fileID)
+    db.collection('accuse').add({
+      data: {
+        accuseSeatnum: this.data.seatNum,
+        reason: this.data.reason,
+        pictureUrl:app.globalData.fileID
       },
-      complete: function() {
-      // complete
+      success: res => {
+        // 在返回结果中会包含新创建的记录的 _id
+        wx.showToast({
+          title: '新增记录成功',
+        })
+        console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '新增记录失败'
+        })
+        console.error('[数据库] [新增记录] 失败：', err)
       }
     })
   }
 })
+
