@@ -74,16 +74,17 @@ Page({
     this.setData({
       tableSelect:tmp
     })
-    app.data.tableSelect=tmp
+    app.data.tableSelect=parseInt(tmp)
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   Link:function(){
+    console.log(this.data)
     if(app.data.userStatus==3){//未就坐
       console.log("判断成功！")
-      console.log(app.data.tableSelect)
+      console.log(app.data)
       up.upseat(app.data.tableSelect)
       console.log("操作完成！")
       wx.showToast({
