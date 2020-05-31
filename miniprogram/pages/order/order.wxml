@@ -45,6 +45,6 @@
 		<view class="weui-form__opr-area">
 			<button class="weui-btn weui-btn_primary" bindtap="submit">下一步</button>
 		</view>
-	
+       
 	</view>
 </view>

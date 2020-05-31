@@ -45,12 +45,10 @@ function upUserStatus(x) {//x:status y:seat_num
       status:x
     },
     success: res => {
+      console.log("upuser1"+res)
       console.log("update success")
       wx.showToast({
-        title: 'success!',
-        success: function () {
-          
-      }
+        title: '更新用户表成功！'
     })
     },
     fail: err => {
@@ -76,20 +74,17 @@ function querySeat() {//x:status y:seat_num
     }
   });
 }
-function upseat(x,y) {//x:status y:seat_num
+function updateSeatStatus(x,y) {//x:status y:seat_num
   wx.cloud.callFunction({
-    name: 'update_seat',//modify user
+    name: 'updateSeatStatus',//modify user
     data: {
-      //doneTime: util.formatTime(new Date())
-      seatNum:x
+      seat:x,
+      status:y
     },
     success: res => {
-      console.log("update success")
+      console.log(res)
       wx.showToast({
-        title: 'success!',
-        success: function () {
-          
-      }
+        title: '修改成功！',
     })
     },
     fail: err => {
@@ -97,9 +92,35 @@ function upseat(x,y) {//x:status y:seat_num
     }
   });
 }
+function upseat(x) {//x:status y:seat_num
+  wx.cloud.callFunction({
+    name: 'updateSeat',//modify user
+    data: {
+      //doneTime: util.formatTime(new Date())
+      seat:x
+    },
+    success: res => {
+      console.log("传入的参数："+x)
+      console.log(res)
+      console.log("改seat的flag:"+res.result)
+      if(res.result==0){
+        wx.showToast({
+          title: '坐下失败!'
+      })
+      }else if(res.result==1){
+        upUserStatus(1)
+        wx.showToast({
+          title: '坐下成功!'
+      })
+      }
+    }
+
+  });
+}
 module.exports = {
     upd: upd,
     upseat:upseat,
     upUserStatus:upUserStatus,
-    querySeat:querySeat
+    querySeat:querySeat,
+    updateSeatStatus:updateSeatStatus
   }
