@@ -79,6 +79,7 @@ Page({
   },
 
   uploadImage: function(e) {
+    var num=Math.random()*100
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
@@ -92,7 +93,7 @@ Page({
         const filePath = res.tempFilePaths[0]
         
         // 上传图片
-        const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
+        const cloudPath = num + filePath.match(/\.[^.]+?$/)[0]
         wx.cloud.uploadFile({
           cloudPath,
           filePath,
@@ -126,11 +127,12 @@ Page({
     })
   },
   submit:function(){
-    if (app.globalData.openid) {
-      this.setData({
-        openid: app.globalData.openid
-      })
-    }
+    //if (app.globalData.openid) {
+    //  this.setData({
+    //    openid: app.globalData.openid
+    //  })
+    //}
+    const db = wx.cloud.database()
     console.log(app.globalData.fileID)
     db.collection('accuse').add({
       data: {
