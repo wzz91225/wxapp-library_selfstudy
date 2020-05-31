@@ -1,21 +1,29 @@
 // pages/linkbt/linkbt.js
 
-const neededDeviceId = {
-  // IOS
-  'CBEB0DFF-AA6F-8D25-3639-A9FAE9C5EF32': '图书管自习室1',
-  '1645CF86-2EBA-A131-EDB9-3E1BD24DE6CD': '图书管自习室2',
-  '336FA2B6-C8E8-F7AD-48E2-54BC1A3C51E8': '赵老板倾情赞助自习室',
-  '88C731B9-BC35-1A9F-4ADE-8B649C10D466': '刘宇之父赞助自习室',
-  '9A5F4FD7-3D12-09B2-EA56-C675DBD71C46': '刘宇之父赞助自习室2',
-  '829C072F-96BB-0EEE-B3F3-30C5C313D244': '刘宇之二父赞助自习室',
+// const neededDeviceId = {
+//   // IOS
+//   'CBEB0DFF-AA6F-8D25-3639-A9FAE9C5EF32': '图书管自习室1',
+//   '1645CF86-2EBA-A131-EDB9-3E1BD24DE6CD': '图书管自习室2',
+//   '336FA2B6-C8E8-F7AD-48E2-54BC1A3C51E8': '赵老板倾情赞助自习室',
+//   '88C731B9-BC35-1A9F-4ADE-8B649C10D466': '刘宇之父赞助自习室',
+//   '9A5F4FD7-3D12-09B2-EA56-C675DBD71C46': '刘宇之父赞助自习室2',
+//   '829C072F-96BB-0EEE-B3F3-30C5C313D244': '刘宇之二父赞助自习室',
 
-  // Android
-  // 'CBEB0DFF-AA6F-8D25-3639-A9FAE9C5EF32': '图书管自习室1',
-  // '1645CF86-2EBA-A131-EDB9-3E1BD24DE6CD': '图书管自习室2',
-  // '336FA2B6-C8E8-F7AD-48E2-54BC1A3C51E8': '赵老板倾情赞助自习室',
-  'E7:F6:2C:C7:7F:CD': '刘宇之父赞助自习室',
-  'E3:3C:8F:72:FC:1E': '刘宇之父赞助自习室2',
-  'C4:06:83:11:04:AF': '刘宇之二父赞助自习室',
+//   // Android
+//   // '': '图书管自习室1',
+//   // '': '图书管自习室2',
+//   // '': '赵老板倾情赞助自习室',
+//   'E7:F6:2C:C7:7F:CD': '刘宇之父赞助自习室',
+//   'EC:3C:8F:72:FC:1E': '刘宇之父赞助自习室2',
+//   'C4:06:83:11:04:AF': '刘宇之二父赞助自习室',
+// }
+
+
+const neededServiceUUID = {
+  '00001812-0000-1000-8000-00805F9B34FB' : '刘宇之父赞助自习室',
+  '0000FEE0-0000-1000-8000-00805F9B34FB' : '赵老板倾情赞助自习室',
+  '00001812-0000-1000-8000-00805F9B34fB' : '刘宇之父赞助父爱自习室',
+  // '' : '',
 }
 
 
@@ -55,6 +63,7 @@ Page({
     chs: [],
     
     connected: false,
+    haveConnected: false,
     connectedSuccess: false,
     connectedFail: false,
 
@@ -242,12 +251,15 @@ Page({
           return
         }
 
-        if (!(device.deviceId in neededDeviceId)) {
-          console.log(device.name + ': ' + device.deviceId, res)
+        if (!(device.advertisServiceUUIDs in neededServiceUUID)) {
+          // console.log(device.name + '  UUID: ' + device.deviceId + '  SeID: ' + device.advertisServiceUUIDs, res)
+          console.log(device.name + '  ServiceUUID: ' + device.advertisServiceUUIDs, res)
         }
         else {
-          device.name = neededDeviceId[device.deviceId]
-          // this.data.devices.name = neededDeviceId[device.deviceId]
+          // console.log(device.name + '  SeID: ' + device.advertisServiceUUIDs, res)
+
+          device.name = neededServiceUUID[device.advertisServiceUUIDs]
+          // this.data.devices.name = neededServiceUUID[device.advertisServiceUUIDs]
           const foundDevices = this.data.devices
           const idx = inArray(foundDevices, 'deviceId', device.deviceId)
           const data = {}
@@ -271,11 +283,13 @@ Page({
       success: () => {
         this.setData({
           connected: true,
+          haveConnected: true,
           connectedSuccess: true,
           name,
           deviceId,
         })
         // this.getBLEDeviceServices(deviceId)
+        this.closeBLEConnection()
       },
       fail: () => {
         this.setData({

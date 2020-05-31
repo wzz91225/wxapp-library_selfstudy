@@ -1,4 +1,5 @@
 /* pages/seat/seat.wxss */
+
 .bun0{
   position:fixed; 
 margin:auto; 
