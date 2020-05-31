@@ -111,8 +111,8 @@ page{
     content:"";
      position: flex;
      margin: auto;
-     top:20%;
-     bottom:50%;
+     top:80%;
+     bottom:0%;
      left:0;
      right:0;
     width: 100px;
