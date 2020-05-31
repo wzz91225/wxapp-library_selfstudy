@@ -74,12 +74,13 @@ function querySeat() {//x:status y:seat_num
     }
   });
 }
-function updateSeatStatus(x,y) {//x:status y:seat_num
+function updateSeatStatus(x,y,z) {//x:seatNum y:status z:leaveTime
   wx.cloud.callFunction({
     name: 'updateSeatStatus',//modify user
     data: {
       seat:x,
-      status:y
+      status:y,
+      Time:z
     },
     success: res => {
       console.log("update infor"+res)

@@ -61,8 +61,7 @@ Page({
     tableSelect:0,            //选择的桌子号
     devices: [],
     chs: [],
-
-    discoveryStarted: false,
+    
     connected: false,
     haveConnected: false,
     connectedSuccess: false,
@@ -92,9 +91,21 @@ Page({
         title: '就坐成功'
     })
     }else if(app.data.userStatus==2){//暂离
-      console.log("判断失败！")
+      console.log("判断为暂离！")
+      const db = wx.cloud.database()
+      db.collection('seat').where({
+        openid:app.globalData.openid,
+        status:4
+      }).get({
+        success:function(res){
+          console.log(res)
+          up.updateSeatStatus(res.data[0].seatNum,2,"")
+          up.upUserStatus(1)
+          console.log(res)
+        }
+      })
       wx.showToast({
-        title: '就坐'
+        title: '回座位'
     })
     }else{
       wx.showToast({
@@ -110,16 +121,12 @@ Page({
       data: {
       },
       success: res => {
-        console.log("dhgwdghwgdgdh")
         console.log(res)
         var list=[]
-
         var i
-         for(i=0;i<res.result.data.length;i++){
-           list.push(res.result.data[i])
-
-         }
-         console.log(list)
+        for(i=0;i<res.result.data.length;i++){
+          list.push(res.result.data[i].seatNum)
+        }
         this.setData({
           tableNum:list
         })
@@ -234,9 +241,6 @@ Page({
       return
     }
     this._discoveryStarted = true
-    this.setData({
-      discoveryStarted : true
-    })
     wx.startBluetoothDevicesDiscovery({
       allowDuplicatesKey: true,
       powerLevel: "high",
@@ -250,9 +254,6 @@ Page({
     wx.stopBluetoothDevicesDiscovery({
       complete: () => {
         this._discoveryStarted = false
-        this.setData({
-          discoveryStarted : false
-        })
       }
     })
   },
@@ -302,7 +303,6 @@ Page({
         })
         // this.getBLEDeviceServices(deviceId)
         this.closeBLEConnection()
-        this.closeBluetoothAdapter()
       },
       fail: () => {
         this.setData({
@@ -414,9 +414,6 @@ Page({
   closeBluetoothAdapter() {
     wx.closeBluetoothAdapter()
     this._discoveryStarted = false
-    this.setData({
-      discoveryStarted : false
-    })
   },
 
 })

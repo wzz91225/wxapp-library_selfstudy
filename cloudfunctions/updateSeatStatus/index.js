@@ -8,7 +8,8 @@ exports.main = async (event, context) => {
   }).update({
     data:{
       status:event.status,
-      openid:wxContext.OPENID
+      openid:wxContext.OPENID,
+      leaveTime:event.Time
     }
   })
 }
