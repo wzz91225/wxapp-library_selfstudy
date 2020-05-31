@@ -96,7 +96,6 @@ submit:function(){
   // 查询当前用户所有的 counters
   db.collection('appointment').where({
     _openid:this.data.openid,
-    result:0
   }).get({
     success: res => {
       var len=res.data.length
