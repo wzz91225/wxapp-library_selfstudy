@@ -15,7 +15,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      score:app.globalData.Credit
+      score:app.data.Credit
     })
     //console.log(this.score)
   },

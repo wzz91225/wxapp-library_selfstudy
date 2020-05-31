@@ -19,37 +19,42 @@ Page({
         name:"已就坐"
       },
       {
-        color:"b",
+        color:"c",
         name:"暂离开"
+        
       },
       {
-        color:"c",
+        color:"b",
         name:"未就坐"
       }
     ],
 
   },
-  Leave:function(){//1:未就坐   2:暂时离开    3:已就座
+  Leave:function(){
+    console.log(app.data.userStatus)
     var i=this.data.i;
     if(i!=0){
       return ;
     }
     var that=this;
     that.setData({
-     i:2
+     i:1
     })
     //up.upd(2)
+    up.updateSeatStatus(app.data.tableSelect,4)
     up.upUserStatus(2)//1:就坐 2:暂时离开 3:结束
   },
   End:function(){
+    console.log(app.data.userStatus)
     var i=this.data.i;
-    if(i==1){
+    if(i==2){
     return ;
   }
   var that=this;
   that.setData({
-    i:1
+    i:2
   })
+  up.updateSeatStatus(app.data.tableSelect,1)
   up.upUserStatus(3)//1:就坐 2:暂时离开 3:结束
   },
   //-------------------------
@@ -86,9 +91,10 @@ Page({
           //let sss=res.data[0].status
           //console.log(sss)
           this.setData({
-            i:res.data[0].status
+            i:(res.data[0].status-1)
           })
-          app.globalData.Credit=res.data[0].credit
+          app.data.Credit=res.data[0].credit
+          app.data.userStatus=res.data[0].status
           wx.showToast({
             title: '登录成功',
           })
@@ -103,8 +109,9 @@ Page({
               this.setData({
                 Credit: 100
               })
-              app.globalData.Credit=this.data.credit
-              app.globalData.userStatus=this.data.status
+              app.data.Credit=this.data.credit
+              app.data.UserStatus=this.data.status
+              
               wx.showToast({
                 title: '注册成功',
               })
@@ -145,7 +152,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const db = wx.cloud.database()
+    db.collection('user').where({
+      _openid: app.globalData.openid
+    })
+    .get({
+      success: res => {
+        app.data.Credit=res.data[0].credit
+        app.data.userStatus=res.data[0].status
+        this.setData({
+          i:(app.data.userStatus-1)
+        })
+        console.log("app data:"+app.data)
+        console.log("app globaldata:"+app.globalData)
+      }
+    })
   },
 
   /**
