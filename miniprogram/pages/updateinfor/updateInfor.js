@@ -45,12 +45,10 @@ function upUserStatus(x) {//x:status y:seat_num
       status:x
     },
     success: res => {
+      console.log("upuser1"+res)
       console.log("update success")
       wx.showToast({
-        title: 'success!',
-        success: function () {
-          
-      }
+        title: '更新用户表成功！'
     })
     },
     fail: err => {
@@ -76,7 +74,7 @@ function querySeat() {//x:status y:seat_num
     }
   });
 }
-function upseat(x,y) {//x:status y:seat_num
+function upseat(x) {//x:status y:seat_num
   wx.cloud.callFunction({
     name: 'update_seat',//modify user
     data: {
@@ -84,16 +82,18 @@ function upseat(x,y) {//x:status y:seat_num
       seatNum:x
     },
     success: res => {
-      console.log("update success")
-      wx.showToast({
-        title: 'success!',
-        success: function () {
-          
+      console.log(res.result)
+      console.log("改seat的flag:"+res.result)
+      if(res.result==0){
+        wx.showToast({
+          title: '坐下失败!'
+      })
+      }else if(res.result==1){
+        upUserStatus(1)
+        wx.showToast({
+          title: '坐下成功!'
+      })
       }
-    })
-    },
-    fail: err => {
-      console.error
     }
   });
 }

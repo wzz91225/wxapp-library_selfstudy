@@ -20,12 +20,12 @@ exports.main = async (event, context) => {
           status:2
         }
       })
-      return 1
     }
       //seatStatus.data[0]=0
     else {
       return 0
     }
+    return 1
       //seatStatus.data[0]=1
     //return seatStatus.data[0]
     //seatStatus=seatStatus.data.status

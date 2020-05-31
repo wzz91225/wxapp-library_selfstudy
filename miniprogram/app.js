@@ -1,5 +1,10 @@
 //app.js
 App({
+  data:{
+    Credit:null,
+    userStatus:"",
+    tableSelect:null
+  },
   onLaunch: function () {
     
     if (!wx.cloud) {
@@ -16,8 +21,6 @@ App({
     }
 
     this.globalData = {
-      userStatus:"",
-      Credit:null,
 
     }
   }

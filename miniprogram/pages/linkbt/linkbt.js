@@ -65,30 +65,25 @@ Page({
     this.setData({
       tableSelect:tmp
     })
+    app.data.tableSelect=tmp
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   Link:function(){
-    var i=this.data.i;
-    if(i==0){
-      return ;
-    }
-    var that=this;
-      that.setData({
-        i:0
-    })
-    if(app.globalData.userStatus==3){//未就坐
+    if(app.data.userStatus==3){//未就坐
       console.log("判断成功！")
-      //up.upseat(this.tableSelect)
+      console.log(app.data.tableSelect)
+      up.upseat(app.data.tableSelect)
+      console.log("操作完成！")
       wx.showToast({
         title: '就坐成功'
     })
-    }else if(app.globalData.userStatus==2){//暂离
+    }else if(app.data.userStatus==2){//暂离
       console.log("判断失败！")
       wx.showToast({
-        title: '就坐失败'
+        title: '就坐'
     })
     }else{
       wx.showToast({
@@ -96,7 +91,7 @@ Page({
     })
     }
       //up.querySeat()
-    up.upUserStatus(1)//1:就坐 2:暂时离开 3:结束
+    //up.upUserStatus(1)//1:就坐 2:暂时离开 3:结束
   },
   onLoad: function (options) {
     wx.cloud.callFunction({
