@@ -83,7 +83,7 @@ height:150px;
   color: #999;
 }
 .bon1{
-  width: 30%;
+  width: 40%;
   margin-top: 20rpx;
   background-color: burlywood;
   color:black;
@@ -93,8 +93,8 @@ height:150px;
   align-items: center;
   justify-content: center;
   position: absolute;
-  left:35%;
-  top:60%;
+  left:30%;
+  top:80%;
 }
 .btn2 {
   width: 200rpx;

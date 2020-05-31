@@ -1,53 +1,127 @@
 /* components/circle/circle.wxss */
 page{
-  background-color: #839BAF;
+  
 }
-.right{
-    text-align: center;
-  font-size: 5ch;
-  width: 340rpx;
-    padding: 0 25px;
+
+/*.right{
+  position: flex;
+    margin: auto;
+    top:20%;
+    bottom: 70%;
+    left:0;
+    right:0;
     height: 200px;
     width: 150px;
-    border: 1px solid #f2f2f2;
-    background-color: green;
+    text-align: center;
+    font-size: 10ch;
+    padding: 0 25px;
+    border: 1px solid rgb(9, 9, 9);
+    background-color:#009933;
     color: #202124;
     font-size: 14px;
     line-height: 48px;
     border-radius: 50%;
-    position: absolute;
-    left:20%;
-    top:10%;
-}
-.mid{
-  text-align: center;
-  width: 340rpx;
-    padding: 0 25px;
-    height: 200px;
-    width: 150px;
-    border: 1px solid #f2f2f2;
-    background-color: yellow;
-    color: #202124;
-    font-size: 14px;
-    line-height: 48px;
-    border-radius: 100px;
-    position: absolute;
-    left:20%;
-    top:10%;
 }
 .left{
-  text-align: center;
-  width: 340rpx;
-    padding: 0 25px;
+  position: flex;
+    margin: auto;
+    top:10%;
+    bottom: 60%;
+    left:0;
+    right:0;
     height: 200px;
     width: 150px;
-    border: 1px solid #f2f2f2;
-    background-color: red;
+    text-align: center;
+    font-size: 10ch;
+    padding: 0 25px;
+    border: 1px solid rgb(9, 9, 9);
+    background-color:#FFFF66;
     color: #202124;
     font-size: 14px;
     line-height: 48px;
-    border-radius: 100px;
-    position: absolute;
-    left:20%;
+    border-radius: 50%;
+ 
+}*/
+
+
+.right,
+.left,
+.mid,
+.biground1,
+.biground2,
+.biground3
+{
+   position: flex;
+   margin: auto;
     top:10%;
+    bottom: 60%;
+    left:0%;
+    right:0;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+
+}
+.biground1{
+  border:20px solid #99CC33;
+    padding: 10px;
+  background-color: #fff;
+  
+}
+.biground2{
+  border:20px solid #CCCCCC;
+    padding: 10px;
+  background-color: #fff;
+  
+}
+.biground3{
+  border:20px solid #000000;
+    padding: 10px;
+  background-color: #fff;
+  
+}
+.mid,
+.left,
+.right
+{
+  background-color:  #fff;
+  text-align: center;
+}
+
+.mid::after{
+
+  width:300px;
+  height:300px;
+  background:rgba(10, 9, 9, 0.8);
+  z-index: 98;
+  
+}
+.mid::before{
+  content:"";
+  color: darkgreen;
+  z-index: 99;
+  position: flex;
+    top:40%;
+    bottom: 50%;
+    left:0%;
+    right:0;
+}
+
+.textPlace{
+    content:"";
+     position: flex;
+     margin: auto;
+     top:20%;
+     bottom:50%;
+     left:0;
+     right:0;
+    width: 100px;
+    height:20px;
+    text-align: center; /*让div内部文字居中*/
+    font-size: 2ch;
+    font-style:oblique;
+    color: darkgreen;
+    border-radius: 20px;
+
+
 }
