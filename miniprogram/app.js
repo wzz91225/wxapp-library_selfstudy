@@ -16,9 +16,7 @@ App({
     }
 
     this.globalData = {
-      userStatus:"",
-      Credit:null,
-
+      
     }
   }
 })
