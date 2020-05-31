@@ -76,13 +76,14 @@ function querySeat() {//x:status y:seat_num
 }
 function upseat(x) {//x:status y:seat_num
   wx.cloud.callFunction({
-    name: 'update_seat',//modify user
+    name: 'updateSeat',//modify user
     data: {
       //doneTime: util.formatTime(new Date())
-      seatNum:x
+      seat:x
     },
     success: res => {
-      console.log(res.result)
+      console.log("传入的参数："+x)
+      console.log(res)
       console.log("改seat的flag:"+res.result)
       if(res.result==0){
         wx.showToast({
@@ -95,6 +96,7 @@ function upseat(x) {//x:status y:seat_num
       })
       }
     }
+
   });
 }
 module.exports = {
