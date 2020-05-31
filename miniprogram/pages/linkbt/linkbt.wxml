@@ -86,7 +86,7 @@ module.exports.len = function(arr) {
 
 
 <view class="bunplace">
-<button class="" disabled="false"> 确认就坐</button>
+<button class="" disabled="false" bindtap="Link"> 确认就坐</button>
 </view>
 
 
