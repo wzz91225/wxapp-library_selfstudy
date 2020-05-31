@@ -2,13 +2,14 @@
 <circle degree="" obvious=""></circle><!--两个接口传入显示数据-->
 
 
-<view class='contentBottom'><!--滚动显示数据-->
+
+<!--<view class='contentBottom'>
     <view class='BottomFirst'>
       <text id='0' data-id='0'>图书馆预约信息</text>
     </view>
-    <swiper class="tab-right" style='background:{{bgColor}};' vertical="true" autoplay="true" circular="true" interval="2000" display-multiple-items='4'>
+    <swiper class="tab-right" style='background:{{bgColor}};' vertical="true" autoplay="false" circular="false" interval="2000" display-multiple-items='4'>
       <view class="right-item">
-        <block wx:for-index="idx" wx:for='{{aa}}'>
+        <block  wx:for="{{aa}}">
           <swiper-item>
             <view class='content-item'>
               <text class='name'>{{item.time}}</text>
@@ -22,7 +23,28 @@
       </view>
     </swiper>
   </view>
+-->
+
+<view class='BottomFirst'>
+    <text id='0' data-id='0'>图书馆预约信息</text>
+ </view>
+ <view class='content-item'>
+              <text class='name'>时间</text>
+              <text class='center'>座位号</text>
+              <text class='wawa'>结果</text>
+  </view>
+  <view wx:for="{{aa}}">
+ <view class="weui-cells weui-cells_after-title">
+   <view class='content-item'>
+              <text class='name'>{{item.time}}</text>
+              <text class='center'>{{item.seatNum}}</text>
+              <text class='wawa' wx:if="{{item.result==1}}">成功</text>
+              <text class='wawa' wx:else>失败</text>
+    </view>
+ </view>
+</view>
 
 
-
-<navigator url="../order/order" class="bon1">预约时间</navigator>
+<view class="bon1">
+<navigator url="../order/order" class="weui-btn weui-btn_primary">预约时间</navigator>
+</view>
