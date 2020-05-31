@@ -11,7 +11,7 @@
 </view>
 <view wx:if="{{degree=='c'}}" class="biground3">
     <view class="right"> 
-     <view class="textPlace" style=""> {{obvious}} </view>    
+     <view class="textPlace" style=""> {{obvious}} </view>   
     </view>
 </view>
    

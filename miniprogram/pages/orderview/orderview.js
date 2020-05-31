@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    aa:[]
     // aa:[
     //   {
     //     nickName:"wang",
@@ -28,7 +29,6 @@ Page({
     //   },
      
     // ],
-    aa:[]
     
   },
 
@@ -78,8 +78,9 @@ Page({
         console.log()
         that.setData({
           //[mtime]:res.result.data[0].time
-          aa:res.result.data,
+          aa:res.result.data
         })
+       
         console.log(aa[0].time)
         
         // if(res.result.data.length>=5){
