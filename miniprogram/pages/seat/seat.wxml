@@ -1,6 +1,7 @@
 <!--pages/seat/seat.wxml-->
 
-<circle degree="{{status[i].color}}" obvious="{{status[i].name}}"></circle><!--显示状态-->
+<circle degree="{{status[currentStatus].color}}" obvious="{{status[currentStatus].name}}">
+</circle><!--显示状态-->
 <!--<circle degree="{{status[1].color}}" obvious="{{status[1].name}}"></circle>显示状态
 <circle degree="{{status[2].color}}" obvious="{{status[2].name}}"></circle><!--显示状态-->
 
@@ -12,8 +13,8 @@ wx:key="id"
 
 
 <view class="bun0">
-<navigator  class="weui-btn weui-btn_primary"   url="../linkbt/linkbt" disable>连接</navigator>
-<button  class="weui-btn weui-btn_primary"  bindtap="Link">mmmm</button>
-<button   class="weui-btn weui-btn_primary" bindtap="Leave">暂离</button>
-<button   class="weui-btn weui-btn_primary" bindtap="End" >结束</button>
+<!-- <navigator  class="weui-btn weui-btn_primary"  url="../linkbt/linkbt">就坐</navigator> -->
+<button   class="weui-btn weui-btn_primary" disabled = "{{sitDisable}}"     bindtap="Sit"   >就坐</button>
+<button   class="weui-btn weui-btn_primary" disabled = "{{leaveDisable}}"   bindtap="Leave" >暂离</button>
+<button   class="weui-btn weui-btn_primary" disabled = "{{endDisable}}"     bindtap="End"   >结束</button>
 </view>
