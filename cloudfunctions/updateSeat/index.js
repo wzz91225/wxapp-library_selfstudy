@@ -6,6 +6,7 @@ cloud.init()
 
 const db = cloud.database()
 exports.main = async (event, context) => {
+  const wxContext = cloud.getWXContext()
   let tmp = await db.collection('seat').where({
     seatNum: event.seat // 填入当前用户 openid
   }).get()
@@ -15,7 +16,8 @@ exports.main = async (event, context) => {
       seatNum:event.seat
     }).update({
       data:{
-        status:2
+        status:2,
+        openid: wxContext.OPENID
       }
     })
     return 1
