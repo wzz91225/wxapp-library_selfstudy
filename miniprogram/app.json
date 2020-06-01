@@ -54,7 +54,7 @@
     },
     {
       "pagePath": "pages/person/person",
-      "text": "个人",
+      "text": "我的",
       "iconPath": "icon/icon_person.png",
       "selectedIconPath": "icon/icon_person_fill.png"
     }
