@@ -19,7 +19,7 @@ exports.main = async (event, context) => {
   if(order.data.length>=3){
     len=3
   }else{
-    len=order.data.len
+    len=order.data.length
   }
   var j
   var v
