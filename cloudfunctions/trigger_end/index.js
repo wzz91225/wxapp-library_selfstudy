@@ -23,7 +23,7 @@ exports.main = async (event, context) => {
       }
     }
     await db.collection('seat').where({
-      status:3
+      status:2
     }).update({
       data:{
         status:1
