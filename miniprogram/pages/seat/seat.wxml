@@ -12,7 +12,8 @@ wx:key="id"
 
 
 <view class="bun0">
-<navigator  class="weui-btn weui-btn_primary"  url="../linkbt/linkbt">连接</navigator>
+<navigator  class="weui-btn weui-btn_primary"   url="../linkbt/linkbt" disable>连接</navigator>
+<button  class="weui-btn weui-btn_primary"  bindtap="Link">mmmm</button>
 <button   class="weui-btn weui-btn_primary" bindtap="Leave">暂离</button>
 <button   class="weui-btn weui-btn_primary" bindtap="End" >结束</button>
 </view>
