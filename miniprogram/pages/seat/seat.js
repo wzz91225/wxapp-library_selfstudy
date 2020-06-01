@@ -111,14 +111,11 @@ Page({
     if (currentStatus == 2) {
     return ;
   }
-
-
   var that=this;
   // that.setData({
   //   currentStatus : 2
   // })
   this.changCurrentStatus(2)
-
   up.updateSeatStatus(app.data.tableSelect,1)
   up.upUserStatus(3)//1:就坐 2:暂时离开 3:结束
   },

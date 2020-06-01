@@ -31,6 +31,7 @@ exports.main = async (event, context) => {
         openid: wxContext.OPENID
       }
     })
+    return 1
   }else{
     return 0
   }
