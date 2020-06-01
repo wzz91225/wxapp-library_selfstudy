@@ -15,7 +15,12 @@ exports.main = async (event, context) => {
     }).get()
     list[i]=cre.data[0].credit
   }
-  
+  var len
+  if(order.data.length>=3){
+    len=3
+  }else{
+    len=order.data.len
+  }
   var j
   var v
   var k
@@ -34,12 +39,14 @@ exports.main = async (event, context) => {
           }
       }
   }    
+  //return list
+  //return order.data
   var flag=0
   var list1=[]
-  k=Math.floor(Math.random()*order.data.length + 1)
+  k=Math.floor(Math.random()*len + 1)
   list1[0]=k
-  for(i=1;i<order.data.length;i++){
-    k=Math.floor(Math.random()*order.data.length + 1)
+  for(i=1;i<len;i++){
+    k=Math.floor(Math.random()*len + 1)
     flag=1
     for(j=0;j<i;j++){
       if(list1[j]==k){
@@ -53,9 +60,9 @@ exports.main = async (event, context) => {
   }
   //return list1
 
-  for(i=0;i<order.data.length;i++){
+  for(i=0;i<len;i++){
     await db.collection('seat').where({
-      seatNum:list[i]
+      seatNum:list1[i]
     }).update({
       data:{
         status:3,
@@ -63,5 +70,5 @@ exports.main = async (event, context) => {
       }
     })
   }
-  return list
+  return db.collection('seat').get()
 }
