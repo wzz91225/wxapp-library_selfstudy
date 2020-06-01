@@ -64,6 +64,8 @@ Page({
     liuyushabi:[],
     liuyuzhizhang:[],
     liuyuchishi:[],
+    
+    discoveryStarted: false,
     connected: false,
     haveConnected: false,
     connectedSuccess: false,
@@ -394,6 +396,9 @@ Page({
       return
     }
     this._discoveryStarted = true
+    this.setData({
+      discoveryStarted : true
+    })
     wx.startBluetoothDevicesDiscovery({
       allowDuplicatesKey: true,
       powerLevel: "high",
@@ -407,6 +412,9 @@ Page({
     wx.stopBluetoothDevicesDiscovery({
       complete: () => {
         this._discoveryStarted = false
+        this.setData({
+          discoveryStarted : false
+        })
       }
     })
   },
@@ -456,6 +464,7 @@ Page({
         })
         // this.getBLEDeviceServices(deviceId)
         this.closeBLEConnection()
+        this.closeBluetoothAdapter()
       },
       fail: () => {
         this.setData({
@@ -567,6 +576,9 @@ Page({
   closeBluetoothAdapter() {
     wx.closeBluetoothAdapter()
     this._discoveryStarted = false
+    this.setData({
+      discoveryStarted : false
+    })
   },
 
 })
