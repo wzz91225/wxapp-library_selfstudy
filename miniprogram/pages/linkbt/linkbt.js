@@ -78,6 +78,23 @@ Page({
     app.data.tableSelect=parseInt(tmp)
   },
 
+
+  backToSeat : function(){
+    setTimeout(function () {
+      // 自动切换页面返回
+      wx.switchTab({
+        url : '../seat/seat',
+        success : function() {
+          console.log("SUCCESS: Tab linkbt to seat.")
+        },
+        fail : function() {
+          console.log("FAIL: Tab linkbt to seat.")
+        }
+      })
+    }, 500) 
+  },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -90,16 +107,20 @@ Page({
       console.log("操作完成！")
       wx.showToast({
         title: '就坐成功'
-    })
+      })
+      
+      this.backToSeat()
     }else if(app.data.userStatus==2){//暂离
       console.log("判断失败！")
       wx.showToast({
         title: '就坐'
-    })
+      })
+      
+      this.backToSeat()
     }else{
       wx.showToast({
         title: '就坐失败'
-    })
+      })
     }
       //up.querySeat()
     //up.upUserStatus(1)//1:就坐 2:暂时离开 3:结束
