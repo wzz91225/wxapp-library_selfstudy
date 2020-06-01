@@ -100,6 +100,7 @@ Page({
     //   currentStatus : 1
     // })
     this.changCurrentStatus(1)
+    app.data.userStatus=2
     //up.upd(2)
     up.updateSeatStatus(app.data.tableSelect,4)
     up.upUserStatus(2)//1:就坐 2:暂时离开 3:结束
@@ -111,6 +112,7 @@ Page({
     if (currentStatus == 2) {
     return ;
   }
+  app.data.userStatus=3
   var that=this;
   // that.setData({
   //   currentStatus : 2

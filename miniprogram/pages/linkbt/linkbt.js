@@ -177,14 +177,22 @@ Page({
         console.log("list:")
         console.log(res)
         var list4=[]
+        var list5=[]
         var i
         if(res.data.length>0){
           for(i=0;i<res.data.length;i++){
             list4.push(res.data[i])
+            if(res.data[i].status==1){
+              list5.push(res.data[i].seatNum)
+            }
           }
         }
+
+        console.log("hello:")
+        console.log(list5)
         this.setData({
-          allinfor:list4
+          allinfor:list4,
+          tableNum:list5
         })
       }
     })
