@@ -49,13 +49,15 @@ Page({
     var i=this.data.i;
     if(i==2){
     return ;
-  }
-  var that=this;
-  that.setData({
-    i:2
-  })
-  up.updateSeatStatus(app.data.tableSelect,1)
-  up.upUserStatus(3)//1:就坐 2:暂时离开 3:结束
+    }
+    var that=this;
+    that.setData({
+      i:2
+    })
+    console.log(app.data.tableSelect)
+    up.updateSeatStatus(app.data.tableSelect,1)
+    up.upUserStatus(3)//1:就坐 2:暂时离开 3:结束
+    console.log("suxxx")
   },
   //-------------------------
   //-------------------------\

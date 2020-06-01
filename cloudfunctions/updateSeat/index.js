@@ -22,7 +22,16 @@ exports.main = async (event, context) => {
     })
     return 1
   }
-  else{
+  else if(tmp.data[0].status==3){
+    await db.collection('seat').where({
+      seatNum:event.seat
+    }).update({
+      data:{
+        status:2,
+        openid: wxContext.OPENID
+      }
+    })
+  }else{
     return 0
   }
  
