@@ -30,33 +30,33 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "图书馆座位管理系统",
+    "navigationBarTitleText": "香樟自习室",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "list": [{
       "pagePath": "pages/seat/seat",
-      "text": "就坐",
-      "iconPath": "icon/gift-01.png",
-      "selectedIconPath": "icon/gift-02.png"
+      "text": "主页",
+      "iconPath": "icon/icon_home.png",
+      "selectedIconPath": "icon/icon_home_fill.png"
     },
     {
       "pagePath": "pages/orderview/orderview",
       "text": "预约",
-      "iconPath": "icon/gift-01.png",
-      "selectedIconPath": "icon/gift-02.png"
+      "iconPath": "icon/icon_order.png",
+      "selectedIconPath": "icon/icon_order_fill.png"
     },
     {
       "pagePath": "pages/accuse/accuse",
       "text": "举报",
-      "iconPath": "icon/gift-01.png",
-      "selectedIconPath": "icon/gift-02.png"
+      "iconPath": "icon/icon_report.png",
+      "selectedIconPath": "icon/icon_report_fill.png"
     },
     {
       "pagePath": "pages/person/person",
-      "text": "个人空间",
-      "iconPath": "icon/gift-01.png",
-      "selectedIconPath": "icon/gift-02.png"
+      "text": "个人",
+      "iconPath": "icon/icon_person.png",
+      "selectedIconPath": "icon/icon_person_fill.png"
     }
   ]
   },
