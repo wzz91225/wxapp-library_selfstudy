@@ -264,6 +264,25 @@ Page({
       }
     })
     db.collection('seat').where({
+    })
+    .get({
+      success: res => {
+        console.log("list1:")
+        console.log(res)
+        var list4=[]
+        var i
+        for(i=0;i<res.data.length;i++){
+          list4.push(res.data[i])
+        }
+        this.setData({
+          liuyubeigan:list4
+        })
+        wx.showToast({
+          title: '获取暂离座位成功！'
+      })
+      }
+    })
+    db.collection('seat').where({
       status:3,
       openid:app.globalData.openid
     })
