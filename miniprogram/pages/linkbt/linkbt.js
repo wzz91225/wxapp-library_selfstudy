@@ -61,9 +61,10 @@ Page({
     tableSelect:0,            //选择的桌子号
     devices: [],
     chs: [],
-    liuyushabi:[],
-    liuyuzhizhang:[],
-    liuyuchishi:[],
+    liuyushabi_allleave:[],
+    liuyuzhizhang_nowappoint:[],
+    liuyuchishi_nowleave:[],
+    liuyubeigan_allinfor:[],
     
     discoveryStarted: false,
     connected: false,
