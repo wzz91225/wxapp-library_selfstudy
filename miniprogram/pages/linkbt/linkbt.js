@@ -65,6 +65,7 @@ Page({
     liuyuzhizhang_nowappoint:[],
     liuyuchishi_nowleave:[],
     liuyubeigan_allinfor:[],
+    allinfor:[],
     
     discoveryStarted: false,
     connected: false,
@@ -222,6 +223,7 @@ Page({
             list4.push(res.data[i])
           }
         }
+        
         this.setData({
           liuyubeigan_allinfor:list4
         })
@@ -237,6 +239,7 @@ Page({
    */
   onReady: function () {
 
+    
   },
 
   /**
@@ -361,14 +364,29 @@ Page({
             list4.push(res.data[i])
           }
         }
+        
+      
         this.setData({
           liuyubeigan_allinfor:list4
         })
+        
         wx.showToast({
           title: '获取暂离座位成功！'
-      })
-      }
+         })
+         
+     //  var that=this
+     //  console.log("test")
+     //  that.data.liuyubeigan_allinfor.splice(1,1)
+     //  console.log(that.data.liuyubeigan_allinfor)
+     //  this.setData({
+     //   allinfor:that.data.liuyubeigan_allinfor
+     //  })
+   
+       
+       
+    }
     })
+    
   },
 
   /**

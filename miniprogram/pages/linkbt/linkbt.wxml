@@ -5,17 +5,43 @@
     <view class="page-section">
       <view class="page-section-title">选择桌号：</view>
       <view class="page-section-spacing">
-        <scroll-view scroll-y="true" style="height: 400rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+       <!--<scroll-view scroll-y="true" style="height: 400rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">-->
+         <scroll-view scroll-y="true" style="height: 400rpx;"><!--这里注意一下-->
           <!--滚动内容-->
           <view class="seat-select-list">
           <view class="weui-cells weui-cells_after-title">
             <radio-group bindchange="radioChange">
-              <label class="weui-cell weui-check__label" wx:for="{{tableNum}}">
+            <!--本人已经预约-->
+            <label class="weui-cell weui-check__label" wx:if="{{appintNum!=0}}">
                 <view class="weui-cell__hd">
-                  <radio value="{{item}}" checked="true"/>
+                  <radio value="{{appintNum}}" checked="true"/>
                 </view>
                 <view class="weui-cell__bd">{{item}}</view>
+                <icon class="icon-box-img" type="success" size="20"></icon>
+            </label>
+            <!--本人暂离-->
+              <label class="weui-cell weui-check__label" wx:elif="{{}}">
+                <view class="weui-cell__hd">
+                  <radio value="{{}}" checked="true"/>
+                </view>
+                <view class="weui-cell__bd">{{item}}</view>
+                <icon class="icon-box-img" type="info" size="20"></icon>
                 </label>
+                <label wx:else></label>
+            <!--剩下所有桌位-->
+             <label class="weui-cell weui-check__label" 
+             wx:for="{{liuyubeigan_allinfor}}">
+                <!--选择是不是和前面冲突-->
+ 
+                 <view class="weui-cell__hd">
+                   <radio value="{{item.setNum}}" checked="true"/>
+                 </view>
+                 <view class="weui-cell__bd">{{item.seatNum}}</view>
+                 <icon wx:if="{{item.status==1}}" class="icon-box-img" type="success" size="20"></icon>
+                 <icon wx:elif="{{item.status==2}}" class="icon-box-img" type="info" size="20"></icon>
+                 <icon wx:else class="icon-box-img" type="warn" size="20"></icon>
+            
+            </label>
               </radio-group>
             </view>
           </view>
