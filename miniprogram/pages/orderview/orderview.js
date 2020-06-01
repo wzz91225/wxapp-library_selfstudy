@@ -43,7 +43,7 @@ Page({
     wx.cloud.callFunction({
       name: 'query_appointment', //云函数的名称
       data: {
-        id:"oFNyI5Cm9t_dDaBSdWBsR9G9GeXA"
+        id:app.globalData.openid
       },
       success: res => {
         console.log(res.result.data[0].time)  //res的数据结构如下图res.result.data[0].time

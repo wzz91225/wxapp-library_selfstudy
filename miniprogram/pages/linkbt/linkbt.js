@@ -61,7 +61,7 @@ Page({
     tableSelect:0,            //选择的桌子号
     devices: [],
     chs: [],
-
+    
     discoveryStarted: false,
     connected: false,
     haveConnected: false,
@@ -92,9 +92,21 @@ Page({
         title: '就坐成功'
     })
     }else if(app.data.userStatus==2){//暂离
-      console.log("判断失败！")
+      console.log("判断为暂离！")
+      const db = wx.cloud.database()
+      db.collection('seat').where({
+        openid:app.globalData.openid,
+        status:4
+      }).get({
+        success:function(res){
+          console.log(res)
+          up.updateSeatStatus(res.data[0].seatNum,2,"")
+          up.upUserStatus(1)
+          console.log(res)
+        }
+      })
       wx.showToast({
-        title: '就坐'
+        title: '回座位'
     })
     }else{
       wx.showToast({
