@@ -157,7 +157,7 @@ Page({
           list1.push(res.data[i].seatNum)
         }
         this.setData({
-          liuyushabi:list1
+          liuyushabi_allleave:list1
         })
         wx.showToast({
           title: '获取暂离座位成功！'
@@ -178,7 +178,7 @@ Page({
           list2.push(res.data[i].seatNum)
         }
         this.setData({
-          liuyuzhizhang:list2
+          liuyuzhizhang_nowappoint:list2
         })
         wx.showToast({
           title: '获取暂离座位成功！'
@@ -201,7 +201,28 @@ Page({
           }
         }
         this.setData({
-          liuyuchishi:list3
+          liuyuchishi_nowleave:list3
+        })
+        wx.showToast({
+          title: '获取暂离座位成功！'
+      })
+      }
+    })
+    db.collection('seat').where({
+    })
+    .get({
+      success: res => {
+        console.log("list3:")
+        console.log(res)
+        var list4=[]
+        var i
+        if(res.data.length>0){
+          for(i=0;i<res.data.length;i++){
+            list4.push(res.data[i])
+          }
+        }
+        this.setData({
+          liuyubeigan_allinfor:list4
         })
         wx.showToast({
           title: '获取暂离座位成功！'
@@ -256,7 +277,7 @@ Page({
           list1.push(res.data[i].seatNum)
         }
         this.setData({
-          liuyushabi:list1
+          liuyushabi_allleave:list1
         })
         wx.showToast({
           title: '获取暂离座位成功！'
@@ -277,7 +298,7 @@ Page({
           list2.push(res.data[i].seatNum)
         }
         this.setData({
-          liuyuzhizhang:list2
+          liuyuzhizhang_nowappoint:list2
         })
         wx.showToast({
           title: '获取暂离座位成功！'
@@ -300,7 +321,28 @@ Page({
           }
         }
         this.setData({
-          liuyuchishi:list3
+          liuyuchishi_nowleave:list3
+        })
+        wx.showToast({
+          title: '获取暂离座位成功！'
+      })
+      }
+    })
+    db.collection('seat').where({
+    })
+    .get({
+      success: res => {
+        console.log("list3:")
+        console.log(res)
+        var list4=[]
+        var i
+        if(res.data.length>0){
+          for(i=0;i<res.data.length;i++){
+            list4.push(res.data[i])
+          }
+        }
+        this.setData({
+          liuyubeigan_allinfor:list4
         })
         wx.showToast({
           title: '获取暂离座位成功！'
