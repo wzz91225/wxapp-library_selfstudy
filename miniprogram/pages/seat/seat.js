@@ -78,7 +78,8 @@ Page({
   Sit:function(){
     // this.changCurrentStatus(0)
     
-    wx.redirectTo({
+    // wx.redirectTo({
+    wx.navigateTo({
       url : '../linkbt/linkbt',
       success : function() {
         console.log("SUCCESS: Tab seat to linkbt.")
@@ -253,7 +254,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
