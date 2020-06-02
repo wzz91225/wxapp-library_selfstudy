@@ -37,7 +37,7 @@ Page({
       }
      ],
      SelectTime:[],//这个为选中的值传出去
-     SelectTime_1:[]
+     SelectTime_1:[0,0,0,0,0]
   },
   handleSelectTime(e){
     const SelectTime=e.detail.value;
@@ -103,18 +103,23 @@ submit:function(){
     success: res => {
       var len=res.data.length
       for(let i=0;i<len;i++){
-        this.data.SelectTime_1[i]=res.data[i].timeFlag
-        //switch(res.data[i].timeFlag){
-        //  case 1:this.data.SelectTime_1[i]=1;
-        //  case 2:this.data.SelectTime_1[i]=1;
-        //  case 3:this.data.SelectTime_1[i]=1;
-        //  case 4:this.data.SelectTime_1[i]=1;
-        //  case 5:this.data.SelectTime_1[i]=1;
-        //  default:this.data.SelectTime_1[i]=0;
-        //}
+        //this.data.SelectTime_1[i]=res.data[i].timeFlag
+         switch(res.data[i].timeFlag){
+          case '1':this.data.SelectTime_1[0]=1;
+                  break;
+          case '2':this.data.SelectTime_1[1]=1;
+                  break;
+          case '3':this.data.SelectTime_1[2]=1;
+                  break;
+          case '4':this.data.SelectTime_1[3]=1;
+                  break;
+          case '5':this.data.SelectTime_1[4]=1;
+                  break;
+          default:console.log("有错误");
+        }
       }
       this.setData({
-      
+          SelectTime_1:this.data.SelectTime_1
       })
       console.log(this.data.openid)
       console.log('[数据库] [查询记录] 成功: ', res)
