@@ -1,11 +1,13 @@
 // pages/orderview/orderview.js
+const app=getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    aa:[]
+    aa:[],
     // aa:[
     //   {
     //     nickName:"wang",
@@ -81,7 +83,7 @@ Page({
           aa:res.result.data
         })
        
-        console.log(aa[0].time)
+       
         
         // if(res.result.data.length>=5){
         //   this.setData({
