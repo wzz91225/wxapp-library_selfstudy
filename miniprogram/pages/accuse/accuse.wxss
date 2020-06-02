@@ -65,11 +65,13 @@ page{
   display: flex;
   justify-content: space-around;
 }
+
 .uploadImage{
   display: flex;
   justify-content: space-around;
 
 }
+
 .userinfo {
   display: flex;
   flex-direction: column;
