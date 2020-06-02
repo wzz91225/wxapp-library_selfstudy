@@ -124,7 +124,7 @@ Page({
         //   return ;
         // }
         
-        console.log("appointment details:"+aa)
+        //console.log("appointment details:"+aa)
       },
       fail: err => {
         console.error('[云函数] [loginInfo] 调用失败', err)
