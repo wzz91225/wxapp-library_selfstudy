@@ -5,17 +5,61 @@
     <view class="page-section">
       <view class="page-section-title">选择桌号：</view>
       <view class="page-section-spacing">
-        <scroll-view scroll-y="true" style="height: 400rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+       <!--<scroll-view scroll-y="true" style="height: 400rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">-->
+         <scroll-view scroll-y="true" style="height: 400rpx;"><!--这里注意一下-->
           <!--滚动内容-->
           <view class="seat-select-list">
           <view class="weui-cells weui-cells_after-title">
             <radio-group bindchange="radioChange">
-              <label class="weui-cell weui-check__label" wx:for="{{tableNum}}">
+            <!--本人已经预约-->
+            <label class="weui-cell weui-check__label" wx:if="{{appointmentNum!=0}}">
                 <view class="weui-cell__hd">
-                  <radio value="{{item}}" checked="true"/>
+                  <radio value="{{appointmentNum}}" checked="true"/>
                 </view>
-                <view class="weui-cell__bd">{{item}}</view>
+                <view class="weui-cell__bd">{{appointmentNum}}</view>
+                <view class="weui-cell__hd">本人预约</view>
+                <icon class="icon-box-img" type="success" size="20"></icon>
+            </label>
+            <!--本人暂离-->
+              <label class="weui-cell weui-check__label" wx:elif="{{leaveNum!=0}}">
+                <view class="weui-cell__hd">
+                  <radio value="{{leaveNum}}" checked="true"/>
+                </view>
+                <view class="weui-cell__bd">{{leaveNum}}</view>
+                <view class="weui-cell__hd">本人暂离</view>
+                <icon class="icon-box-img" type="success" size="20"></icon>
                 </label>
+            <label wx:else></label>
+            <!--剩下所有桌位-->
+            <block wx:if="{{leaveNum==0}}">
+             <label class="weui-cell weui-check__label" 
+             wx:for="{{allinfor}}">
+                 <view class="weui-cell__hd">
+                   <radio value="{{item.seatNum}}"  disabled="{{item.status==2||item.status==3}}"checked="true"/>
+                   <!-- <radio value="{{item.seatNum}}"checked="true"/> -->
+                 </view>
+                 <view class="weui-cell__bd">{{item.seatNum}}</view>
+                 <block wx:if="{{item.status==1}}">
+                   
+                    <view class="weui-cell__hd">无人</view>
+                   <icon  class="icon-box-img" type="warn" size="20" color="#C0C0C0"></icon>
+            
+                 </block>
+                 <block wx:if="{{item.status==2}}">
+                   <view class="weui-cell__hd">有人</view>
+                   <icon  class="icon-box-img" type="warn" size="20"></icon>
+                 </block>
+                 <block wx:if="{{item.status==3}}">
+                   <view class="weui-cell__hd">已预约</view>
+                   <icon  class="icon-box-img" type="info" size="20"></icon>
+                 </block>
+                 <block wx:if="{{item.status==4}}">
+                 
+                   <view class="weui-cell__hd">暂离</view>
+                   <icon  class="icon-box-img" type="waiting" size="20"></icon>
+                 </block>
+               </label>
+               </block>
               </radio-group>
             </view>
           </view>

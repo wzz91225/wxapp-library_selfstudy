@@ -26,7 +26,7 @@
                         <label class="weui-cell weui-cell_active weui-check__label" value="{{item.id}}" wx:for="{{period}}" wx:key="id">
                             <view class="weui-cell__hd">
                                 <checkbox
-                                    disabled="{{}}"
+                                    disabled="{{SelectTime_1[item.id-1]}}"
                                     class="weui-check"
                                     value="{{item.id}}"
                                     checked="{{item.checked}}"
@@ -39,6 +39,7 @@
                         </label>
                     </checkbox-group>
           <view>{{SelectTime}}</view>
+          <view>{{SelectTime_1}}</view>
 				</view>
 			</view>
 		</view>

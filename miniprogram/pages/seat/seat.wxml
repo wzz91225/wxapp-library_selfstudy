@@ -2,10 +2,13 @@
 
 <!-- 显示状态 -->
 <view class='circle'>
-  <circle degree="{{status[currentStatus].color}}" obvious="{{status[currentStatus].name}}"></circle>
-  <!-- <image style="width: 200px; height: 200px;" mode="aspectFit" src="/miniprogram/images/circle_green.png"></image> -->
+  <circle 
+    degree="{{status[currentStatus].color}}" 
+    obvious="{{status[currentStatus].name}}"
+    seatNum="{{}}"
+  ></circle>
 </view>
-
+<!-- <image style="width: 200px; height: 200px;" mode="aspectFit" src="/miniprogram/images/circle_green.png"></image> -->
 
 <view class="button">
   <button   class="weui-btn weui-btn_primary" disabled = "{{sitDisable}}"     bindtap="Sit"   >就坐</button>
@@ -14,6 +17,11 @@
 </view>
 
 
+
+<!--显示状态-->
+<!-- <view class='circle'>
+  <circle degree="{{status[currentStatus].color}}" obvious="{{status[currentStatus].name}}"></circle>
+</view> -->
 
 <!--<circle degree="{{status[1].color}}" obvious="{{status[1].name}}"></circle>显示状态
 <circle degree="{{status[2].color}}" obvious="{{status[2].name}}"></circle><!--显示状态-->

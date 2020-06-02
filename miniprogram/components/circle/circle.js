@@ -11,6 +11,10 @@ Component({
     degree:{
       type: String,
       value:"c"//默认绿色
+    },
+    seatNum:{
+      type:String,
+      value:"无座"
     }
 
   },

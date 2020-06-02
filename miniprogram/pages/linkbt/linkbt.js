@@ -61,8 +61,8 @@ Page({
     tableSelect:0,            //选择的桌子号
     devices: [],
     chs: [],
-    appointmentNum:null,
-    leaveNum:null,
+    appointmentNum:0,
+    leaveNum:0,
     allinfor:[],
     
     discoveryStarted: false,
@@ -75,8 +75,9 @@ Page({
   radioChange(e){
     console.log(e)
    var tmp=e.detail.value
+   this.data.tableSelect=parseInt(tmp)
     this.setData({
-      tableSelect:tmp
+      tableSelect:this.data.tableSelect
     })
     app.data.tableSelect=parseInt(tmp)
   },
@@ -203,6 +204,7 @@ Page({
    */
   onReady: function () {
 
+    
   },
 
   /**
@@ -254,6 +256,8 @@ Page({
             list4.push(res.data[i])
           }
         }
+        
+      
         this.setData({
           allinfor:list4
         })
