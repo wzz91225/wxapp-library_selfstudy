@@ -29,17 +29,24 @@
     <text id='0' data-id='0'>图书馆预约信息</text>
  </view>
  <view class='content-item'>
-              <text class='name'>时间</text>
+              <text class='name'>结果</text>
               <text class='center'>座位号</text>
-              <text class='wawa'>结果</text>
+              <text class='wawa'>时间</text>
   </view>
   <view wx:for="{{aa}}">
  <view class="weui-cells weui-cells_after-title">
    <view class='content-item'>
-              <text class='name'>{{item.time}}</text>
+              <text wx:if="{{item.timeFlag==1}}" class='wawa'>{{item.time}} 7:00-10:00</text>
+              <text wx:elif="{{item.timeFlag==2}}" class='wawa'>{{item.time}} 10:00-12:00</text>
+              <text wx:elif="{{item.timeFlag==3}}" class='wawa'>{{item.time}} 12:00-15:00</text>
+              <text wx:elif="{{item.timeFlag==4}}" class='wawa'>{{item.time}} 15:00-18:00</text>
+              <text wx:elif="{{item.timeFlag==5}}" class='wawa'>{{item.time}} 18:00-22:00</text>
+              <text wx:else class='wawa'>错误</text>
               <text class='center'>{{item.seatNum}}</text>
-              <text class='wawa' wx:if="{{item.result==1}}">成功</text>
-              <text class='wawa' wx:else>失败</text>
+              <text class='name' wx:if="{{item.result==1}}">成功</text>
+              <text class='name' wx:elif="{{item.result==2}}">失败</text>
+              <text class='name' wx:elif="{{item.result==3}}">预约中</text>
+              <text class='name' wx:else>错误</text>
     </view>
  </view>
 </view>
