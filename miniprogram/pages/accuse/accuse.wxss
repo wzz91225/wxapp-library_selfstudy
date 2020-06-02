@@ -3,6 +3,12 @@ page{
   background-color:white ;
 }
 
+.pageTitle{
+  margin: 36px;
+  display: flex;
+  justify-content: space-around;
+}
+
 .uploadImage{
   margin-top: 20px;
   display: flex;
@@ -10,13 +16,13 @@ page{
 }
 
 .button_uploadImage {
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
   justify-content: center;
 }
 
 .button_submitAccuse {
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
   justify-content: center;
 }

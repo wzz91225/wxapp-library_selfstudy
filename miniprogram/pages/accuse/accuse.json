@@ -1,7 +1,5 @@
 {
   "usingComponents": {
     "circle":"../../components/circle/circle"
-  },
-  "navigationBarTitleText": "举报"
-  
+  }
 }

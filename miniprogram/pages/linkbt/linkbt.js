@@ -83,25 +83,22 @@ Page({
   },
 
 
-  backToSeat : function(){
-    setTimeout(function () {
-      // 自动切换页面返回
-      wx.switchTab({
-        url : '../seat/seat',
-        success : function() {
-          console.log("SUCCESS: Tab linkbt to seat.")
-        },
-        fail : function() {
-          console.log("FAIL: Tab linkbt to seat.")
-        }
-      })
-    }, 500) 
-  },
+  // backToSeat : function(){
+  //   setTimeout(function () {
+  //     // 自动切换页面返回
+  //     wx.switchTab({
+  //       url : '../seat/seat',
+  //       success : function() {
+  //         console.log("SUCCESS: Tab linkbt to seat.")
+  //       },
+  //       fail : function() {
+  //         console.log("FAIL: Tab linkbt to seat.")
+  //       }
+  //     })
+  //   }, 500) 
+  // },
 
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   Link:function(){
     console.log(this.data)
     console.log(app.data.userStatus)
@@ -110,7 +107,8 @@ Page({
       console.log(app.data)
       up.upseat(app.data.tableSelect)
       console.log("操作完成！")
-      this.backToSeat()
+      // this.backToSeat()
+
     }else if(app.data.userStatus==2){//暂离
       console.log("判断为暂离！")
       const db = wx.cloud.database()
@@ -125,11 +123,11 @@ Page({
           console.log(res)
         }
       })
-      wx.showToast({
-        title: '就坐'
-      })
-      
-      this.backToSeat()
+      // wx.showToast({
+      //   title: '就坐'
+      // })
+      // this.backToSeat()
+
     }else{
       wx.showToast({
         title: '就坐失败'
@@ -138,6 +136,10 @@ Page({
       //up.querySeat()
     //up.upUserStatus(1)//1:就坐 2:暂时离开 3:结束
   },
+  
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function (options) {
     console.log(app.globalData.openid)
     const db = wx.cloud.database()
