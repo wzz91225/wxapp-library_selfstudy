@@ -1,48 +1,24 @@
 /* pages/seat/seat.wxss */
 
-.bun0{
+
+.circle{
   position:fixed; 
-margin:auto; 
-left:0; 
-right:0; 
-top:50%; 
-bottom:0; 
-width:200px; 
-height:150px;
-}
-.bon1 {
-  margin-top: 30px;
-  width: 20%;
-  background-color: rgb(252, 126, 67);
-  color: white;
-  border-radius: 98rpx;
-  background: bg_red;
-  position: absolute;
-  left:10%;
-  top:60%;
-}
-.bon2 {
-  margin-top: 30px;
-  width: 20%;
-  background-color: rgb(252, 126, 67);
-  color: white;
-  border-radius: 98rpx;
-  background: bg_red;
-  position: absolute;
-  left:40%;
-  top:60%;
+  margin:auto; 
+  left:0; 
+  right:0; 
+  top:6%; 
 }
 
-.bon3 {
-  margin-top: 30px;
-  width: 20%;
-  background-color: rgb(252, 126, 67);
-  color: white;
-  border-radius: 98rpx;
-  background: bg_red;
-  position: absolute;
-  right:10%;
-  top:60%;
+
+.button{
+  position:fixed; 
+  margin:auto; 
+  left:0; 
+  right:0; 
+  top:66%; 
+  /* bottom:6%;  */
+  /* width:200px; 
+  height:150px; */
 }
 
 

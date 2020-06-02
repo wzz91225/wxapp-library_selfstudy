@@ -1,76 +1,36 @@
 /* pages/accuse/accuse.wxss */
 page{
-  background-color:#839BAF ;
-}
-.bun1{
-   width: 360rpx;
-    
-    height: 24px;
-    border: 1px solid #f2f2f2;
-    background: #f6f6f6;
-    color: #202124;
-    font-size: 20rpx;
-    line-height: 48px;
-    border-radius: 25px;
-}
-.bun2{
-  width: 360rpx;
-    
-  height: 24px;
-  border: 1px solid #f2f2f2;
-  background: #f6f6f6;
-  color: #202124;
-  font-size: 20rpx;
-  line-height: 48px;
-  border-radius: 25px;
-
-  
+  background-color:white ;
 }
 
-.bun3{
-
-  margin-top: 30px;
-  width: 20%;
-  background-color: rgb(252, 126, 67);
-  color: white;
-  border-radius: 98rpx;
-  background: bg_red;
-  position: absolute;
-  left: 40%;
-  top:75%;
-
-  /*width: 340rpx;
-    padding: 0 25px;
-    height: 48px;
-    border: 1px solid #f2f2f2;
-    background-color: lightskyblue;
-    color: #454649;
-    font-size: 30px;
-    line-height: 48px;
-    border-radius: 25px;
-    position: absolute;
-    top:85%;*/
-}
-
-.box1{
-  position: absolute;
-  top:55%;
-  display: flex;
-  justify-content: space-around;
-}
-
-.box2{
-  position: absolute;
-  top:65%;
-  display: flex;
-  justify-content: space-around;
-}
 .uploadImage{
+  margin-top: 20px;
   display: flex;
   justify-content: space-around;
-
 }
-.userinfo {
+
+.button_uploadImage {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.button_submitAccuse {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.givenTip {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+/* .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,8 +49,56 @@ page{
 
 .usermotto {
   margin-top: 200px;
-}
-.inputimg{
+} */
+
+/* .box1{
+  position: absolute;
+  top:55%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
+
+.box2{
+  position: absolute;
+  top:65%;
+  display: flex;
+  justify-content: space-around;
+} */
+
+/* .bun1{
+  width: 360rpx;
+   
+   height: 24px;
+   border: 1px solid #f2f2f2;
+   background: #f6f6f6;
+   color: #202124;
+   font-size: 20rpx;
+   line-height: 48px;
+   border-radius: 25px;
+}
+.bun2{
+ width: 360rpx;
+   
+ height: 24px;
+ border: 1px solid #f2f2f2;
+ background: #f6f6f6;
+ color: #202124;
+ font-size: 20rpx;
+ line-height: 48px;
+ border-radius: 25px;
+
+ 
+}
+
+.bun3{
+
+ margin-top: 30px;
+ width: 20%;
+ background-color: rgb(252, 126, 67);
+ color: white;
+ border-radius: 98rpx;
+ background: bg_red;
+ position: absolute;
+ left: 40%;
+ top:75%;
+} */

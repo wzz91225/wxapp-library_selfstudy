@@ -29,13 +29,12 @@ Page({
     ],
     seatNum:null,
     reason:'',
-    pictureUrl:'',
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     hasUploadImage: false,
-    //imageSrc: "../../image/no_image.jpg"
+    imageSrc: ""
   },
   //事件处理函数
   bindViewTap: function() {
@@ -81,47 +80,21 @@ Page({
   },
 
   uploadImage: function(e) {
-    var num=Math.random()*100
+    console.log(e)
+    var _this = this
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
-
-        wx.showLoading({
-          title: '上传中',
+        // tempFilePath可以作为img标签的src属性显示图片
+        console.log(res)
+        _this.setData({
+          imageSrc: res.tempFilePaths,
+          hasUploadImage: true
         })
 
-        const filePath = res.tempFilePaths[0]
-        
-        // 上传图片
-        const cloudPath = num + filePath.match(/\.[^.]+?$/)[0]
-        wx.cloud.uploadFile({
-          cloudPath,
-          filePath,
-          success: res => {
-            console.log('[上传文件] 成功：', res)
-
-            app.globalData.fileID = res.fileID
-            app.globalData.cloudPath = cloudPath
-            app.globalData.imagePath = filePath
-            console.log(filepath)
-            this.setData({
-              pictureUrl:filepath
-            })
-          },
-          fail: e => {
-            console.error('[上传文件] 失败：', e)
-            wx.showToast({
-              icon: 'none',
-              title: '上传失败',
-            })
-          },
-          complete: () => {
-            wx.hideLoading()
-          }
-        })
-
+        const cloudfile = _this.imageSrc
       },
       fail: e => {
         console.error(e)
@@ -134,13 +107,16 @@ Page({
     //    openid: app.globalData.openid
     //  })
     //}
+
+    uploadImageToCloud()
+
     const db = wx.cloud.database()
     console.log(app.globalData.fileID)
     db.collection('accuse').add({
       data: {
         accuseSeatnum: this.data.seatNum,
         reason: this.data.reason,
-        pictureUrl:app.globalData.fileID
+        // pictureUrl:app.globalData.fileID
       },
       success: res => {
         // 在返回结果中会包含新创建的记录的 _id
@@ -157,6 +133,47 @@ Page({
         console.error('[数据库] [新增记录] 失败：', err)
       }
     })
-  }
+  },
+
+
+
+  uploadImageToCloud : function() {
+    
+    wx.showLoading({
+      title: '上传图片中',
+    })
+
+    const filePath = this.imageSrc
+    
+    // 上传图片
+    var num=Math.random()*100
+    const cloudPath = num + filePath.match(/\.[^.]+?$/)[0]
+    wx.cloud.uploadFile({
+      cloudPath,
+      filePath,
+      success: res => {
+        console.log('[上传文件] 成功：', res)
+
+        app.globalData.fileID = res.fileID
+        app.globalData.cloudPath = cloudPath
+        app.globalData.imagePath = filePath
+        console.log(filepath)
+        // this.setData({
+        //   pictureUrl:filepath
+        // })
+      },
+      fail: e => {
+        console.error('[上传文件] 失败：', e)
+        wx.showToast({
+          icon: 'none',
+          title: '上传失败',
+        })
+      },
+      complete: () => {
+        wx.hideLoading()
+      }
+    })
+  },
 })
+
 
