@@ -31,9 +31,9 @@ Page({
       {
         color:"b",
         name:"未就坐"
-      }
+      },
     ],
-
+    nowseatNum:null,
     // 决定按键disable值
     sitDisable : true,
     leaveDisable : false,

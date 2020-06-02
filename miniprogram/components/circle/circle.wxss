@@ -53,31 +53,32 @@ page{
 {
    position: flex;
    margin: auto;
-    top:10%;
-    bottom: 60%;
+    top:0%;
+    bottom: 0%;
     left:0%;
     right:0;
-    height: 200px;
-    width: 200px;
+    height: 400rpx;
+    width: 400rpx;
     border-radius: 50%;
 
 }
 .biground1{
   border:20px solid #99CC33;
     padding: 10px;
-  background-color: #fff;
+  background-color:rgba(red, green, blue, 0);
   
 }
 .biground2{
   border:20px solid #CCCCCC;
-    padding: 10px;
-  background-color: #fff;
+    padding: 20rpx;
+   /* background-image: url('https://i.postimg.cc/66Hq1cPh/nculogo1.png'); */
+    
   
 }
 .biground3{
   border:20px solid #000000;
     padding: 10px;
-  background-color: #fff;
+  background-color: rgba(red, green, blue, 0);
   
 }
 .mid,
@@ -113,18 +114,27 @@ page{
      margin: auto;
      top:auto;
      bottom:auto;
-    width: 100px;
-    height:20px;
+    width: 300rpx;
+    height:200rpx;
+    line-height:400rpx;
     text-align: center; /*让div内部文字居中*/
+    font-weight:bold;
     font-size: 2ch;
-    color: darkgreen;
-    background-color: darkkhaki;
+    color:black;
+    background-color:rgba(red, green, blue, 0);
     border-radius: 20px;
 
 
 }
-.textview{
-    position: flex;
-     top:79%;
-     bottom:0%;
+.logoPlace{
+    position: absolute;
+   
+    top:1%;
+    bottom: 0;
+    left:16%;
+    right:16%;
+    height:500rpx;
+    width: 500rpx;
+    z-index:-99;
+    opacity:0.3;/*设置透明度*/
 }

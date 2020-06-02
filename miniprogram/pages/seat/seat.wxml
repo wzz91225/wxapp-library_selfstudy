@@ -1,6 +1,10 @@
 <!--pages/seat/seat.wxml-->
 
-<circle degree="{{status[currentStatus].color}}" obvious="{{status[currentStatus].name}}">
+<circle 
+degree="{{status[currentStatus].color}}" 
+obvious="{{status[currentStatus].name}}"
+seatNum="{{}}"
+>
 </circle><!--显示状态-->
 <!--<circle degree="{{status[1].color}}" obvious="{{status[1].name}}"></circle>显示状态
 <circle degree="{{status[2].color}}" obvious="{{status[2].name}}"></circle><!--显示状态-->
