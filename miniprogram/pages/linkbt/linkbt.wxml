@@ -35,7 +35,7 @@
              <label class="weui-cell weui-check__label" 
              wx:for="{{allinfor}}">
                  <view class="weui-cell__hd">
-                   <radio value="{{item.setNum}}" checked="true"/>
+                   <radio value="{{item.seatNum}}" disabled="{{item.status==2||item.status==3}}" checked="true"/>
                  </view>
                  <view class="weui-cell__bd">{{item.seatNum}}</view>
                  <block wx:if="{{item.status==1}}">

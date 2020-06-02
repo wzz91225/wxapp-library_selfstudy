@@ -75,8 +75,9 @@ Page({
   radioChange(e){
     console.log(e)
    var tmp=e.detail.value
+   this.data.tableSelect=parseInt(tmp)
     this.setData({
-      tableSelect:tmp
+      tableSelect:this.data.tableSelect
     })
     app.data.tableSelect=parseInt(tmp)
   },
