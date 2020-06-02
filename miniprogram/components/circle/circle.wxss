@@ -117,7 +117,7 @@
   height:200rpx;
   line-height:400rpx;
   text-align: center; /*让div内部文字居中*/
-  font-weight:bold;
+  font-weight:256;
   font-size: 3.2ch;
   color:black;
   background-color:rgba(red, green, blue, 0);
