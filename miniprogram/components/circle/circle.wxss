@@ -1,7 +1,7 @@
 /* components/circle/circle.wxss */
-page{
+/* page{
   
-}
+} */
 
 /*.right{
   position: flex;
@@ -51,34 +51,31 @@ page{
 .biground2,
 .biground3
 {
-   position: flex;
-   margin: auto;
-    top:10%;
-    bottom: 60%;
-    left:0%;
-    right:0;
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
+  position: flex;
+  margin: auto;
+  top:10%;
+  bottom: 60%;
+  left:0%;
+  right:0;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
 
 }
 .biground1{
   border:20px solid #99CC33;
-    padding: 10px;
+  padding: 10px;
   background-color: #fff;
-  
 }
 .biground2{
   border:20px solid #CCCCCC;
-    padding: 10px;
+  padding: 10px;
   background-color: #fff;
-  
 }
 .biground3{
   border:20px solid #000000;
-    padding: 10px;
-  background-color: #fff;
-  
+  padding: 10px;
+  background-color: #fff; 
 }
 .mid,
 .left,

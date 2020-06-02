@@ -29,7 +29,6 @@ Page({
     ],
     seatNum:null,
     reason:'',
-    pictureUrl:'',
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -94,6 +93,8 @@ Page({
           imageSrc: res.tempFilePaths,
           hasUploadImage: true
         })
+
+        const cloudfile = _this.imageSrc
       },
       fail: e => {
         console.error(e)
@@ -107,7 +108,7 @@ Page({
     //  })
     //}
 
-    uploadImagetoCloud()
+    uploadImageToCloud()
 
     const db = wx.cloud.database()
     console.log(app.globalData.fileID)
@@ -115,7 +116,7 @@ Page({
       data: {
         accuseSeatnum: this.data.seatNum,
         reason: this.data.reason,
-        pictureUrl:app.globalData.fileID
+        // pictureUrl:app.globalData.fileID
       },
       success: res => {
         // 在返回结果中会包含新创建的记录的 _id
@@ -136,13 +137,13 @@ Page({
 
 
 
-  uploadImagetoCloud : function() {
+  uploadImageToCloud : function() {
     
     wx.showLoading({
-      title: '上传中',
+      title: '上传图片中',
     })
 
-    const filePath = res.tempFilePaths[0]
+    const filePath = this.imageSrc
     
     // 上传图片
     var num=Math.random()*100
@@ -157,9 +158,9 @@ Page({
         app.globalData.cloudPath = cloudPath
         app.globalData.imagePath = filePath
         console.log(filepath)
-        this.setData({
-          pictureUrl:filepath
-        })
+        // this.setData({
+        //   pictureUrl:filepath
+        // })
       },
       fail: e => {
         console.error('[上传文件] 失败：', e)
