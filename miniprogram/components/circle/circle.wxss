@@ -111,17 +111,20 @@ page{
     content:"";
      position: flex;
      margin: auto;
-     top:80%;
-     bottom:0%;
-     left:0;
-     right:0;
+     top:auto;
+     bottom:auto;
     width: 100px;
     height:20px;
     text-align: center; /*让div内部文字居中*/
     font-size: 2ch;
-    font-style:oblique;
     color: darkgreen;
+    background-color: darkkhaki;
     border-radius: 20px;
 
 
+}
+.textview{
+    position: flex;
+     top:79%;
+     bottom:0%;
 }

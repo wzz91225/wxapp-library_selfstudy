@@ -1,18 +1,18 @@
 <!--components/circle/circle.wxml-->
 <view wx:if="{{degree=='a'}}" class="biground1">
-    <view class="right"> 
+ 
      <view class="textPlace" style=""> {{obvious}} </view>
-     </view>
+
 </view>
 <view wx:if="{{degree=='b'}}" class="biground2">
-    <view class="right">
+    
      <view class="textPlace" style=""> {{obvious}} </view>
-     </view>
+     
 </view>
 <view wx:if="{{degree=='c'}}" class="biground3">
-    <view class="right"> 
+    
      <view class="textPlace" style=""> {{obvious}} </view>   
-    </view>
+  
 </view>
    
   
