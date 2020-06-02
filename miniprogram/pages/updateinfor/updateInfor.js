@@ -109,6 +109,7 @@ function upseat(x) {//x:status y:seat_num
           title: '坐下失败!'
       })
       }else if(res.result==1){
+        console.log("balalanengliang")
         upUserStatus(1)
         wx.showToast({
           title: '坐下成功!'

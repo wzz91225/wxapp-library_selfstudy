@@ -25,7 +25,7 @@
                 <view class="weui-cell__hd">
                   <radio value="{{leaveNum}}" checked="true"/>
                 </view>
-                <view class="weui-cell__bd">{{item}}</view>
+                <view class="weui-cell__bd">{{leaveNum}}</view>
                 <view class="weui-cell__hd">本人暂离</view>
                 <icon class="icon-box-img" type="success" size="20"></icon>
                 </label>
@@ -35,24 +35,27 @@
              <label class="weui-cell weui-check__label" 
              wx:for="{{allinfor}}">
                  <view class="weui-cell__hd">
-                   <radio value="{{item.seatNum}}" disabled="{{item.status==2||item.status==3}}" checked="true"/>
+                   <radio value="{{item.seatNum}}"  disabled="{{item.status==2||item.status==3}}"checked="true"/>
+                   <!-- <radio value="{{item.seatNum}}"checked="true"/> -->
                  </view>
                  <view class="weui-cell__bd">{{item.seatNum}}</view>
                  <block wx:if="{{item.status==1}}">
-                   <view class="weui-cell__hd">有人</view>
-                   <icon  class="icon-box-img" type="warn" size="20"></icon>
+                   
+                    <view class="weui-cell__hd">无人</view>
+                   <icon  class="icon-box-img" type="warn" size="20" color="#C0C0C0"></icon>
             
                  </block>
                  <block wx:if="{{item.status==2}}">
-                   <view class="weui-cell__hd">无人</view>
-                   <icon  class="icon-box-img" type="warn" size="20" color="#C0C0C0"></icon>
+                   <view class="weui-cell__hd">有人</view>
+                   <icon  class="icon-box-img" type="warn" size="20"></icon>
                  </block>
                  <block wx:if="{{item.status==3}}">
                    <view class="weui-cell__hd">已预约</view>
                    <icon  class="icon-box-img" type="info" size="20"></icon>
                  </block>
                  <block wx:if="{{item.status==4}}">
-                   <view class="weui-cell__hd">本人暂离</view>
+                 
+                   <view class="weui-cell__hd">暂离</view>
                    <icon  class="icon-box-img" type="waiting" size="20"></icon>
                  </block>
                </label>

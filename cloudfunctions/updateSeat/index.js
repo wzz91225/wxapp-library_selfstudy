@@ -1,9 +1,5 @@
-// 云函数入口文件
 const cloud = require('wx-server-sdk')
-
 cloud.init()
-
-
 const db = cloud.database()
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
@@ -24,14 +20,24 @@ exports.main = async (event, context) => {
   }
   else if(tmp.data[0].status==3){
     await db.collection('seat').where({
-      seatNum:event.seat
+      seatNum:event.seat,
+      openid: wxContext.OPENID
     }).update({
       data:{
         status:2,
-        openid: wxContext.OPENID
+        //openid: wxContext.OPENID
       }
     })
-    return 1
+    let flag = await db.collection('seat').where({
+      seatNum:event.seat,
+      openid: wxContext.OPENID
+    }).get()
+    //return flag
+    if(flag.data.length==1){
+      return 1
+    }else{
+      return 0
+    }
   }else{
     return 0
   }
