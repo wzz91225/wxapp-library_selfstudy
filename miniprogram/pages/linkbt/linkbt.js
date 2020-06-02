@@ -61,8 +61,8 @@ Page({
     tableSelect:0,            //选择的桌子号
     devices: [],
     chs: [],
-    appointmentNum:null,
-    leaveNum:null,
+    appointmentNum:0,
+    leaveNum:0,
     allinfor:[],
     
     discoveryStarted: false,

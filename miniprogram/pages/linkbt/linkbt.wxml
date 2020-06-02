@@ -12,36 +12,51 @@
           <view class="weui-cells weui-cells_after-title">
             <radio-group bindchange="radioChange">
             <!--本人已经预约-->
-            <label class="weui-cell weui-check__label" wx:if="{{appintNum!=0}}">
+            <label class="weui-cell weui-check__label" wx:if="{{appointmentNum!=0}}">
                 <view class="weui-cell__hd">
-                  <radio value="{{appintNum}}" checked="true"/>
+                  <radio value="{{appointmentNum}}" checked="true"/>
                 </view>
-                <view class="weui-cell__bd">{{item}}</view>
+                <view class="weui-cell__bd">{{appointmentNum}}</view>
+                <view class="weui-cell__hd">本人预约</view>
                 <icon class="icon-box-img" type="success" size="20"></icon>
             </label>
             <!--本人暂离-->
-              <label class="weui-cell weui-check__label" wx:elif="{{}}">
+              <label class="weui-cell weui-check__label" wx:elif="{{leaveNum!=0}}">
                 <view class="weui-cell__hd">
-                  <radio value="{{}}" checked="true"/>
+                  <radio value="{{leaveNum}}" checked="true"/>
                 </view>
                 <view class="weui-cell__bd">{{item}}</view>
-                <icon class="icon-box-img" type="info" size="20"></icon>
+                <view class="weui-cell__hd">本人暂离</view>
+                <icon class="icon-box-img" type="success" size="20"></icon>
                 </label>
-                <label wx:else></label>
+            <label wx:else></label>
             <!--剩下所有桌位-->
+            <block wx:if="{{leaveNum==0}}">
              <label class="weui-cell weui-check__label" 
-             wx:for="{{liuyubeigan_allinfor}}">
-                <!--选择是不是和前面冲突-->
- 
+             wx:for="{{allinfor}}">
                  <view class="weui-cell__hd">
                    <radio value="{{item.setNum}}" checked="true"/>
                  </view>
                  <view class="weui-cell__bd">{{item.seatNum}}</view>
-                 <icon wx:if="{{item.status==1}}" class="icon-box-img" type="success" size="20"></icon>
-                 <icon wx:elif="{{item.status==2}}" class="icon-box-img" type="info" size="20"></icon>
-                 <icon wx:else class="icon-box-img" type="warn" size="20"></icon>
+                 <block wx:if="{{item.status==1}}">
+                   <view class="weui-cell__hd">有人</view>
+                   <icon  class="icon-box-img" type="warn" size="20"></icon>
             
-            </label>
+                 </block>
+                 <block wx:if="{{item.status==2}}">
+                   <view class="weui-cell__hd">无人</view>
+                   <icon  class="icon-box-img" type="warn" size="20" color="#C0C0C0"></icon>
+                 </block>
+                 <block wx:if="{{item.status==3}}">
+                   <view class="weui-cell__hd">已预约</view>
+                   <icon  class="icon-box-img" type="info" size="20"></icon>
+                 </block>
+                 <block wx:if="{{item.status==4}}">
+                   <view class="weui-cell__hd">本人暂离</view>
+                   <icon  class="icon-box-img" type="waiting" size="20"></icon>
+                 </block>
+               </label>
+               </block>
               </radio-group>
             </view>
           </view>
