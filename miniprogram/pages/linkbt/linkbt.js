@@ -61,10 +61,8 @@ Page({
     tableSelect:0,            //选择的桌子号
     devices: [],
     chs: [],
-    liuyushabi_allleave:[],
-    liuyuzhizhang_nowappoint:[],
-    liuyuchishi_nowleave:[],
-    liuyubeigan_allinfor:[],
+    appointmentNum:null,
+    leaveNum:null,
     allinfor:[],
     
     discoveryStarted: false,
@@ -83,20 +81,35 @@ Page({
     app.data.tableSelect=parseInt(tmp)
   },
 
+
+  backToSeat : function(){
+    setTimeout(function () {
+      // 自动切换页面返回
+      wx.switchTab({
+        url : '../seat/seat',
+        success : function() {
+          console.log("SUCCESS: Tab linkbt to seat.")
+        },
+        fail : function() {
+          console.log("FAIL: Tab linkbt to seat.")
+        }
+      })
+    }, 500) 
+  },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
   Link:function(){
     console.log(this.data)
+    console.log(app.data.userStatus)
     if(app.data.userStatus==3){//未就坐
       console.log("判断成功！")
       console.log(app.data)
       up.upseat(app.data.tableSelect)
       console.log("操作完成！")
-      wx.showToast({
-        title: '就坐成功'
-    })
-      wx.redirectTo({url:"../seat/seat"})
+      this.backToSeat()
     }else if(app.data.userStatus==2){//暂离
       console.log("判断为暂离！")
       const db = wx.cloud.database()
@@ -112,13 +125,14 @@ Page({
         }
       })
       wx.showToast({
-        title: '回座位'
+        title: '就坐'
       })
-      wx.redirectTo({url:'../seat/seat'})
+      
+      this.backToSeat()
     }else{
       wx.showToast({
         title: '就坐失败'
-    })
+      })
     }
       //up.querySeat()
     //up.upUserStatus(1)//1:就坐 2:暂时离开 3:结束
@@ -127,64 +141,18 @@ Page({
     console.log(app.globalData.openid)
     const db = wx.cloud.database()
     db.collection('seat').where({
-      status:1
-    })
-    .get({
-      success: res => {
-        console.log("list:")
-        console.log(res)
-        var list=[]
-        var i
-        for(i=0;i<res.data.length;i++){
-          list.push(res.data[i].seatNum)
-        }
-        this.setData({
-          tableNum:list
-        })
-        wx.showToast({
-          title: '获取空余座位成功！'
-      })
-      }
-    })
-    db.collection('seat').where({
-      status:4
-    })
-    .get({
-      success: res => {
-        console.log("list1:")
-        console.log(res)
-        var list1=[]
-        var i
-        for(i=0;i<res.data.length;i++){
-          list1.push(res.data[i].seatNum)
-        }
-        this.setData({
-          liuyushabi_allleave:list1
-        })
-        wx.showToast({
-          title: '获取暂离座位成功！'
-      })
-      }
-    })
-    db.collection('seat').where({
       status:3,
       openid:app.globalData.openid
     })
     .get({
       success: res => {
-        console.log("list2:")
-        console.log(res)
-        var list2=[]
-        var i
-        for(i=0;i<res.data.length;i++){
-          list2.push(res.data[i].seatNum)
+        if(res.data.length==1){
+          this.setData({
+            appointmentNum:res.data[0].seatNum
+          })
+        }else{
+          appointmentNum:null
         }
-        this.setData({
-          liuyuzhizhang_nowappoint:list2
-        })
-        wx.showToast({
-          title: '获取暂离座位成功！'
-      })
       }
     })
     db.collection('seat').where({
@@ -193,43 +161,39 @@ Page({
     })
     .get({
       success: res => {
-        console.log("list3:")
-        console.log(res)
-        var list3=[]
-        var i
-        if(res.data.length>0){
-          for(i=0;i<res.data.length;i++){
-            list3.push(res.data[i].seatNum)
-          }
+        if(res.data.length==1){
+          this.setData({
+            leaveNum:res.data[0].seatNum
+          })
+        }else{
+          leaveNum:null
         }
-        this.setData({
-          liuyuchishi_nowleave:list3
-        })
-        wx.showToast({
-          title: '获取暂离座位成功！'
-      })
       }
     })
     db.collection('seat').where({
     })
     .get({
       success: res => {
-        console.log("list3:")
+        console.log("list:")
         console.log(res)
         var list4=[]
+        var list5=[]
         var i
         if(res.data.length>0){
           for(i=0;i<res.data.length;i++){
             list4.push(res.data[i])
+            if(res.data[i].status==1){
+              list5.push(res.data[i].seatNum)
+            }
           }
         }
-        
+
+        console.log("hello:")
+        console.log(list5)
         this.setData({
-          liuyubeigan_allinfor:list4
+          allinfor:list4,
+          tableNum:list5
         })
-        wx.showToast({
-          title: '获取暂离座位成功！'
-      })
       }
     })
   },
@@ -249,83 +213,18 @@ Page({
     console.log(app.globalData.openid)
     const db = wx.cloud.database()
     db.collection('seat').where({
-      status:1
-    })
-    .get({
-      success: res => {
-        console.log("list:")
-        console.log(res)
-        var list=[]
-        var i
-        for(i=0;i<res.data.length;i++){
-          list.push(res.data[i].seatNum)
-        }
-        this.setData({
-          tableNum:list
-        })
-        wx.showToast({
-          title: '获取空余座位成功！'
-      })
-      }
-    })
-    db.collection('seat').where({
-      status:4
-    })
-    .get({
-      success: res => {
-        console.log("list1:")
-        console.log(res)
-        var list1=[]
-        var i
-        for(i=0;i<res.data.length;i++){
-          list1.push(res.data[i].seatNum)
-        }
-        this.setData({
-          liuyushabi_allleave:list1
-        })
-        wx.showToast({
-          title: '获取暂离座位成功！'
-      })
-      }
-    })
-    db.collection('seat').where({
-    })
-    .get({
-      success: res => {
-        console.log("list1:")
-        console.log(res)
-        var list4=[]
-        var i
-        for(i=0;i<res.data.length;i++){
-          list4.push(res.data[i])
-        }
-        this.setData({
-          liuyubeigan:list4
-        })
-        wx.showToast({
-          title: '获取暂离座位成功！'
-      })
-      }
-    })
-    db.collection('seat').where({
       status:3,
       openid:app.globalData.openid
     })
     .get({
       success: res => {
-        console.log("list2:")
-        console.log(res)
-        var list2=[]
-        var i
-        for(i=0;i<res.data.length;i++){
-          list2.push(res.data[i].seatNum)
+        if(res.data.length==1){
+          this.setData({
+            appointmentNum:res.data[0].seatNum
+          })
+        }else{
+          appointmentNum:null
         }
-        this.setData({
-          liuyuzhizhang_nowappoint:list2
-        })
-        wx.showToast({
-          title: '获取暂离座位成功！'
-      })
       }
     })
     db.collection('seat').where({
@@ -334,28 +233,20 @@ Page({
     })
     .get({
       success: res => {
-        console.log("list3:")
-        console.log(res)
-        var list3=[]
-        var i
-        if(res.data.length>0){
-          for(i=0;i<res.data.length;i++){
-            list3.push(res.data[i].seatNum)
-          }
+        if(res.data.length==1){
+          this.setData({
+            leaveNum:res.data[0].seatNum
+          })
+        }else{
+          leaveNum:null
         }
-        this.setData({
-          liuyuchishi_nowleave:list3
-        })
-        wx.showToast({
-          title: '获取暂离座位成功！'
-      })
       }
     })
     db.collection('seat').where({
     })
     .get({
       success: res => {
-        console.log("list3:")
+        console.log("list:")
         console.log(res)
         var list4=[]
         var i
@@ -367,26 +258,117 @@ Page({
         
       
         this.setData({
-          liuyubeigan_allinfor:list4
+          allinfor:list4
         })
-        
-        wx.showToast({
-          title: '获取暂离座位成功！'
-         })
-         
-     //  var that=this
-     //  console.log("test")
-     //  that.data.liuyubeigan_allinfor.splice(1,1)
-     //  console.log(that.data.liuyubeigan_allinfor)
-     //  this.setData({
-     //   allinfor:that.data.liuyubeigan_allinfor
-     //  })
-   
-       
-       
-    }
+      }
     })
-    
+    // console.log(app.globalData.openid)
+    // const db = wx.cloud.database()
+    // db.collection('seat').where({
+    //   status:1
+    // })
+    // .get({
+    //   success: res => {
+    //     console.log("list:")
+    //     console.log(res)
+    //     var list=[]
+    //     var i
+    //     for(i=0;i<res.data.length;i++){
+    //       list.push(res.data[i].seatNum)
+    //     }
+    //     this.setData({
+    //       tableNum:list
+    //     })
+    //     wx.showToast({
+    //       title: '获取空余座位成功！'
+    //   })
+    //   }
+    // })
+    // db.collection('seat').where({
+    //   status:4
+    // })
+    // .get({
+    //   success: res => {
+    //     console.log("list1:")
+    //     console.log(res)
+    //     var list1=[]
+    //     var i
+    //     for(i=0;i<res.data.length;i++){
+    //       list1.push(res.data[i].seatNum)
+    //     }
+    //     this.setData({
+    //       liuyushabi_allleave:list1
+    //     })
+    //     wx.showToast({
+    //       title: '获取暂离座位成功！'
+    //   })
+    //   }
+    // })
+    // db.collection('seat').where({
+    //   status:3,
+    //   openid:app.globalData.openid
+    // })
+    // .get({
+    //   success: res => {
+    //     console.log("list2:")
+    //     console.log(res)
+    //     var list2=[]
+    //     var i
+    //     for(i=0;i<res.data.length;i++){
+    //       list2.push(res.data[i].seatNum)
+    //     }
+    //     this.setData({
+    //       liuyuzhizhang_nowappoint:list2
+    //     })
+    //     wx.showToast({
+    //       title: '获取暂离座位成功！'
+    //   })
+    //   }
+    // })
+    // db.collection('seat').where({
+    //   status:4,
+    //   openid:app.globalData.openid
+    // })
+    // .get({
+    //   success: res => {
+    //     console.log("list3:")
+    //     console.log(res)
+    //     var list3=[]
+    //     var i
+    //     if(res.data.length>0){
+    //       for(i=0;i<res.data.length;i++){
+    //         list3.push(res.data[i].seatNum)
+    //       }
+    //     }
+    //     this.setData({
+    //       liuyuchishi_nowleave:list3
+    //     })
+    //     wx.showToast({
+    //       title: '获取暂离座位成功！'
+    //   })
+    //   }
+    // })
+    // db.collection('seat').where({
+    // })
+    // .get({
+    //   success: res => {
+    //     console.log("list3:")
+    //     console.log(res)
+    //     var list4=[]
+    //     var i
+    //     if(res.data.length>0){
+    //       for(i=0;i<res.data.length;i++){
+    //         list4.push(res.data[i])
+    //       }
+    //     }
+    //     this.setData({
+    //       liuyubeigan_allinfor:list4
+    //     })
+    //     wx.showToast({
+    //       title: '获取暂离座位成功！'
+    //   })
+    //   }
+    // })
   },
 
   /**

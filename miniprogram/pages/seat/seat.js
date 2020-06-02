@@ -9,11 +9,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    i:0,
-    openid:"",
-    Credit:null,
-    //seat_num:null,
-    status:[//color表示警告颜色。a表示严重警告未连接（红色），b表示中等警告暂时离开（黄色），c表示无警告（绿色）
+    currentStatus : 0,   // 0:就坐, 1:暂离, 2:离开
+    openid : "",
+    Credit : null,
+    //seat_num : null,
+
+    /* color表示警告颜色。
+      a表示严重警告未连接（红色），
+      b表示中等警告暂时离开（黄色），
+      c表示无警告（绿色）*/
+    status:[
       {
         color:"a",
         name:"已就坐"
@@ -29,31 +34,90 @@ Page({
       }
     ],
 
+    // 决定按键disable值
+    sitDisable : true,
+    leaveDisable : false,
+    endDisable : false,
+
   },
+
+
+  changCurrentStatus : function(target_status){
+    this.setData({
+      currentStatus : target_status,
+    })
+    switch (target_status) {
+      case 0:
+        console.log("ChangCurrentStatus to sit.");
+        this.setData({
+          sitDisable    : true  ,
+          leaveDisable  : false ,
+          endDisable    : false ,
+        })
+        break;
+      case 1:
+        console.log("ChangCurrentStatus to leave.");
+        this.setData({
+          sitDisable    : false ,
+          leaveDisable  : true  ,
+          endDisable    : false ,
+        })
+        break;
+      default:
+        console.log("ChangCurrentStatus to end.");
+        this.setData({
+          sitDisable    : false ,
+          leaveDisable  : true  ,
+          endDisable    : true  ,
+        })
+        break;
+    }
+  },
+
+
+  Sit:function(){
+    // this.changCurrentStatus(0)
+    
+    wx.redirectTo({
+      url : '../linkbt/linkbt',
+      success : function() {
+        console.log("SUCCESS: Tab seat to linkbt.")
+      },
+      fail : function() {
+        console.log("FAIL: Tab seat to linkbt.")
+      }
+    })
+  },
+
   Leave:function(){
     console.log(app.data.userStatus)
-    var i=this.data.i;
-    if(i!=0){
+    var currentStatus = this.data.currentStatus;
+    if (currentStatus != 0){
       return ;
     }
-    var that=this;
-    that.setData({
-     i:1
-    })
+    // var that=this;
+    // this.setData({
+    //   currentStatus : 1
+    // })
+    this.changCurrentStatus(1)
+    app.data.userStatus=2
     //up.upd(2)
     up.updateSeatStatus(app.data.tableSelect,4)
     up.upUserStatus(2)//1:就坐 2:暂时离开 3:结束
   },
+
   End:function(){
     console.log(app.data.userStatus)
-    var i=this.data.i;
-    if(i==2){
+    var currentStatus = this.data.currentStatus;
+    if (currentStatus == 2) {
     return ;
   }
+  app.data.userStatus=3
   var that=this;
-  that.setData({
-    i:2
-  })
+  // that.setData({
+  //   currentStatus : 2
+  // })
+  this.changCurrentStatus(2)
   up.updateSeatStatus(app.data.tableSelect,1)
   up.upUserStatus(3)//1:就坐 2:暂时离开 3:结束
   },
@@ -90,9 +154,11 @@ Page({
           console.log("length information:"+res.data.length)
           //let sss=res.data[0].status
           //console.log(sss)
-          this.setData({
-            i:(res.data[0].status-1)
-          })
+          // this.setData({
+          //   currentStatus : (res.data[0].status-1)
+          // })
+          this.changCurrentStatus(res.data[0].status-1)
+
           app.data.Credit=res.data[0].credit
           app.data.userStatus=res.data[0].status
           wx.showToast({
@@ -115,9 +181,11 @@ Page({
               wx.showToast({
                 title: '注册成功',
               })
-          this.setData({
-            i:res.data[0].status
-          })
+              // this.setData({
+              //   currentStatus : res.data[0].status
+              // })
+              this.changCurrentStatus(res.data[0].status)
+
               console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
             },
             fail: err => {
@@ -135,10 +203,12 @@ Page({
       }
     })
     console.log(app.globalData.openid)
+
     var tmp=app.globalData.userStatus
-    this.setData({
-        i:tmp
-    })
+    // this.setData({
+    //   currentStatus : tmp
+    // })
+    this.changCurrentStatus(tmp)
   },
 
   /**
@@ -161,9 +231,11 @@ Page({
       success: res => {
         app.data.Credit=res.data[0].credit
         app.data.userStatus=res.data[0].status
-        this.setData({
-          i:(app.data.userStatus-1)
-        })
+        // this.setData({
+        //   currentStatus : (app.data.userStatus - 1)
+        // })
+        this.changCurrentStatus(app.data.userStatus - 1)
+
         console.log("app data:"+app.data)
         console.log("app globaldata:"+app.globalData)
       }

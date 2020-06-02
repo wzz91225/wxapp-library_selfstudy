@@ -8,7 +8,7 @@ Page({
   data: {
     openid:'',
     data_now:'',
-    state:0,
+    state:3,
     period:[//这个是时间段列表
       {
         id:1,
@@ -63,7 +63,7 @@ submit:function(){
           time: this.data.data_now,
           result: this.data.state,
           timeFlag:this.data.SelectTime[i],
-          seatNum:null
+          seatNum:0
         },
         success: res => {
           // 在返回结果中会包含新创建的记录的 _id
