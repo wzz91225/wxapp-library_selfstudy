@@ -6,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    score:"0"//这个表示信用分显示
-
+    credit:"0",    //这个表示信用分显示
+    openid: ""
   },
 
   /**
@@ -15,9 +15,9 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      score:app.data.Credit
+      credit:app.data.Credit,
+      openid:app.globalData.openid
     })
-    //console.log(this.score)
   },
 
   /**
