@@ -31,7 +31,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log(app.globalData.openid)
+    const db = wx.cloud.database()
+    db.collection('user').where({
+      _openid: app.globalData.openid
+    })
+    .get({
+      success: res => {
+        app.data.Credit=res.data[0].credit
+        app.data.userStatus=res.data[0].status
+        // this.setData({
+        //   currentStatus : (app.data.userStatus - 1)
+        // })
+        this.changCurrentStatus(app.data.userStatus - 1)
 
+        console.log("app data:"+app.data)
+        console.log("app globaldata:"+app.globalData)
+      }
+    })
   },
 
   /**
