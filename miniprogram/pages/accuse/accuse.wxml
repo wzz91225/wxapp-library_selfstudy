@@ -27,7 +27,12 @@
       </view>
       <view class="weui-cell ">
         <view class="weui-cell__bd">
-           <textarea class="weui-textarea" placeholder="请描述你所遇到的问题" rows="3" bindinput="textChange"></textarea>
+            <textarea class="weui-textarea" 
+              placeholder="请描述你所遇到的问题" 
+              rows="3" 
+              bindinput="textChange" 
+              value="{{accuseText}}">
+            </textarea>
         </view>
       </view>
     </view>
