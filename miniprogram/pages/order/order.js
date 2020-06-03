@@ -54,6 +54,14 @@ Page({
 ///--------------
 //上传预约信息的函数
 submit:function(){
+  var check=1
+  for(var k;k<this.data.SelectTime.length;k++ ){
+    if(this.data.SelectTime_1[this.data.SelectTime[k]-1])
+        check=0;
+        break;
+  }
+  
+  if(check){
   const db = wx.cloud.database()
     for(var i=0;i<this.data.SelectTime.length;i++)
     {
@@ -64,6 +72,7 @@ submit:function(){
           timeFlag:this.data.SelectTime[i],
           seatNum:0
         },
+        
         success: res => {
           // 在返回结果中会包含新创建的记录的 _id
           wx.showToast({
@@ -80,6 +89,10 @@ submit:function(){
         }
       })
     }
+  }
+  else{
+    console.log("有错误")
+  }
 },
   
   /**
