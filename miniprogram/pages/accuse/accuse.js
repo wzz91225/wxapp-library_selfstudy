@@ -5,8 +5,12 @@ const app = getApp()
 Page({
   openid:'',
   data: {
-    accuseSelectNum:[1,2,3,4,5,6,7,8,9],
+    accuseSelectNumIndex:0,//选择的桌号
+    accuseSelectNumNew:0,//这表示选择的卓号下标
+    accuseSelectNum:[],//这里放入传入的桌号
+    tableNum:[],//这里放入传入的桌号
     rangekey: 0,
+    accuseText:'null',
     accusecause:[
       {
         id:1,
@@ -42,7 +46,25 @@ Page({
       url: '../logs/logs'
     })
   },
+  bindAccuseChange: function(e) {
+    console.log('accuseSelectNumIndex 发生选择改变，携带值为', e.detail.value);
+    console.log('accuseSelectNumNew发生选择改变，携带值为', this.data.accuseSelectNum[e.detail.value]);
+    this.setData({
+      accuseSelectNumNew:this.data.accuseSelectNum[e.detail.value]
+    })
+    this.setData({
+      accuseSelectNumIndex:e.detail.value
+    })
+},
+textChange:function(e){
+    console.log('accuseText举报文字的值为',e.detail.value)
+    this.setData({
+      accuseText:e.detail.value
+    })
+
+},
   onLoad: function () {
+    var that = this
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -69,6 +91,28 @@ Page({
         }
       })
     }
+    const db = wx.cloud.database()
+    db.collection('seat').field({
+      seatNum:true
+    })
+    .get({
+      
+      success:function(res){//11111111111111111111111111
+        console.log("liuyu happy time:")
+        console.log(res.data[0].seatNum)
+        console.log(res)
+        var accuseTmp=[]
+        for(var i=0;i<res.data.length;i++){
+          accuseTmp.push(res.data[i].seatNum)
+        }
+        console.log(accuseTmp)
+       
+       
+        that.setData({
+          accuseSelectNum:accuseTmp
+        })
+      }
+    })
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -134,7 +178,18 @@ Page({
       }
     })
   },
-
+// onShow:function(){
+//   const db = wx.cloud.database()
+//     db.collection('seat').field({
+//       seatNum:true
+//     })
+//     .get({
+//       success:function(res){
+//         console.log("liuyu happy time:")
+//         console.log(res)
+//       }
+//     })
+// }
 
 
   uploadImageToCloud : function() {
