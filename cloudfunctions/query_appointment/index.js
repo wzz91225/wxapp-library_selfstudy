@@ -10,7 +10,8 @@ exports.main = async (event, context) => {
       //seat_num:event.seat_num
     })
     .orderBy("time","desc")
-    .limit(5)
+    .orderBy('timeFlag',"asc")
+    //.limit(5)
     .get()
   }
   catch (e) {
