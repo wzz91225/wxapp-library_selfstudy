@@ -10,7 +10,7 @@ Page({
     accuseSelectNum:[],//这里放入传入的桌号
     tableNum:[],//这里放入传入的桌号
     rangekey: 0,
-    accuseText:'null',
+    accuseText:'null',//
     accusecause:[
       {
         id:1,
@@ -106,8 +106,6 @@ textChange:function(e){
           accuseTmp.push(res.data[i].seatNum)
         }
         console.log(accuseTmp)
-       
-       
         that.setData({
           accuseSelectNum:accuseTmp
         })

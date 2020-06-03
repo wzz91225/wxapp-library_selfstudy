@@ -5,25 +5,17 @@
       <h2 class="weui-form__title">快速举报</h2>
     </view>
 
-   <!-- <view class="weui-cells weui-cells_after-title">
+    <!--<view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-        <picker class="" range="{{accuseSelectNum}}">
+        <picker class="" range-key="id" range="{{accusecause}}">
           举报座位：
         </picker>
       </view>
     </view>-->
     
-      <mp-cell class="my-cells" title="举报桌号：" footer="{{accuseSelectNum[accuseSelectNumIndex]}}">
-               
-                  <picker bindchange="bindAccuseChange"
-                  value="accuseSelectNumIndex"
-                  range="{{accuseSelectNum}}">
-                      <view class="weui-cell__hd">{{accuseSelectNum[accuseSelectNumIndex]}}</view>
-                  </picker>
-       </mp-cell>
-
-     
-  <mp-cell class="my-cells" title="举报内容">
+ 
+   <mp-cell class="my-cells" title="举报内容"/>  
+  <mp-cell class="my-cells" >
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell ">
         <view class="weui-cell__bd">
