@@ -54,6 +54,14 @@ Page({
 ///--------------
 //上传预约信息的函数
 submit:function(){
+  var check=1
+  for(var k=0;k<this.data.SelectTime.length;k++ ){
+    
+    if(this.data.SelectTime_1[this.data.SelectTime[k]-1])
+        check=0;
+        break;
+  }
+  if(check){
   const db = wx.cloud.database()
     for(var i=0;i<this.data.SelectTime.length;i++)
     {
@@ -78,8 +86,12 @@ submit:function(){
           })
           console.error('[数据库] [新增记录] 失败：', err)
         }
-      })
+      })   
     }
+  }
+  else{
+    console.log("有错误,已预约时间存在冲突")
+  }
 },
   
   /**

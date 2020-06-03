@@ -30,6 +30,7 @@
                                     class="weui-check"
                                     value="{{item.id}}"
                                     checked="{{item.checked}}"
+                                    disabled="{{SelectTime_1[item.id-1]}}"
                                 />
                                 <i class="weui-icon-checked"></i>
                             </view>
