@@ -54,7 +54,6 @@ Page({
 ///--------------
 //上传预约信息的函数
 submit:function(){
-  this.data.data_now = util.formatDate(new Date());
   const db = wx.cloud.database()
     for(var i=0;i<this.data.SelectTime.length;i++)
     {
@@ -90,6 +89,10 @@ submit:function(){
   //---------------------------------
   //获得已预约信息,返回一个可选时间段的数组
   onLoad: function (options) {
+    this.setData({
+      data_now : util.formatDate(new Date())
+    })
+    console.log(this.data.data_now)
     if (app.globalData.openid) {
       this.setData({
         openid: app.globalData.openid
