@@ -10,15 +10,7 @@ Page({
     item : [],
     
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  //---------------------------
-  //---------------------------
-  //---------------------------
-  //完成拉取预约信息，从数据库中
-  onLoad: function (options) {
+  updateDataFromCloud:function(){
     wx.cloud.callFunction({
       name: 'query_appointment', //云函数的名称
       data: {
@@ -55,11 +47,40 @@ Page({
           //[mtime]:res.result.data[0].time
           item:res.result.data
         })
+        // wx:showToast({
+        //   title:'更新成功',
+        //   icon:'warn',
+        //   duration:1000
+        // })
       },
       fail: err => {
         console.error('[云函数] [loginInfo] 调用失败', err)
+
+        // wx:showToast({
+        //   title:'更新失败',
+        //   icon:'warn',
+        //   duration:1000
+        // })
+      },
+      complete: function(){
+        wx.stopPullDownRefresh({
+          complete(res) {
+            wx.hideToast()
+            console.log(res, new Date())
+          }
+        })
       }
   })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  //---------------------------
+  //---------------------------
+  //---------------------------
+  //完成拉取预约信息，从数据库中
+  onLoad: function (options) {
+    this.updateDataFromCloud()
   },
 
   /**
@@ -73,7 +94,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      // this.updateDataFromCloud()
   },
 
   /**
@@ -94,7 +115,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.updateDataFromCloud()
   },
 
   /**
