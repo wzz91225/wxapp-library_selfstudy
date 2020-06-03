@@ -135,12 +135,13 @@ submit:function(){
     const db = wx.cloud.database()
   // 查询当前用户所有的 counters
   db.collection('appointment').where({
-    _openid:this.data.openid,
-    result:3,
+    _openid:'oFNyI5F2sOjwS7gKLjyq8lqhTY08',
+    //result:3,
     time:this.data.data_now
   }).get({
     success: res => {
       var len=res.data.length
+      console.log(res)
       for(let i=0;i<len;i++){
         //this.data.SelectTime_1[i]=res.data[i].timeFlag
          switch(res.data[i].timeFlag){
