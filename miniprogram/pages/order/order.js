@@ -55,56 +55,42 @@ Page({
 //上传预约信息的函数
 submit:function(){
   var check=1
-  for(var k;k<this.data.SelectTime.length;k++ ){
+  for(var k=0;k<this.data.SelectTime.length;k++ ){
+    
     if(this.data.SelectTime_1[this.data.SelectTime[k]-1])
         check=0;
         break;
   }
-  
   if(check){
   const db = wx.cloud.database()
     for(var i=0;i<this.data.SelectTime.length;i++)
     {
-      console.log("Submiting!")
-      db.collection('appointment').where({
-        time: this.data.data_now,
-        timeFlag:this.data.SelectTime[i],
-        _openid:app.globalData.openid
-      }).get({
-        success:function(res){
-          if(res.data.length==1){
-            console.log("Have conflict with database!")
-          }else{
-            db.collection('appointment').add({
-              data: {
-                time: this.data.data_now,
-                result: this.data.state,
-                timeFlag:this.data.SelectTime[i],
-                seatNum:0
-              },
-              success: res => {
-                // 在返回结果中会包含新创建的记录的 _id
-                wx.showToast({
-                  title: "预约成功！",
-                })
-                console.log('Success to appoint seat!')
-                console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
-              },
-              fail: err => {
-                wx.showToast({
-                  icon: 'none',
-                  title: '新增记录失败'
-                })
-                console.error('[数据库] [新增记录] 失败：', err)
-              }
-            })
-          }
+      db.collection('appointment').add({
+        data: {
+          time: this.data.data_now,
+          result: this.data.state,
+          timeFlag:this.data.SelectTime[i],
+          seatNum:0
+        },
+        success: res => {
+          // 在返回结果中会包含新创建的记录的 _id
+          wx.showToast({
+            title: '新增记录成功',
+          })
+          console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
+        },
+        fail: err => {
+          wx.showToast({
+            icon: 'none',
+            title: '新增记录失败'
+          })
+          console.error('[数据库] [新增记录] 失败：', err)
         }
-      });
+      })   
     }
   }
   else{
-    console.log("有错误")
+    console.log("有错误,已预约时间存在冲突")
   }
 },
   
