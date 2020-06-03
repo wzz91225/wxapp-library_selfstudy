@@ -1,6 +1,68 @@
 <!--pages/orderview/orderview.wxml-->
-<circle degree="" obvious=""></circle><!--两个接口传入显示数据-->
 
+
+
+<view class="page-title">
+  <h2 class="weui-form__title">预约信息</h2>
+</view>
+  
+  <view class='form-item'>
+    <view class="leftPlaceholder" > <text class='form-title'>时间</text></view>
+    <view class="midPlaceholder"  > <text class='form-title'>桌号</text></view>
+    <view class="rightPlaceholder"> <text class='form-title'>状态</text></view>
+  </view>
+
+  <view wx:for="{{item}}">
+    <view class='form-item'>
+      <view class="leftPlaceholder" wx:if   ="{{item.timeFlag==1}}"> <text class='form-content'> {{item.time}} 07:00-10:00 </text></view>
+      <view class="leftPlaceholder" wx:elif ="{{item.timeFlag==2}}"> <text class='form-content'> {{item.time}} 10:00-12:00 </text></view>
+      <view class="leftPlaceholder" wx:elif ="{{item.timeFlag==3}}"> <text class='form-content'> {{item.time}} 12:00-15:00 </text></view>
+      <view class="leftPlaceholder" wx:elif ="{{item.timeFlag==4}}"> <text class='form-content'> {{item.time}} 15:00-18:00 </text></view>
+      <view class="leftPlaceholder" wx:elif ="{{item.timeFlag==5}}"> <text class='form-content'> {{item.time}} 18:00-22:00 </text></view>
+      <view class="leftPlaceholder" wx:else>                         <text class='form-content'> error </text></view>
+
+      <view class="midPlaceholder"> <text class='form-content' wx:if="{{item.result==1}}"> {{item.seatNum}} </text></view>
+
+      <view class="rightPlaceholder" wx:if    ="{{item.result==1}}"> <text class='form-content' style="color: green"> 成功   </text></view>
+      <view class="rightPlaceholder" wx:elif  ="{{item.result==2}}"> <text class='form-content' style="color: red"  > 失败   </text></view>
+      <view class="rightPlaceholder" wx:elif  ="{{item.result==3}}"> <text class='form-content' style="color: grey" > 预约中 </text></view>
+      <view class="rightPlaceholder" wx:else>                        <text class='form-content' style="color: black"> error  </text></view>
+    </view>
+  </view>
+
+
+<view class="button-order">
+<navigator url="../order/order" class="weui-btn weui-btn_primary">快速预约</navigator>
+</view>
+
+
+
+
+  <!-- <view class='content-item'>
+              <text class='result-time'>时间</text>
+              <text class='result-seat'>桌号</text>
+              <text class='result-status'>状态</text>
+  </view> -->
+
+    <!-- <view class="weui-cells weui-cells_after-title"> -->
+    <!-- </view> -->
+              <!-- <text class='result-time' wx:if   ="{{item.timeFlag==1}}" >{{item.time}} 07:00-10:00</text>
+              <text class='result-time' wx:elif ="{{item.timeFlag==2}}" >{{item.time}} 10:00-12:00</text>
+              <text class='result-time' wx:elif ="{{item.timeFlag==3}}" >{{item.time}} 12:00-15:00</text>
+              <text class='result-time' wx:elif ="{{item.timeFlag==4}}" >{{item.time}} 15:00-18:00</text>
+              <text class='result-time' wx:elif ="{{item.timeFlag==5}}" >{{item.time}} 18:00-22:00</text>
+              <text class='result-time' wx:else                         >error</text>
+
+              <text class='result-seat'>{{item.seatNum}}</text>
+
+              <text class='result-status' wx:if   ="{{item.result==1}}" >成功</text>
+              <text class='result-status' wx:elif ="{{item.result==2}}" >失败</text>
+              <text class='result-status' wx:elif ="{{item.result==3}}" >预约中</text>
+              <text class='result-status' wx:else                       >error</text> -->
+
+
+<!--两个接口传入显示数据-->
+<!-- <circle degree="" obvious=""></circle> -->
 
 
 <!--<view class='contentBottom'>
@@ -25,26 +87,6 @@
   </view>
 -->
 
-<view class='BottomFirst'>
+<!-- <view class='BottomFirst'>
     <text id='0' data-id='0'>图书馆预约信息</text>
- </view>
- <view class='content-item'>
-              <text class='name'>时间</text>
-              <text class='center'>座位号</text>
-              <text class='wawa'>结果</text>
-  </view>
-  <view wx:for="{{aa}}">
- <view class="weui-cells weui-cells_after-title">
-   <view class='content-item'>
-              <text class='name'>{{item.time}}</text>
-              <text class='center'>{{item.seatNum}}</text>
-              <text class='wawa' wx:if="{{item.result==1}}">成功</text>
-              <text class='wawa' wx:else>失败</text>
-    </view>
- </view>
-</view>
-
-
-<view class="bon1">
-<navigator url="../order/order" class="weui-btn weui-btn_primary">预约时间</navigator>
-</view>
+ </view> -->

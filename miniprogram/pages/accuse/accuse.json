@@ -1,7 +1,7 @@
 {
   "usingComponents": {
-    "circle":"../../components/circle/circle"
-  },
-  "navigationBarTitleText": "举报"
-  
+    "circle":"../../components/circle/circle",
+    "mp-cell": "../../components/cell/cell",
+    "mp-cells":"../../components/cells/cells"
+  }
 }

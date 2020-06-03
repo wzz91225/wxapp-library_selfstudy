@@ -16,6 +16,25 @@ const app = getApp()
 //       }
 //     })
 // }
+
+
+function backToSeat(){
+  setTimeout(function () {
+    // 自动切换页面返回
+    // wx.switchTab({
+    wx.navigateBack({
+      url : '../seat/seat',
+      success : function() {
+        console.log("SUCCESS: Tab linkbt to seat.")
+      },
+      fail : function() {
+        console.log("FAIL: Tab linkbt to seat.")
+      }
+    })
+  }, 500) 
+}
+
+
 function upd(x) {
   wx.cloud.callFunction({
     name: 'update',//modify user
@@ -49,7 +68,8 @@ function upUserStatus(x) {//x:status y:seat_num
       console.log("update success")
       wx.showToast({
         title: '更新用户表成功！'
-    })
+      })
+      backToSeat()
     },
     fail: err => {
       console.error
@@ -113,12 +133,14 @@ function upseat(x) {//x:status y:seat_num
         upUserStatus(1)
         wx.showToast({
           title: '坐下成功!'
-      })
+        })
+        backToSeat()
       }
     }
 
   });
 }
+
 module.exports = {
     upd: upd,
     upseat:upseat,

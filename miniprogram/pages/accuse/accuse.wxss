@@ -3,6 +3,20 @@ page{
   background-color:white ;
 }
 
+.pageTitle{
+  margin: 0px;
+  height: 3em;
+  padding: 10px 0;
+
+  display: flex;
+  /* text-align: center; */
+  align-items: center;
+  justify-content: center;
+  
+  color: rgb(0, 0, 0);
+  background-color: white;
+}
+
 .uploadImage{
   margin-top: 20px;
   display: flex;
@@ -10,13 +24,13 @@ page{
 }
 
 .button_uploadImage {
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
   justify-content: center;
 }
 
 .button_submitAccuse {
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
   justify-content: center;
 }
