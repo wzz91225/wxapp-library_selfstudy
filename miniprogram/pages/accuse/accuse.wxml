@@ -55,14 +55,14 @@
 
 
 
-    <view class="givenTip">
-      <view class="weui-footer">
-        <view class="weui-footer__links">
-          <a href="javascript:" class="weui-footer__link">小提示</a>
-        </view>
-        <view class="weui-footer__text">记得带走你的书籍</view>
-      </view>
+<!-- <view class="givenTip">
+  <view class="weui-footer">
+    <view class="weui-footer__links">
+      <a href="javascript:" class="weui-footer__link">小提示</a>
     </view>
+    <view class="weui-footer__text">记得带走你的书籍</view>
+  </view>
+</view> -->
   
   
 

@@ -5,8 +5,8 @@ const app = getApp()
 Page({
   openid:'',
   data: {
-    accuseSelectNumIndex:0,//选择的桌号
-    accuseSelectNumNew:0,//这表示选择的卓号下标
+    accuseSelectNumIndex:0,//选择的桌号下标
+    accuseSelectNumNew:0,//这表示选择的卓号
     accuseSelectNum:[],//这里放入传入的桌号
     tableNum:[],//这里放入传入的桌号
     rangekey: 0,
@@ -132,72 +132,25 @@ textChange:function(e){
         // tempFilePath可以作为img标签的src属性显示图片
         console.log(res)
         _this.setData({
-          imageSrc: res.tempFilePaths,
+          imageSrc: res.tempFilePaths[0],
           hasUploadImage: true
         })
-
-        const cloudfile = _this.imageSrc
+        console.log(_this.data.imageSrc)
       },
       fail: e => {
         console.error(e)
       }
     })
   },
-  submit:function(){
-    //if (app.globalData.openid) {
-    //  this.setData({
-    //    openid: app.globalData.openid
-    //  })
-    //}
-
-    uploadImageToCloud()
-
-    const db = wx.cloud.database()
-    console.log(app.globalData.fileID)
-    db.collection('accuse').add({
-      data: {
-        accuseSeatnum: this.data.seatNum,
-        reason: this.data.reason,
-        // pictureUrl:app.globalData.fileID
-      },
-      success: res => {
-        // 在返回结果中会包含新创建的记录的 _id
-        wx.showToast({
-          title: '新增记录成功',
-        })
-        console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '新增记录失败'
-        })
-        console.error('[数据库] [新增记录] 失败：', err)
-      }
-    })
-  },
-// onShow:function(){
-//   const db = wx.cloud.database()
-//     db.collection('seat').field({
-//       seatNum:true
-//     })
-//     .get({
-//       success:function(res){
-//         console.log("liuyu happy time:")
-//         console.log(res)
-//       }
-//     })
-// }
-
 
   uploadImageToCloud : function() {
     
     wx.showLoading({
-      title: '上传图片中',
+       title: '上传图片中',
     })
 
-    const filePath = this.imageSrc
-    
+    const filePath = this.data.imageSrc
+    console.log(filePath)
     // 上传图片
     var num=Math.random()*100
     const cloudPath = num + filePath.match(/\.[^.]+?$/)[0]
@@ -211,6 +164,9 @@ textChange:function(e){
         app.globalData.cloudPath = cloudPath
         app.globalData.imagePath = filePath
         console.log(filepath)
+        wx.showLoading({
+          title: '上传图片成功',
+       })
         // this.setData({
         //   pictureUrl:filepath
         // })
@@ -227,6 +183,53 @@ textChange:function(e){
       }
     })
   },
+  submit:function(){
+    //if (app.globalData.openid) {
+    //  this.setData({
+    //    openid: app.globalData.openid
+    //  })
+    //}
+
+    const db = wx.cloud.database()
+    console.log(app.globalData.fileID)
+    db.collection('accuse').add({
+      data: {
+        accuseSeatnum: this.data.accuseSelectNumNew,//选择的桌号
+        reason: this.data.accuseText,
+        //pictureUrl:app.globalData.fileID
+      },
+      success: res => {
+        // 在返回结果中会包含新创建的记录的 _id
+        wx.showToast({
+          title: '新增记录成功',
+        })
+        console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '新增记录失败'
+        })
+        console.error('[数据库] [新增记录] 失败：', err)
+      }
+    })
+    this.uploadImageToCloud()
+  },
+// onShow:function(){
+//   const db = wx.cloud.database()
+//     db.collection('seat').field({
+//       seatNum:true
+//     })
+//     .get({
+//       success:function(res){
+//         console.log("liuyu happy time:")
+//         console.log(res)
+//       }
+//     })
+// }
+
+
+  
 })
 
 
