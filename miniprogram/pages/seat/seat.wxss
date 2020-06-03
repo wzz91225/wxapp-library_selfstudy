@@ -2,23 +2,26 @@
 
 
 .circle{
-  position:fixed; 
-  margin:auto; 
-  left:0; 
-  right:0; 
-  top:6%; 
+  position:flex;
+  margin:auto;
+  left:0;
+  right:0;
+  /* top:6%;  */
+  padding: 36px 0 0 0;
 }
 
 
 .button{
-  position:fixed; 
-  margin:auto; 
-  left:0; 
-  right:0; 
-  top:66%; 
+  position:fixed;
+  margin:auto;
+  left:0;
+  right:0;
+  top:69.5%; 
+
+  /* padding: 150px 0 0 0; */
   /* bottom:6%;  */
   /* width:200px; 
-  height:150px; */
+  /* height:150px; */
 }
 
 

@@ -131,6 +131,50 @@ Page({
   //-------------------------
   //-------------------------
   //-------------------------
+
+
+
+  updateDataFromCloud: function(){
+    console.log(app.globalData.openid)
+    const db = wx.cloud.database()
+    db.collection('user').where({
+      _openid: app.globalData.openid
+    })
+    .get({
+      success: res => {
+        app.data.Credit=res.data[0].credit
+        app.data.userStatus=res.data[0].status
+        // this.setData({
+        //   currentStatus : (app.data.userStatus - 1)
+        // })
+        this.changCurrentStatus(app.data.userStatus - 1)
+
+        console.log("[云函数]查询用户信息成功", res)
+        // console.log("app data:"+app.data)
+        // console.log("app globaldata:"+app.globalData)
+      },
+
+      fail: err => {
+        console.log("[云函数]查询用户信息失败", err)
+      },
+
+      complete: function(){
+        wx.stopPullDownRefresh({
+          complete(res) {
+            wx.hideToast()
+            console.log(res, new Date())
+          }
+        })
+      }
+    })
+  },
+
+
+
+  
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function (options) {
     const db = wx.cloud.database()
     wx.cloud.callFunction({
@@ -244,24 +288,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(app.globalData.openid)
-    const db = wx.cloud.database()
-    db.collection('user').where({
-      _openid: app.globalData.openid
-    })
-    .get({
-      success: res => {
-        app.data.Credit=res.data[0].credit
-        app.data.userStatus=res.data[0].status
-        // this.setData({
-        //   currentStatus : (app.data.userStatus - 1)
-        // })
-        this.changCurrentStatus(app.data.userStatus - 1)
-
-        console.log("app data:"+app.data)
-        console.log("app globaldata:"+app.globalData)
-      }
-    })
+    this.updateDataFromCloud()
   },
 
   /**
@@ -282,7 +309,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    Add()
+    this.updateDataFromCloud()
   },
 
   /**
