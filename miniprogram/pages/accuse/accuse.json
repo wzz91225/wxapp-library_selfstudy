@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "快速举报",
   "usingComponents": {
     "circle":"../../components/circle/circle",
     "mp-cell": "../../components/cell/cell",

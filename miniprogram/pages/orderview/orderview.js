@@ -25,7 +25,7 @@ Page({
         id:app.globalData.openid
       },
       success: res => {
-        console.log(res.result.data[0].time)  //res的数据结构如下图res.result.data[0].time
+        console.log(res.result.data[0])  //res的数据结构如下图res.result.data[0]
         //var i;
         // for(i=0;i<5;i++){
         //   this.aa[i][0]=res.result.data[i].time

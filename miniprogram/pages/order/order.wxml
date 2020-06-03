@@ -24,31 +24,34 @@
 				<view class="weui-cells weui-cells_checkbox">
                     <checkbox-group bindchange="handleSelectTime">
                         <label class="weui-cell weui-cell_active weui-check__label" value="{{item.id}}" wx:for="{{period}}" wx:key="id">
+                            <!-- <view class="weui-cell__hd" wx:if="{{!SelectTime_1[item.id-1]}}"> -->
                             <view class="weui-cell__hd">
                                 <checkbox
+                                    disabled="{{(SelectTime_1[item.id-1]) || (!haveUpdateInfo)}}"
                                     class="weui-check"
                                     value="{{item.id}}"
-                                    checked="{{item.checked}}"
+                                    checked="{{false}}"
                                 />
                                 <i class="weui-icon-checked"></i>
                             </view>
-                            <view class="weui-cell__bd">
-                                <view>{{item.value}}</view>
+                            <!-- <view class="weui-cell__bd" wx:if="{{!SelectTime_1[item.id-1]}}"> -->
+                            <view class="weui-cell__bd" wx:if="{{!SelectTime_1[item.id-1]}}">
+                                <text style="color:black">{{item.value}}</text>
+                            </view>
+                            <view class="weui-cell__bd" wx:if="{{SelectTime_1[item.id-1]}}">
+                                <text style="color:grey">{{item.value}}</text>
+                                <text style="color:grey"> - 已申请</text>
                             </view>
                         </label>
                     </checkbox-group>
-          <view>{{SelectTime}}</view>
-          <view>{{SelectTime_1}}</view>
+          <!-- <view>{{SelectTime}}</view>
+          <view>{{SelectTime_1}}</view> -->
 				</view>
 			</view>
 		</view>
 		<view class="weui-form__opr-area">
-			<button class="weui-btn weui-btn_primary" bindtap="submit">下一步</button>
+			<button class="weui-btn weui-btn_primary" bindtap="submit">提交申请</button>
 		</view>
        
 	</view>
 </view>
-
-
-
-                                    <!-- disabled="{{SelectTime_1[item.id-1]}}" -->

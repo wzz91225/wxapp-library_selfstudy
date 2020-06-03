@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "快速预约",
   "usingComponents": {
     "circle":"../../components/circle/circle"
   }
