@@ -72,7 +72,13 @@
 
 
 .button-order{
-  width: 40%;
+  position:fixed;
+  margin:auto;
+  left:0;
+  right:0;
+  top:85%; 
+
+  /* width: 40%;
   margin-top: 20rpx;
   background-color: burlywood;
   color:black;
@@ -83,7 +89,7 @@
   justify-content: center;
   position: absolute;
   left:30%;
-  top:80%;
+  top:80%; */
 }
 
 
