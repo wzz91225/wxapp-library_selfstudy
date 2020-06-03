@@ -5,25 +5,38 @@
       <h2 class="weui-form__title">快速举报</h2>
     </view>
 
-    <view class="weui-cells weui-cells_after-title">
+    <!--<view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-        <picker class="" range="{{accuseSelectNum}}">
+        <picker class="" range-key="id" range="{{accusecause}}">
           举报座位：
         </picker>
       </view>
-    </view>
-
+    </view>-->
+    <view class="weui-cells weui-cells_after-title">
+      <mp-cell class="my-cells" title="举报桌号：">        
+                  <picker bindchange="bindAccuseChange"
+                  value="accuseSelectNumIndex"
+                  range="{{accuseSelectNum}}">
+                      <view class="weui-cell__hd">{{accuseSelectNum[accuseSelectNumIndex]}}</view>
+                  </picker>
+       </mp-cell>
+      </view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">举报内容：</view>
       </view>
       <view class="weui-cell ">
         <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="请描述你所遇到的问题" rows="3"></textarea>
+           <textarea class="weui-textarea" placeholder="请描述你所遇到的问题" rows="3" bindinput="textChange"></textarea>
         </view>
       </view>
     </view>
+ 
+    
 
+       
+   
+   
     <view class="uploadImage">
       <image style="width: 200px; height: 150px; background-color: #eeeeee;" mode="aspectFit" src="{{imageSrc}}"></image>
     </view>

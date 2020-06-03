@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "circle":"../../components/circle/circle"
+    "circle":"../../components/circle/circle",
+    "mp-cell": "../../components/cell/cell",
+    "mp-cells":"../../components/cells/cells"
   }
 }
