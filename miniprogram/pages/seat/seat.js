@@ -132,8 +132,8 @@ Page({
   //-------------------------
   //-------------------------
   onLoad: function (options) {
-   const db = wx.cloud.database()
-  wx.cloud.callFunction({
+    const db = wx.cloud.database()
+    wx.cloud.callFunction({
     name: 'login',
     data: {},
     success: res => {
@@ -216,7 +216,28 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    const db = wx.cloud.database()
+    wx.cloud.callFunction({
+    name: 'login',
+    data: {},
+    success: res => {
+      console.log('[云函数] [login] user openid: ', res.result.openid)
+      app.globalData.openid = res.result.openid
+    },
+    fail: err => {
+      console.error('[云函数] [login] 调用失败', err)
+    }
+  })
+    console.log("1221")
+    console.log(app.globalData.openid)
+    console.log("22222")
+    db.collection('user').where({
+      _openid:app.globalData.openid
+    }).get({
+      success:function(res){
+        console.log(res)
+      }
+    })
   },
 
   /**

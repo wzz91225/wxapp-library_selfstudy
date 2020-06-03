@@ -23,10 +23,10 @@
 
       <view class="midPlaceholder"> <text class='form-content' wx:if="{{item.result==1}}"> {{item.seatNum}} </text></view>
 
-      <view class="rightPlaceholder" wx:if    ="{{item.result==1}}"> <text class='form-content' style="color: green"> 成功   </text></view>
-      <view class="rightPlaceholder" wx:elif  ="{{item.result==2}}"> <text class='form-content' style="color: red"  > 失败   </text></view>
-      <view class="rightPlaceholder" wx:elif  ="{{item.result==3}}"> <text class='form-content' style="color: grey" > 预约中 </text></view>
-      <view class="rightPlaceholder" wx:else>                        <text class='form-content' style="color: black"> error  </text></view>
+      <view class="rightPlaceholder" wx:if    ="{{item.result==1}}"> <text class='form-content' style="color: green"> 成功  </text></view>
+      <view class="rightPlaceholder" wx:elif  ="{{item.result==2}}"> <text class='form-content' style="color: red"  > 失败  </text></view>
+      <view class="rightPlaceholder" wx:elif  ="{{item.result==3}}"> <text class='form-content' style="color: grey" > 等待  </text></view>
+      <view class="rightPlaceholder" wx:else>                        <text class='form-content' style="color: black"> error </text></view>
     </view>
   </view>
 

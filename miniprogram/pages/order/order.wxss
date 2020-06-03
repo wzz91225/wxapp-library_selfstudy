@@ -1,7 +1,12 @@
 /* pages/order/order.wxss */
-.che1{
-}
-.che2{
+
+
+
+
+
+/* .che1{
+} */
+/* .che2{
     display: flex;
     justify-content: center;
-}
+} */

@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "预约信息",
   "usingComponents": {
     "circle":"../../components/circle/circle"
   }
