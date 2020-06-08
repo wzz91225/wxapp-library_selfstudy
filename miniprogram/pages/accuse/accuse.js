@@ -167,7 +167,7 @@ Page({
       data: {
         accuseSeatnum: this.data.accuseSelectNumNew,//选择的桌号
         reason: this.data.accuseText,
-        //pictureUrl:app.globalData.fileID
+        pictureUrl:app.globalData.fileID
       },
       success: res => {
         // 在返回结果中会包含新创建的记录的 _id

@@ -17,14 +17,7 @@ exports.main = async (event, context) => {
       //云函数更新
      }
     })
-    for(var i=0;i<aa.data.length;i++){
-      if(aa.data[i].status==4){
-
-      }
-    }
-    await db.collection('seat').where({
-      status:2
-    }).update({
+    await db.collection('seat').update({
       data:{
         status:1
       },
