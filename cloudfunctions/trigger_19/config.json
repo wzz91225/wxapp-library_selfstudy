@@ -3,7 +3,7 @@
     {
       "name": "19_myTrigger",
       "type": "timer",
-      "config": "0 0 19 * * * *"
+      "config": "0 0 18 * * * *"
     }
   ]
 }
