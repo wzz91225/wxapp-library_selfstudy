@@ -1,5 +1,6 @@
 // pages/orderview/orderview.js
-const app=getApp()
+const app=getApp();
+var util = require('../../util/util')
 
 Page({
 
@@ -39,13 +40,21 @@ Page({
         for (var i = 0; i < tmp.length; ++i) {
           tmp[i].time = tmp[i].time.slice(5)
         }
-
-        console.log(res.result.data)
+        
+        console.log('预定信息',res.result.data)
         var that=this;
-        console.log()
+        var time = util.formatTime(new Date());
+        var day=parseInt(time.slice(8,10))//读取日期转为数字
+        var itemTmp=[]
+        console.log('现在日期',day)
+        for(var i=0;i<res.result.data.length;i++){
+            if(day<=parseInt(res.result.data[i].time.slice(3,5))){
+              itemTmp.push(res.result.data[i]);
+            }
+        }
         that.setData({
           //[mtime]:res.result.data[0].time
-          item:res.result.data
+          item:itemTmp
         })
         // wx:showToast({
         //   title:'更新成功',
