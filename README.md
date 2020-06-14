@@ -1,3 +1,5 @@
+# 注：由于课程结束，已暂停维护！
+
 # 项目概述
 
 - 项目名称：“香樟自习室”微信小程序  
@@ -16,7 +18,8 @@
 
 
 
-## 微信小程序参考文档
+## 项目参考
 
 - [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
-
+- [微信小程序DEMO](https://github.com/wechat-miniprogram/miniprogram-demo)
+- [WeUI for 小程序](https://github.com/Tencent/weui-wxss)
